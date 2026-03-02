@@ -1,113 +1,91 @@
-# Getting Started with GitHub Spec Kit
+# Agent-Driven Spec Development: The FlavorHub Crisis
 
-> **Mission Brief**: Transform how you build software using AI-assisted Spec-Driven Development. Your next project depends on it.
+> **Production Emergency**: Fix critical bug + modernize system in 2 hours using GitHub agents
 
-## Your Mission Begins Here
+## 🔥 The Crisis
 
-**Welcome to FlavorHub**, the world's fastest-growing recipe community platform! Founded in 2018, our platform has connected millions of home cooks, professional chefs, and food enthusiasts worldwide. From family recipes passed down through generations to cutting-edge molecular gastronomy, FlavorHub has become the go-to destination for culinary inspiration.
+**Monday, 3:00 PM:** FlavorHub's Recipe Manager crashes. Search feature failing for 30% of users. 500+ error reports flooding in. CTO demands immediate fix.
 
-However, our **rapid growth has exposed cracks in our development process**. Features take weeks to ship, specifications drift from implementation, and our AI assistants generate code that doesn't align with our domain expertise. The holiday cooking season is approaching, and we need to deliver our next-generation Recipe Manager to handle millions of concurrent users while providing real-time recommendations and seamless recipe sharing.
+**Your Mission:** Resolve the crisis AND modernize the system using GitHub's agent ecosystem in 2 hours.
 
-**As a newly hired Senior Software Engineer at FlavorHub**, your mission is to modernize our development methodology. The executive team has tasked you with learning and implementing **Spec-Driven Development** — a revolutionary approach that combines structured workflows, domain-specific AI assistance, and methodology coaching to ship high-quality software faster.
-
----
-
-## What Makes This Mission Critical
-
-This workshop teaches you how to **transform your development process** by combining three powerful AI-enhanced tools:
-
-🎯 **GitHub Spec Kit** — Structures your workflow from intent to implementation  
-🧠 **Instruction Files** — Teaches AI your domain (recipe measurements, dietary restrictions, validation rules)  
-🎓 **Custom Skills** — Provides on-demand methodology coaching without leaving your editor  
-
-**The Stakes:**
-- Holiday season traffic (10M+ concurrent users) launches in 8 weeks
-- Marketing has promised next-gen features without consulting engineering
-- Legacy codebase has no clear specifications or design documentation
-- Your AI assistants generate generic code that violates culinary best practices
-
-**Your Advantage:**
-
-Instead of traditional development chaos, you'll create an **AI-powered development environment** where:
-- **Spec Kit** prevents scope creep and ensures alignment (constitution → specify → plan → implement)
-- **Instruction files** make AI understand culinary measurements, conversions, and food safety rules
-- **Custom skills** (@SpecKitCoach) coach you through best practices in real-time
-
-**The result?** AI generates better code because it understands both your project principles AND your domain context. You ship faster because specifications drive implementation, not the other way around.
+This isn't a tutorial. This is a **real-world crisis simulation** showing how GitHub agents transform development from reactive firefighting to proactive spec-driven engineering.
 
 ---
 
-## Workshop Overview
+## 🤖 What You'll Master
 
-**Total Duration:** 2 hours  
-**Format:** Hands-on exercises with progressive difficulty  
-**Your Assignment:** Build the next-generation Recipe Manager for FlavorHub
+Five agent capabilities working together in a continuous workflow:
 
-### What You'll Build
+**Agent Skills** → Autonomous problem analysis and documentation  
+**Custom Agents** → Specialized expertise (architecture, security, domain knowledge)  
+**Instruction Files** → Domain intelligence that makes all agents smarter  
+**Spec Kit** → Governance and specification-driven implementation  
+**Copilot CLI** → Multi-step automation and orchestration  
 
-Throughout this workshop, you'll architect and build FlavorHub's **Recipe Manager Application** that allows users to:
-- 📚 Store and organize their favorite recipes with rich metadata
-- 🔍 Search recipes by ingredients, cuisine, or dietary restrictions
-- 🛒 Generate smart shopping lists from selected recipes
-- 🤝 Share recipes with the global FlavorHub community
-- ⭐ Rate, review, and discover trending recipes
+**Traditional Approach:** 3-4 weeks to diagnose, design, implement, test  
+**Agent-Driven Approach:** 2 hours from crisis to production-ready solution
 
 ---
 
-## Mission Prerequisites
+## ⏱️ The 2-Hour Timeline
 
-Before you begin your first day at FlavorHub, ensure you have:
+| Time | Experiment | Agent Capabilities | Outcome |
+|------|-----------|-------------------|---------|
+| 3:00-3:20 | **Crisis Response** | Agent Skills + GitHub MCP | Issue #247 created with full analysis |
+| 3:20-3:45 | **Root Cause** | Custom Agents | Systemic issues identified |
+| 3:45-4:10 | **Solution Design** | Instruction Files + Spec Kit | Complete specification ready |
+| 4:10-4:40 | **Implementation** | Copilot CLI + /speckit.implement | Code generated and tested |
+| 4:40-5:00 | **Validation** | /speckit.analyze + checklist | Production-ready deployment |
 
-- ✅ **Valid GitHub Copilot subscription** (Individual, Business, or Enterprise)
-- ✅ **VS Code** installed with GitHub Copilot extension
-- ✅ **Python 3.11+** ([Download](https://www.python.org/downloads/))
-- ✅ **uv** package manager ([Install](https://docs.astral.sh/uv/))
-- ✅ **Git** version control ([Download](https://git-scm.com/downloads))
+**Crisis Resolved:** 5:00 PM  
+**System Modernized:** Clean architecture, 6x faster, 87% test coverage
 
+---
 
-## Learning Path
+## 📋 Mission Prerequisites
 
-### 🟢 Experiment 1: Setup & Constitution — Mission Briefing
+✅ **VS Code** with GitHub Copilot extension  
+✅ **Python 3.11+** installed  
+✅ **Git** version control  
+✅ **Valid GitHub Copilot subscription** (Individual, Business, or Enterprise)  
+✅ **Node.js 18+** (for Copilot CLI)  
+✅ **2 focused hours** to complete the mission
 
-**Your first day objectives:**
-- Install Spec Kit CLI and configure development environment
-- Download FlavorHub's AI enhancement toolkit (instruction files + custom skills)
-- Create project constitution with governing principles
-- Understand the Spec-Driven Development workflow
-- Pass environment validation and prepare for implementation
+> 💡 **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
-### 🟢 Experiment 2: Specify & Clarify — Requirements Intelligence
+---
 
-**Transform chaos into clarity:**
-- Write effective specifications focused on "what" not "how"
-- Use `/speckit.clarify` to expose underspecified requirements
-- Refine specifications through AI-guided questioning
-- Create user-centric feature descriptions that prevent rework
+## 🎯 The Story: 5 Connected Experiments
 
-### 🟡 Experiment 3: Plan & Tasks — Architecture Design
+### **Experiment 1: Creating Order from Chaos** (20 min)
+**The Problem:** Production errors flooding in, no structured documentation  
+**Agents Used:** Agent Skills + GitHub MCP  
+**You Learn:** Create agent skill that analyzes error logs → automatically creates GitHub Issue #247 with root cause analysis  
+**Outcome:** Crisis documented and triaged in 5 minutes
 
-**Design before you code:**
-- Create technical implementation plans with your chosen tech stack
-- Use `/speckit.plan` to define system architecture
-- Break down plans into actionable task lists with `/speckit.tasks`
-- Review and prioritize implementation sequence
+### **Experiment 2: Understanding the Real Problem** (25 min)
+**The Problem:** Is this just a null check or bigger architectural issue?  
+**Agents Used:** Custom Agent (.agent.md)  
+**You Learn:** Build custom Search Architect agent → scans entire codebase → discovers 847-line monolith with systemic flaws beyond the surface bug  
+**Outcome:** Root cause identified: need refactoring, not band-aid fix
 
-### 🟡 Experiment 4: Implement & Validate — Code Generation
+### **Experiment 3: Designing the Solution** (25 min)
+**The Problem:** Need proper solution design guided by domain expertise  
+**Agents Used:** Instruction Files + Spec Kit (constitution → specify → tasks)  
+**You Learn:** Create search domain instruction file → establish governance constitution → generate detailed specification → break into implementation tasks  
+**Outcome:** Complete blueprint ready with quality guardrails
 
-**Ship with confidence:**
-- Execute implementation with `/speckit.implement`
-- Validate generated code against specifications
-- Debug and fix implementation issues systematically
-- Test the Recipe Manager application end-to-end
+### **Experiment 4: Rapid Implementation** (30 min)
+**The Problem:** Turn specifications into working code fast  
+**Agents Used:** Copilot CLI + /speckit.implement  
+**You Learn:** Use CLI for multi-file operations → use Spec Kit to generate components from specs following constitution  
+**Outcome:** Bug fixed + system refactored + deployed
 
-### 🟠 Experiment 5: Advanced Features — Mastery Level
-
-**Become a Spec-Driven Development expert:**
-- Use `/speckit.analyze` for consistency checks
-- Create quality checklists with `/speckit.checklist`
-- Explore instruction files and custom skills for domain-specific AI assistance
-- Add features iteratively to existing codebase
-- Apply Spec-Driven Development to brownfield projects
+### **Experiment 5: Validation & Quality Gates** (20 min)
+**The Problem:** Ensure solution actually meets standards before deployment  
+**Agents Used:** /speckit.analyze + /speckit.checklist  
+**You Learn:** Validate constitution compliance → identify gaps → generate quality checklist → systematically verify readiness  
+**Outcome:** Production-ready with confidence
 
 ---
 
@@ -121,12 +99,15 @@ Before you begin your first day at FlavorHub, ensure you have:
 
 ---
 
-## Ready to Begin Your Mission?
+## 🚨 The Clock is Ticking
 
-🚀 **Start Your First Day: [Experiment 1: Setup & Constitution](workshop/experiment-1.md)**
+**3:00 PM:** Crisis begins  
+**5:00 PM:** Solution deployed
 
-The CTO is waiting. FlavorHub's users are counting on you. Show them what AI-assisted Spec-Driven Development can do.
+**You have 2 hours to save FlavorHub.**
 
-**Your mission, should you choose to accept it:** Transform how FlavorHub builds software, one specification at a time.
+🚀 **Begin Mission: [Experiment 1: Creating Order from Chaos](workshop/experiment-1.md)**
+
+500+ users are waiting. The CTO is watching. Show them what GitHub agents can do.
 
 
