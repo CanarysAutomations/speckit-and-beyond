@@ -18,7 +18,7 @@ This is FlavorHub's legacy Recipe Manager - a 2-year-old application with techni
 
 ---
 
-## The Bug (Issue #247)
+## The Bug (NULL_DIETARY_BUG)
 
 **Error:**
 ```
@@ -109,7 +109,7 @@ This codebase is designed for the **"Agent-Driven Spec Development"** workshop.
 **Timeline:** 3:00 PM (bug discovered) → 5:00 PM (crisis resolved)
 
 Follow workshop experiments to:
-1. Create Issue #247 with agent skills
+1. Create NULL_DIETARY_BUG with agent skills
 2. Analyze root cause with custom agents
 3. Design solution with Spec Kit
 4. Implement refactoring with Copilot CLI

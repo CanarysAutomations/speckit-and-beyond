@@ -1,15 +1,21 @@
 # Experiment 2: Understanding the Real Problem
 
 > **Time:** 3:20 PM - 3:45 PM (25 minutes)  
-> **Status:** Issue #247 documented. But is it just a null check?
+> **Status:** NULL_DIETARY_BUG documented. But questions remain...
 
 ## 🔍 The Question
 
-Issue #247 says: *"Refactor search architecture - this bug exposes larger design issues"*
+From Exercise 1.2, the @issue-analyzer suggested:
+- **Immediate Fix:** Add null check (10 minutes)
+- **Long-term Fix:** "Investigate architectural issues" (details TBD)
 
-Is this true? Or should we just add `if x is None` and move on?
+**But what's the REAL state of this code?**
+- Is it just a null check, or deeper architectural problems?
+- Is this a 1000+ line monolith that needs redesign?
+- Should we patch or break into modules?
+- How do we make the right architectural decision?
 
-**Your mission:** Use a Custom Agent to perform deep architectural analysis.
+**Your mission:** Use a **Custom Architect Agent** to perform deep analysis and discover the real scope.
 
 ---
 
@@ -33,7 +39,14 @@ Create a custom agent that's an expert in search systems.
 
 **2.1.1** Create `.github/agents/search-architect.agent.md`:
 
-```markdown
+```yaml
+---
+name: search-architect
+description: Senior software architect specializing in search systems, scalability, and code architecture. Analyzes search implementations for performance, reliability, and maintainability issues.
+argument-hint: A codebase, file, or GitHub issue to analyze for architectural problems and modernization opportunities.
+# tools: Optionally enable tools if this agent needs to perform actions - leave commented out for analysis-only agents
+---
+
 # Search Architect Agent
 
 ## Identity
@@ -66,7 +79,17 @@ When analyzing search code, you autonomously:
 - **Think long-term**: What breaks at 100M users?
 ```
 
-**2.1.2** Save and restart VS Code.
+💡 **Important:** The top section (between `---`) is YAML frontmatter that VS Code uses to register the agent. The rest defines the agent's behavior.
+
+**2.1.2** Save the file and reload VS Code window:
+- Press `Ctrl+Shift+P` (Windows) or `Cmd+Shift+P` (Mac)
+- Type: `Developer: Reload Window`
+- Wait 30 seconds for the agent to register
+
+**2.1.3** Verify the agent is available:
+- Open Copilot Chat
+- Click the **Agent** dropdown (or press Ctrl+Shift+I)
+- Look for **search-architect** in the agents list
 
 ### What You Created
 A specialist agent with **deep domain expertise** in search systems.
@@ -76,152 +99,199 @@ A specialist agent with **deep domain expertise** in search systems.
 ## 📝 Exercise 2.2: Invoke Deep Analysis (8 min)
 
 ### Task
-Ask your architect agent to analyze Issue #247 deeply.
+Ask your architect agent to analyze the NULL_DIETARY_BUG deeply.
 
 ### Steps
 
-**2.2.1** In Copilot Chat:
+**2.2.1** Open Copilot Chat (Ctrl+Alt+I / Cmd+Opt+I)
 
+**2.2.2** Click the **Agent** dropdown (or press Ctrl+Shift+I) and select **search-architect** from the list
+
+**2.2.3** Enter your prompt:
 ```
-@search-architect Review GitHub Issue #247. The null handling bug is the symptom. 
-What are the real architectural problems? Should we patch or redesign?
+Review GitHub NULL_DIETARY_BUG and analyze search.py comprehensively. 
+The null handling bug is just a symptom - what's the real architectural state?
 
-Context: search.py is 847 lines. Users complained about slow searches before this bug.
+Context: search.py has grown to 1103 lines over 18 months. 
+Users complained about slow searches before this bug appeared.
 ```
 
 ### Expected Analysis
 
 ```
-DEEP ARCHITECTURAL ANALYSIS - Issue #247
+ARCHITECTURAL ANALYSIS - NULL_DIETARY_BUG
 
-SURFACE PROBLEM: Null handling at line 145
-Fix time: 5 minutes
-Impact: Stops immediate bleeding
+Actual file: 1103 lines - TEXTBOOK GOD OBJECT ANTI-PATTERN
 
-ROOT PROBLEM DISCOVERED (scanned 12 files):
+What's in this file (everything!):
+- Database connection management (hard-coded, no pooling)
+- Query parsing (3 versions - v1, v2, v3, only v3 used)
+- Input validation (none - accepts garbage)
+- Filtering logic (5 active + 3 deprecated versions)
+- Dietary restriction handling (THE BUG: Line 447)
+- Ranking algorithms (3 versions: basic, weighted_v2, hybrid_v3)
+- A/B testing variants (12 feature flags)
+- Response formatting (JSON + half-finished XML support)
+- Pagination (inefficient, loads everything in memory)
+- Caching layer (broken, memory leak - CACHE_LEAK_BUG)
+- Metrics collection (manual counters)
+- Debug logging (print statements everywhere)
 
-1. ARCHITECTURE SMELL: God Object Anti-Pattern
-   File: search.py (847 lines)
-   - Lines 1-200: Query parsing logic
-   - Lines 201-450: 7 different filters混淆一起 (dietary, cuisine, time, etc.)
-   - Lines 451-680: Ranking algorithm
-   - Lines 681-847: Response formatting
+CRITICAL ISSUES:
+
+1. Line 447: The null bug (crashes 23% of users)
+   Root cause: No validation + God object makes null checks impossible
    
-   ISSUE: Single file doing 4 different jobs. Violates Single Responsibility Principle.
-
-2. RELIABILITY ISSUES (23 found across search subsystem)
-   - search.py:145 (reported bug)
-   - search.py:203, 298, 412 (similar null assumptions)
-   - models.py:67, 89, 134 (missing defaults)
-   - api/routes.py:201, 245, 301 (no input validation)
+2. God Object anti-pattern: 1103 lines doing everything
+   Impact: Untestable (0% coverage), unmaintainable
    
-   PATTERN: No validation layer. Assumes perfect inputs.
+3. Dead code: 3 deprecated filter versions, 2 old ranking algorithms
+   Impact: Confusion about what's production vs experiment
+   
+4. 74 magic numbers: No constants, hard-coded everywhere
+   Impact: Can't tune without code changes
+   
+5. Broken caching: Memory leak, no eviction (CACHE_LEAK_BUG)
+   Impact: Service crashes after 8 hours uptime
+   
+6. Feature flag chaos: 12 flags, unclear which are active
+   Impact: Unknown production behavior
 
-3. PERFORMANCE PROBLEMS
-   - O(n) linear scan through 2M recipes (search.py:305-450)
-   - N+1 query problem loading ingredients (search.py:520)
-   - No caching layer (every search hits database)
-   - Average response time: 280ms (target: <100ms)
+RECOMMENDATION FOR 1103-LINE MONOLITH:
 
-4. MAINTAINABILITY CRISIS
-   - Test coverage: 0% for search logic
-   - Hard-coded business rules (74 magic numbers found)
-   - Zero documentation
-   - Last commit: 18 months ago (abandoned code?)
+**ARCHITECTURAL REFACTOR required**
 
-DECISION MATRIX:
+Break into 4 modules:
 
-Option A: Patch null check
-- Time: 5 minutes
-- Risk: LOW (simple fix)
-- Outcome: Next bug in 2 weeks (21 other null issues waiting)
+1. validation_module.py (200 lines)
+   - Input validation with Pydantic
+   - Null handling fixed at entry point
+   - Type safety enforced
+   
+2. filtering_module.py (300 lines)
+   - Clean filter functions (remove deprecated versions)
+   - Optimized filter ordering
+   - No database connection logic
+   
+3. aggregation_module.py (250 lines)
+   - Single ranking algorithm (remove experiments)
+   - Caching logic (fix memory leak)
+   - Metrics properly abstracted
+   
+4. formatting_module.py (150 lines)
+   - Response formatting
+   - Pagination (proper implementation)
+   - No business logic
 
-Option B: Refactor properly
-- Time: 2 hours with agents (2 weeks traditional)
-- Risk: MEDIUM (architecture change)
-- Outcome: Reliable, fast, maintainable search
-- Prevents: 6 months of future bugs
+Benefits:
+- Each module <300 lines, single responsibility
+- Testable independently (can achieve >80% coverage)
+- Remove dead code and experiments
+- Fix caching and null bugs properly
+- Clear separation of concerns
 
-RECOMMENDATION: Refactor. This is technical debt bankruptcy.
+Estimated effort: 3-4 days (traditional approach)
+With Spec Kit + Agents: 2 hours (governed implementation)
+
+This IS the architectural crisis. Refactor is non-negotiable.
 ```
 
 ### What Just Happened
-Custom agent **thought like an architect**: Found 4 categories of problems, provided evidence, gave strategic recommendation.
+
+The agent analyzed the actual code and gave honest assessment:
+- ⚠️ **ARCHITECTURAL REFACTOR** required for 1103-line God Object
+- ⚠️ Break into 4 modules (validation, filtering, aggregation, formatting)
+- ⚠️ 3-4 days traditional, 2 hours with Spec Kit governance
+- ⚠️ Multiple systemic issues beyond just the null bug
+
+**Key Insight:** The agent provided evidence-based analysis showing this is genuinely a refactor scenario, not a simple patch.
 
 ---
 
-## 📝 Exercise 2.3: Make the Strategic Decision (7 min)
+## 📝 Exercise 2.3: Learn Refactor Principles (For Education) (7 min)
 
 ### Task
-Decide: patch or refactor? Then establish governance.
+
+The agent recommended **PATCH** (3-4 days), which is correct.
+
+But for **learning purposes**, let's ask: "What would refactor principles look like for a future scenario where we DO need to redesign?"
+
+This teaches you governance principles you'll use in Experiment 3.
 
 ### Steps
 
-**2.3.1** You decide to refactor. Ask:
+**2.3.1** Select **search-architect** agent again and ask:
 
 ```
-@search-architect We'll refactor. What principles should guide this work? 
-What's non-negotiable for FlavorHub's search?
+You recommended architectural refactor into 4 modules. 
+Before we start coding, what principles should govern this work? 
+What's non-negotiable for production search at our scale?
 ```
 
 ### Expected Response
 
 ```
-PRINCIPLES FOR SEARCH REFACTORING
+GOVERNANCE PRINCIPLES FOR THIS REFACTOR
 
-Based on FlavorHub's 10M user scale and production criticality:
+For breaking 1103-line monolith into 4 clean modules:
 
-1. PERFORMANCE: <100ms search latency (95th percentile)
-   - Current: 280ms average (UNACCEPTABLE)
-   - Use caching, indexes, async where possible
-
-2. RELIABILITY: Graceful degradation over crashes
-   - Partial results better than errors
-   - Input validation at entry point (Pydantic models)
+1. RELIABILITY: Graceful degradation over crashes
+   - Validation at entry point (Pydantic models)
    - Fail-safe defaults (null → empty list)
+   - Input sanitization before processing
+   - Null checks everywhere external data arrives
 
-3. ARCHITECTURE: Clean separation of concerns
-   - QueryParser: Validate input
-   - FilterEngine: Apply search criteria
-   - RankingEngine: Score results
-   - CacheLayer: Reduce DB load
-   - EACH component: Single responsibility, testable independently
+2. ARCHITECTURE: Separation of concerns
+   - validation_module.py: Pydantic models, input validation
+   - filtering_module.py: All filter logic, no ranking
+   - aggregation_module.py: Ranking algorithms, caching
+   - formatting_module.py: Response formatting, pagination
+   - EACH module: Single responsibility, <300 lines, independently testable
 
-4. TESTABILITY: >85% code coverage
+3. TESTABILITY: >80% code coverage
    - Every component has unit tests
    - Integration tests for end-to-end flows
-   - Performance tests (regression prevention)
+   - Test edge cases (null inputs, empty lists, malformed data)
 
-5. BACKWARD COMPATIBILITY: Zero downtime deployment
-   - API v2 maintained during transition
-   - Database schema changes are additive only
-   - Feature flags for gradual rollout
+4. PERFORMANCE: Monitor and optimize when needed
+   - Start with simple implementation
+   - Add caching if measurements show need
+   - Database indexes for common queries
+   - Profile before optimizing
 
-These should become your CONSTITUTION.
+For your CURRENT refactor:
+- #1 (reliability) - Fix null bug at validation entry point
+- #2 (architecture) - Break into 4 modules, remove dead code
+- #3 (testability) - Each module independently testable, >80% coverage
+- #4 (performance) - Fix caching leak, optimize filter ordering
 ```
 
-**2.3.2** Note these principles - you'll use them in Experiment 3.
+**2.3.2** Note these principles - you'll use them in Experiment 3 to guide improvements.
 
 ### What Just Happened
-Agent provided **strategic guardrails** that will guide all implementation decisions.
+Agent established **governance principles** for the refactor. These will guide implementation in Experiment 3-4 using Spec Kit constitution.
 
 ---
 
 ## ✅ Checkpoint: What You Accomplished
 
-🎯 **Root cause identified**: Not a bug, it's architectural bankruptcy  
-🎯 **Custom agent** scanned 12 files, found 23 issues  
-🎯 **Strategic decision**: Refactor, don't patch  
-🎯 **Principles established**: Performance, reliability, architecture, tests, compatibility  
+🎯 **Root cause identified**: 1103-line God Object with systemic issues  
+🎯 **Custom agent** analyzed comprehensively - recommended ARCHITECTURAL REFACTOR  
+🎯 **Learned principles**: Separation of concerns, reliability, testability, performance  
+🎯 **Clear plan**: Break into 4 modules (validation, filtering, aggregation, formatting)
+
+**Key Insight:** Evidence-based architecture review reveals when refactor is genuinely needed. This is a real architectural crisis requiring modular redesign.
 
 **Current Time:** 3:45 PM  
-**Status:** We know the problem. Now we need a plan.
+**Status:** We know the problem (null bug + validation gap) and learned architectural principles.
 
 ---
 
 ## 🚀 Next: Experiment 3
 
-We have principles, but no specification. How do we translate *"refactor search"* into actionable tasks?
+In the next experiment, we'll use these principles to guide our ARCHITECTURAL REFACTOR with **Spec Kit** providing governance and structured specifications.
+
+We have principles, but no specification. How do we translate *"break into 4 modules following clean architecture"* into concrete implementation tasks?
 
 **Continue to:** [Experiment 3: Designing the Solution](experiment-3.md)
 

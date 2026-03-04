@@ -1,0 +1,43 @@
+graph TB
+    subgraph Legend["🎨 AGENT & TOOL LEGEND"]
+        AS["📊 Agent Skills<br/>.github/skills/*.md<br/>Autonomous analysis"]
+        MCP["🔗 GitHub MCP<br/>Programmatic ops"]
+        CA["🤖 Custom Agent<br/>.github/agents/*.agent.md<br/>Specialized expertise"]
+        IF["📝 Instruction Files<br/>.github/instructions/*.md<br/>Domain knowledge"]
+        SK["⚖️ Spec Kit Commands<br/>/speckit.constitution<br/>/speckit.specify<br/>/speckit.tasks<br/>/speckit.implement<br/>/speckit.analyze"]
+        CLI["⚙️ Copilot CLI<br/>gh copilot suggest<br/>Multi-step automation"]
+        WS["💬 @workspace<br/>Coding Agent<br/>Conversational"]
+    end
+    
+    subgraph Theme["🎯 THEME MAPPING: Spec, Plan, Design & Code + BEYOND"]
+        D["DESIGN<br/>Instruction Files<br/>Constitution"]
+        S["SPEC<br/>/speckit.specify<br/>Detailed specs"]
+        P["PLAN<br/>/speckit.tasks<br/>Task breakdown"]
+        C["CODE<br/>/speckit.implement<br/>@workspace agent"]
+        B["BEYOND<br/>Agent Skills<br/>Custom Agents<br/>MCP<br/>Validation"]
+    end
+    
+    subgraph Timing["⏱️ TIMING: 2 Hours vs 3-4 Weeks"]
+        T1["Exp 1: 20 min<br/>Crisis Response"]
+        T2["Exp 2: 25 min<br/>Root Cause"]
+        T3["Exp 3: 25 min<br/>Design & Spec"]
+        T4["Exp 4: 30 min<br/>Plan & Code"]
+        T5["Exp 5: 20 min<br/>Validation"]
+        Total["Total: 2 hours<br/>168x faster!"]
+    end
+    
+    classDef agentSkillStyle fill:#4dabf7,stroke:#1971c2,stroke-width:2px,color:#fff
+    classDef customAgentStyle fill:#69db7c,stroke:#2b8a3e,stroke-width:2px,color:#fff
+    classDef speckitStyle fill:#ffd43b,stroke:#f08c00,stroke-width:2px,color:#000
+    classDef cliStyle fill:#da77f2,stroke:#9c36b5,stroke-width:2px,color:#fff
+    classDef codingAgentStyle fill:#ff922b,stroke:#e8590c,stroke-width:2px,color:#fff
+    classDef themeStyle fill:#20c997,stroke:#087f5b,stroke-width:2px,color:#fff
+    classDef timingStyle fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
+    
+    class AS,MCP agentSkillStyle
+    class CA customAgentStyle
+    class IF,SK speckitStyle
+    class CLI cliStyle
+    class WS codingAgentStyle
+    class D,S,P,C,B themeStyle
+    class T1,T2,T3,T4,T5,Total timingStyle

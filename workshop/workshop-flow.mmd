@@ -1,0 +1,69 @@
+flowchart TD
+    Start["🔥 CRISIS START: 3:00 PM<br/>Issue #247: Search crashes for 30% users"]
+    
+    subgraph Exp1["<b>EXPERIMENT 1: Crisis Response</b><br/>⏱️ 3:00 PM - 3:20 PM (20 min)"]
+        E1A["📊 Agent Skill<br/>.github/skills/bug-analyzer/SKILL.md<br/>Autonomous error log analysis"]
+        E1B["🔗 GitHub MCP<br/>Programmatic GitHub operations<br/>Auto-create Issue #247"]
+        E1C["✅ Outcome: Issue documented<br/>with root cause analysis"]
+        E1A --> E1B --> E1C
+    end
+    
+    subgraph Exp2["<b>EXPERIMENT 2: Root Cause Analysis</b><br/>⏱️ 3:20 PM - 3:45 PM (25 min)"]
+        E2A["🤖 Custom Agent<br/>.github/agents/search-architect.agent.md<br/>Architecture expert analysis"]
+        E2B["🔍 Deep Codebase Scan<br/>Analyzes 847-line monolith<br/>Identifies systemic issues"]
+        E2C["✅ Outcome: 15 architectural<br/>issues discovered beyond bug"]
+        E2A --> E2B --> E2C
+    end
+    
+    subgraph Exp3["<b>EXPERIMENT 3: Solution Design</b><br/>⏱️ 3:45 PM - 4:10 PM (25 min)<br/>🎯 DESIGN + SPEC"]
+        E3A["📝 Instruction Files<br/>.github/instructions/search-domain.instructions.md<br/>Domain knowledge for all agents"]
+        E3B["⚖️ /speckit.constitution<br/>Establish governance principles<br/>from architect recommendations"]
+        E3C["📋 /speckit.specify<br/>Generate detailed specification<br/>4 components + success criteria"]
+        E3D["✅ Outcome: Complete blueprint<br/>with governance layer"]
+        E3A --> E3B --> E3C --> E3D
+    end
+    
+    subgraph Exp4["<b>EXPERIMENT 4: Implementation</b><br/>⏱️ 4:10 PM - 4:40 PM (30 min)<br/>🎯 PLAN + CODE"]
+        E4A["📝 /speckit.tasks<br/>Break spec into ordered tasks<br/>5 phases with dependencies"]
+        E4B["⚙️ Copilot CLI<br/>gh copilot suggest<br/>Multi-step setup automation"]
+        E4C["🔧 /speckit.implement<br/>Spec-driven code generation<br/>QueryParser + Tests"]
+        E4D["💬 @workspace Coding Agent<br/>Conversational code generation<br/>FilterEngine + Custom logic"]
+        E4E["✅ Outcome: Bug fixed + system<br/>refactored with tests passing"]
+        E4A --> E4B --> E4C --> E4D --> E4E
+    end
+    
+    subgraph Exp5["<b>EXPERIMENT 5: Validation</b><br/>⏱️ 4:40 PM - 5:00 PM (20 min)<br/>🎯 BEYOND: Quality Gates"]
+        E5A["🔎 /speckit.analyze<br/>Validate constitution compliance<br/>Identify gaps"]
+        E5B["✓ /speckit.checklist<br/>Generate quality checklist<br/>Systematic verification"]
+        E5C["✅ Outcome: Production-ready<br/>87% coverage, <100ms performance"]
+        E5A --> E5B --> E5C
+    end
+    
+    End["🎉 CRISIS RESOLVED: 5:00 PM<br/>System modernized in 2 hours<br/>vs 3-4 weeks traditional"]
+    
+    Start --> Exp1
+    Exp1 --> Exp2
+    Exp2 --> Exp3
+    Exp3 --> Exp4
+    Exp4 --> Exp5
+    Exp5 --> End
+    
+    classDef crisisStyle fill:#ff6b6b,stroke:#c92a2a,stroke-width:3px,color:#fff
+    classDef agentSkillStyle fill:#4dabf7,stroke:#1971c2,stroke-width:2px,color:#fff
+    classDef customAgentStyle fill:#69db7c,stroke:#2b8a3e,stroke-width:2px,color:#fff
+    classDef speckitStyle fill:#ffd43b,stroke:#f08c00,stroke-width:2px,color:#000
+    classDef cliStyle fill:#da77f2,stroke:#9c36b5,stroke-width:2px,color:#fff
+    classDef codingAgentStyle fill:#ff922b,stroke:#e8590c,stroke-width:2px,color:#fff
+    classDef outcomeStyle fill:#51cf66,stroke:#2f9e44,stroke-width:2px,color:#fff
+    classDef successStyle fill:#20c997,stroke:#087f5b,stroke-width:3px,color:#fff
+    
+    class Start,End crisisStyle
+    class E1A agentSkillStyle
+    class E1B agentSkillStyle
+    class E2A,E2B customAgentStyle
+    class E3A,E3B,E3C speckitStyle
+    class E4A,E4C speckitStyle
+    class E4B cliStyle
+    class E4D codingAgentStyle
+    class E5A,E5B speckitStyle
+    class E1C,E2C,E3D,E4E,E5C outcomeStyle

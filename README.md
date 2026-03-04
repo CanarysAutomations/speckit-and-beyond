@@ -8,7 +8,7 @@
 
 **Your Mission:** Resolve the crisis AND modernize the system using GitHub's agent ecosystem in 2 hours.
 
-This isn't a tutorial. This is a **real-world crisis simulation** showing how GitHub agents transform development from reactive firefighting to proactive spec-driven engineering.
+This is a **real-world crisis simulation** showing how GitHub agents transform development from reactive firefighting to proactive spec-driven engineering.
 
 ---
 
@@ -31,14 +31,12 @@ Five agent capabilities working together in a continuous workflow:
 
 | Time | Experiment | Agent Capabilities | Outcome |
 |------|-----------|-------------------|---------|
-| 3:00-3:20 | **Crisis Response** | Agent Skills + GitHub MCP | Issue #247 created with full analysis |
-| 3:20-3:45 | **Root Cause** | Custom Agents | Systemic issues identified |
-| 3:45-4:10 | **Solution Design** | Instruction Files + Spec Kit | Complete specification ready |
-| 4:10-4:40 | **Implementation** | Copilot CLI + /speckit.implement | Code generated and tested |
-| 4:40-5:00 | **Validation** | /speckit.analyze + checklist | Production-ready deployment |
-
-**Crisis Resolved:** 5:00 PM  
-**System Modernized:** Clean architecture, 6x faster, 87% test coverage
+| 3:00-3:20 | **Crisis Response** | Agent Skills + GitHub MCP | NULL_DIETARY_BUG documented with root cause |
+| 3:20-3:45 | **Root Cause** | Custom Agents | 1103-line monolith identified as systemic problem |
+| 3:45-4:18 | **Solution Design** | Instruction Files + Spec Kit | 4-module specification + technical plan complete |
+| 4:18-4:48 | **Implementation** | Copilot CLI + /speckit.implement | 4 modules generated, issues fixed |
+| 4:48-5:08 | **Validation** | /speckit.analyze + checklist | Production-ready with quality gates |
+**System Modernized:** 4-module clean architecture, issues fixed, >80% test coverage
 
 ---
 
@@ -60,26 +58,26 @@ Five agent capabilities working together in a continuous workflow:
 ### **Experiment 1: Creating Order from Chaos** (20 min)
 **The Problem:** Production errors flooding in, no structured documentation  
 **Agents Used:** Agent Skills + GitHub MCP  
-**You Learn:** Create agent skill that analyzes error logs → automatically creates GitHub Issue #247 with root cause analysis  
+**You Learn:** Create agent skill that analyzes error logs → automatically creates GitHub NULL_DIETARY_BUG with root cause analysis  
 **Outcome:** Crisis documented and triaged in 5 minutes
 
 ### **Experiment 2: Understanding the Real Problem** (25 min)
-**The Problem:** Is this just a null check or bigger architectural issue?  
+**The Problem:** Is this just a null check or symptoms of deeper architectural debt?  
 **Agents Used:** Custom Agent (.agent.md)  
-**You Learn:** Build custom Search Architect agent → scans entire codebase → discovers 847-line monolith with systemic flaws beyond the surface bug  
-**Outcome:** Root cause identified: need refactoring, not band-aid fix
+**You Learn:** Build custom Search Architect agent → scans entire codebase → discovers 1103-line monolith with God Object anti-pattern, 74 magic numbers, broken caching, and dead code  
+**Outcome:** Root cause identified: architectural refactor required, not band-aid patch
 
 ### **Experiment 3: Designing the Solution** (25 min)
-**The Problem:** Need proper solution design guided by domain expertise  
+**The Problem:** Need architectural refactor plan with governance to prevent regression  
 **Agents Used:** Instruction Files + Spec Kit (constitution → specify → tasks)  
-**You Learn:** Create search domain instruction file → establish governance constitution → generate detailed specification → break into implementation tasks  
-**Outcome:** Complete blueprint ready with quality guardrails
+**You Learn:** Create search domain instruction file → establish governance constitution → generate detailed specification for 4-module refactor (validation, filtering, aggregation, formatting) → break into implementation tasks  
+**Outcome:** Complete blueprint for breaking 1103-line monolith into clean architecture
 
 ### **Experiment 4: Rapid Implementation** (30 min)
-**The Problem:** Turn specifications into working code fast  
+**The Problem:** Generate 4 clean modules from monolithic codebase in 30 minutes  
 **Agents Used:** Copilot CLI + /speckit.implement  
-**You Learn:** Use CLI for multi-file operations → use Spec Kit to generate components from specs following constitution  
-**Outcome:** Bug fixed + system refactored + deployed
+**You Learn:** Use CLI for multi-file setup → use Spec Kit to generate 4 modules (validation_module.py, filtering_module.py, aggregation_module.py, formatting_module.py) from architectural spec → wire modules together with @workspace  
+**Outcome:** 1103-line monolith refactored into 4 modules <300 lines each, both issues fixed (null handling + caching leak)
 
 ### **Experiment 5: Validation & Quality Gates** (20 min)
 **The Problem:** Ensure solution actually meets standards before deployment  
