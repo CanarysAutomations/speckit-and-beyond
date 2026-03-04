@@ -1,21 +1,36 @@
 # Experiment 2: Understanding the Real Problem
 
 > **Time:** 3:20 PM - 3:45 PM (25 minutes)  
-> **Status:** NULL_DIETARY_BUG documented. But questions remain...
+> **Status:** Copilot's PR ready. But should we merge it?
 
-## 🔍 The Question
+## 🔍 The Situation
 
-From Exercise 1.2, the @issue-analyzer suggested:
-- **Immediate Fix:** Add null check (10 minutes)
-- **Long-term Fix:** "Investigate architectural issues" (details TBD)
+**Experiment 1 Result:** 
+- ✅ NULL_DIETARY_BUG documented in GitHub issue #1
+- ✅ Assigned issue to @copilot for analysis
+- ✅ **Copilot created PR #2** with quick fix (adds null check in search.py + normalizes None→[] in models.py)
+- ✅ The fix is **technically correct** - will stop the crashes immediately
 
-**But what's the REAL state of this code?**
-- Is it just a null check, or deeper architectural problems?
-- Is this a 1000+ line monolith that needs redesign?
-- Should we patch or break into modules?
-- How do we make the right architectural decision?
+**Reviewing PR #2 - it looks good. But before merging, critical questions:**
 
-**Your mission:** Use a **Custom Architect Agent** to perform deep analysis and discover the real scope.
+**Quick Fix Strategy (Merge the PR):**
+- ✅ **Pro**: Deploys in 10 minutes, stops crashes immediately
+- ✅ **Pro**: Minimal code changes, low risk
+- ⚠️ **Con**: If this is a symptom of deeper issues, we're just patching
+- ⚠️ **Con**: Technical debt accumulates if architecture is already problematic
+
+**Investigation Strategy (Hold the PR):**
+- ✅ **Pro**: Understand full scope before committing to approach
+- ✅ **Pro**: If architecture is broken, refactor once vs patch repeatedly
+- ⚠️ **Con**: Takes longer (hours vs minutes)
+- ⚠️ **Con**: More risk, more changes
+
+**We need to know:**
+- Is search.py a clean 200-line file where the null check in PR #2 is perfect?
+- Or a 1000+ line monolith where patches hide deeper problems?
+- Should we **merge PR #2** or **hold it and do architectural refactor**?
+
+**Your mission:** Use a **Custom Architect Agent** to review PR #2, analyze the codebase deeply, and make an **informed merge decision**.
 
 ---
 

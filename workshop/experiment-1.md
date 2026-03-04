@@ -267,21 +267,33 @@ The issue looks great! Please refine it:
 #issue_read 1 and Use #assign_copilot_to_issue to assign the Copilot agent for automated analysis
 ```
 
-💡 **What to observe:**
-- Copilot will analyze the issue and may provide suggestions
-- Notice the response quality - it's helpful but **generic** without domain context
-- **Important**: In Experiments 2-3, we'll add:
-  - Custom agents (specialized architecture experts)
-  - Instruction files (domain knowledge)
-- The **SAME workflow** will produce much better, domain-specific output
-- This demonstrates: **Baseline Copilot → Enhanced with Agent Infrastructure**
+💡 **What happens next:**
+- Copilot will analyze the issue
+- It will likely create a PR with a **quick fix** (null check)
+- The fix will be **technically correct** and solve the immediate crash
+- But is a quick patch the right approach? Or are there deeper issues?
 
-**Expected Output:**
+**Expected Output:****
 ```
 ✅ Successfully assigned issue #1 to @copilot
 Copilot will analyze and provide suggestions shortly
 ```
+**1.3.6** Wait a few moments. Copilot will likely create a **Pull Request** with a quick fix:
 
+**Example PR (what Copilot typically generates):**
+- **Title**: "Fix TypeError crash in recipe search for users with no dietary restrictions"
+- **Changes**:
+  - `search.py`: Add early return if `user.dietary_restrictions` is None
+  - `models.py`: Normalize None → [] at construction time
+- **Result**: Fixes the crash (technically correct)
+
+💡 **Critical Question for Experiment 2:**
+The PR looks good and will fix the immediate bug. **But should we merge it?**
+- Is this a 200-line clean file that just needs a null check?
+- Or a 1000+ line monolith where patches accumulate technical debt?
+- Should we **quick-patch** or **refactor the architecture**?
+
+**We need deeper analysis before deciding.** That's where Experiment 2 comes in.
 ---
 
 ### Example Output
@@ -339,14 +351,20 @@ Time saved: 15 minutes of manual issue creation, with 30-second quality check.
 
 ## ✅ Checkpoint: What You Accomplished
 
-🎯 **Bug reproduced** with test_bug.py (Exercise 1.0)  
+**What We DID in Experiment 1:**
+🎯 **Bug reproduced** with test_bug.py to get actual stack trace  
 🎯 **Custom @issue-analyzer skill** created for autonomous error analysis  
 🎯 **Official @github-issues skill** added from GitHub's skill library  
 🎯 **Skill composition** demonstrated - two specialized skills working together  
 🎯 **Quality review process** - Learned to refine AI outputs for production  
-🎯 **NULL_DIETARY_BUG created** with structured analysis and proper formatting  
-🎯 **Assigned to Copilot** - Observed baseline response without custom infrastructure  
+🎯 **NULL_DIETARY_BUG documented** with structured analysis and proper formatting  
+🎯 **Assigned to Copilot** - Copilot created PR with quick fix (null check)  
 🎯 **Crisis documented** in 20 minutes vs 1+ hour manually  
+
+**What We Have Now:**
+✅ GitHub issue documenting the NULL_DIETARY_BUG  
+✅ PR from Copilot with quick fix (adds null check)  
+❓ **Unanswered**: Should we merge the PR or investigate deeper?
 
 **Agent Capabilities Demonstrated:**
 - Custom Agent Skills: Build specialized analysis capabilities
@@ -356,25 +374,35 @@ Time saved: 15 minutes of manual issue creation, with 30-second quality check.
 - **Realistic AI Workflow**: Agents assist, humans ensure quality (90% automation + 10% review)
 - **GitHub MCP**: Programmatic GitHub operations (issue assignment)
 
-**Key Observation:**
-Copilot's response to the assigned issue is helpful but **generic** - it lacks domain-specific context. In Experiments 2-3, you'll add custom agents and instruction files to see how the **same workflow produces dramatically better results**.
+**What Copilot Delivered:**
+Copilot's **PR #2** is technically correct - it **fixes the immediate crash** with:
+- Null check in `search.py` (early return if `dietary_restrictions` is None)
+- Normalization in `models.py` (None → [] at construction time)
+
+The changes are clean, targeted, and will deploy quickly. **For a tactical fix, it's perfect.**
+
+**But Strategic Question Remains:**
+The @issue-analyzer hinted at "architectural issues" in its long-term recommendation. Before we merge PR #2, we should understand: **What's the real state of search.py?** Is this the right approach, or are we patching a deeper problem?
 
 **Current Time:** 3:20 PM  
-**Status:** Crisis documented. But something's unclear...
+**Status:** Crisis documented. PR ready. But should we merge it?
 
 ---
 
 ## 🚀 Next: Experiment 2
 
-The @issue-analyzer suggested:
-- **Immediate Fix:** Add null check (10 minutes)
-- **Long-term Fix:** "Refactor search architecture" (2-4 hours)
+**What We Know Now:**
+- ✅ NULL_DIETARY_BUG documented as GitHub issue #1
+- ✅ Assigned to @copilot → **PR #2 created** with null check fix
+- ✅ @issue-analyzer suggested: "Add null check (10 min) + investigate architectural issues"
+- ✅ PR #2 technically works - will stop crashes immediately
 
-But **what does "refactor" mean here?** Is it just splitting files, or is there a deeper problem?
+**What We DON'T Know:**
+- ❓ Is this really just a null check, or symptom of deeper problems?
+- ❓ What's the actual state of search.py? (Is it a 1000+ line monolith?)
+- ❓ Should we **merge PR #2 quick fix** or **refactor the architecture**?
 
-Time to bring in a specialist: **Custom Architect Agent**.
+The @issue-analyzer flagged "architectural issues" but didn't explain what that means. **We need deep analysis from a domain expert before making the merge decision.**
 
-**Continue to:** [Experiment 2: Understanding the Real Problem](experiment-2.md)
-
-
+**Next Step:** Create a **Custom Architect Agent** to review PR #2, perform comprehensive search system analysis, and discover the REAL scope of the problem.
 
