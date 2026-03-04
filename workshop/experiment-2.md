@@ -204,7 +204,7 @@ The agent analyzed the actual code and gave honest assessment:
 - ⚠️ 3-4 days traditional, 2 hours with Spec Kit governance
 - ⚠️ Multiple systemic issues beyond just the null bug
 
-**Key Insight:** The agent provided evidence-based analysis showing this is genuinely a refactor scenario, not a simple patch.
+**Key Insight:** The agent provided evidence-based analysis showing this is genuinely a refactor scenario.
 
 ---
 
@@ -212,9 +212,8 @@ The agent analyzed the actual code and gave honest assessment:
 
 ### Task
 
-The agent recommended **PATCH** (3-4 days), which is correct.
 
-But for **learning purposes**, let's ask: "What would refactor principles look like for a future scenario where we DO need to redesign?"
+For **learning purposes**, let's ask: "What would refactor principles look like for a future scenario where we DO need to redesign?"
 
 This teaches you governance principles you'll use in Experiment 3.
 

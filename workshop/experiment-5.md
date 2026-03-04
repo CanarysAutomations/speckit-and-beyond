@@ -110,6 +110,8 @@ Create pre-deployment checklist from analysis.
 
 ### Expected Checklist
 
+> **Note:** Your checklist may vary based on code analysis. Below is an example output.
+
 ```markdown
 # Pre-Deployment Checklist: Search Validation Enhancement
 
@@ -138,25 +140,34 @@ Important: 1/5 complete (20%)
 Nice to Have: 0/4 complete
 ```
 
-**5.2.2** Note the blockers - must fix before 5:00 PM!
+**5.2.2** Review your checklist output. Identify any critical blockers (🔴) that must be fixed before deployment.
+
+### What Just Happened
+Spec Kit generated a prioritized pre-deployment checklist from constitution requirements. Critical items are blockers - these must pass before production deployment.
 
 ---
 
 ## 📝 Exercise 5.3: Address Blockers (6 min)
 
 ### Task
-Fix the blocker: add NULL_DIETARY_BUG regression test.
+Fix any critical blockers identified in the checklist.
 
 ### Steps
 
-**5.3.1** In Copilot Chat:
+**5.3.1** Review your checklist and address critical blockers. Use @workspace to fix issues:
 
 ```
-@workspace Add regression test for NULL_DIETARY_BUG: null handling in dietary_restrictions.
-Test should verify SearchQuery model correctly converts null to empty list via validator.
+@workspace Review the checklist from /speckit.checklist and fix all critical blockers.
+
+For each blocker:
+1. Identify what's missing or failing
+2. Add required tests, documentation, or code changes
+3. Ensure all critical items pass before deployment
+
+Prioritize blockers marked as 🔴 Critical (Must Pass).
 ```
 
-**Expected:** Copilot generates `tests/test_issue_247_regression.py`:
+**Example:** If missing regression test for NULL_DIETARY_BUG, Copilot might generate:
 
 ```python
 """Regression test for NULL_DIETARY_BUG: null dietary restrictions crash"""
@@ -193,39 +204,29 @@ def test_searchquery_model_direct():
     assert query.dietary_restrictions == []  # Validator converted None → []
 ```
 
-**5.3.2** Run tests:
+**5.3.2** Verify fixes by running relevant tests:
 
 ```bash
-pytest tests/test_issue_247_regression.py -v
+pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
-**Expected:**
-```
-test_issue_247_null_dietary_restrictions PASSED
-test_issue_247_empty_list_handled PASSED
-test_searchquery_model_direct PASSED
-```
-
-**5.3.3** Re-run analysis:
+**5.3.3** Re-run analysis to confirm blockers resolved:
 
 ```
 /speckit.analyze
 ```
 
-**Updated:**
+**Expected Result:** Blockers should now be resolved. Example output:
+
 ```
-## ✅ PASS: NULL_DIETARY_BUG Resolution
-Null handling: IMPLEMENTED
-Regression test: ADDED ✓
-Status: RESOLVED
-
-## ✅ PASS: Test Coverage (>85%)
-Current: 87% (target: >85%)
-Status: COMPLIANT
-
 🟢 BLOCKERS: 0
+✅ All critical items passing
+✅ Test coverage above threshold
 ✅ READY FOR DEPLOYMENT
 ```
+
+### What Just Happened
+You identified critical blockers through systematic analysis, addressed each one, and verified the fixes. The code is now production-ready with quality gates passed.
 
 ---
 
