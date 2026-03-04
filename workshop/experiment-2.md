@@ -117,7 +117,7 @@ Ask your architect agent to analyze the NULL_DIETARY_BUG deeply.
 
 **2.2.3** Enter your prompt:
 ```
-Review GitHub NULL_DIETARY_BUG and analyze search.py comprehensively. 
+Review NULL_DIETARY_BUG and analyze search.py comprehensively. 
 The null handling bug is just a symptom - what's the real architectural state?
 
 Context: search.py has grown to 1103 lines over 18 months. 
