@@ -49,14 +49,14 @@ Let's create a **@search-architect** agent with specialized expertise to:
 
 ---
 
-## �📝 Exercise 2.1: Build Search Architect Agent (10 min)
+## 📝 Exercise 2.0: Build Search Architect Agent (10 min)
 
 ### Task
 Create a custom agent that's an expert in search systems.
 
 ### Steps
 
-**2.1.1** Create the custom agent using Copilot Chat UI:
+**2.0.1** Create the custom agent using Copilot Chat UI:
 
 1. Open **GitHub Copilot Chat** (Ctrl+Shift+I or Cmd+Shift+I)
 
@@ -83,7 +83,7 @@ Create a custom agent that's an expert in search systems.
 
 ---
 
-**2.1.2** Copy the agent definition:
+**2.0.2** Copy the agent definition:
 
 Replace the generated template with the following content:
 
@@ -134,28 +134,28 @@ When analyzing search code, you autonomously:
    ![Configure Tools](assets/configuretools.png)
    *Tools can be enabled in agent configuration as needed*
 
-**2.1.3** Save the file and reload VS Code window
+**2.0.3** Save the file and reload VS Code window
 
 ### What You Created
 A specialist agent with **deep domain expertise** in search systems.
 
 ---
 
-## 📝 Exercise 2.2: Invoke Deep Analysis (8 min)
+## 📝 Exercise 2.1: Invoke Deep Analysis (8 min)
 
 ### Task
 Ask your architect agent to analyze the NULL_DIETARY_BUG deeply.
 
 ### Steps
 
-**2.2.1** Open Copilot Chat 
+**2.1.1** Open Copilot Chat 
 
-**2.2.2** Click the **Agent** dropdown and select **search-architect** from the list
+**2.1.2** Click the **Agent** dropdown and select **search-architect** from the list
 
    ![Select Search Architect Agent](assets/customarchitectagent.png)
    *The search-architect custom agent available in the agents dropdown*
 
-**2.2.3** Enter your prompt:
+**2.1.3** Enter your prompt:
 ```
 Review NULL_DIETARY_BUG and analyze search.py comprehensively. 
 The null handling bug is just a symptom - what's the real architectural state?
@@ -210,7 +210,7 @@ The agent analyzed the actual code and gave honest assessment:
 
 ---
 
-## 📝 Exercise 2.3: Learn Refactor Principles  (7 min)
+## 📝 Exercise 2.2: Learn Refactor Principles  (7 min)
 
 ### Task
 
@@ -221,7 +221,7 @@ This teaches you governance principles you'll use in Experiment 3.
 
 ### Steps
 
-**2.3.1** Select **search-architect** agent again and ask:
+**2.2.1** Select **search-architect** agent again and ask:
 
 ```
 You recommended architectural refactor into 4 modules. 
