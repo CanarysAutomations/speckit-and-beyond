@@ -221,7 +221,7 @@ GitHub maintains a curated collection of reusable skills. Let's add the official
 
 1. Visit [GitHub's Awesome Copilot Skills Library](https://github.com/github/awesome-copilot/tree/main/skills)
 
-   ![Awesome Copilot Skills](../../images/awesomeskills.png)
+   ![Awesome Copilot Skills](../assets/awesomeskills.png)
    *GitHub's official skills library with community-contributed skills*
 
 2. Create the `github-issues` skill folder structure:
