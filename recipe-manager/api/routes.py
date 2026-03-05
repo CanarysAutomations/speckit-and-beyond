@@ -1,7 +1,6 @@
 """
 API Routes for FlavorHub Recipe Manager
 
-WARNING: Intentionally minimal error handling for workshop.
 """
 from fastapi import APIRouter, HTTPException, Header
 from typing import Optional
@@ -13,7 +12,6 @@ router = APIRouter()
 
 def get_user_from_token(authorization: Optional[str] = Header(None)):
     """
-    Mock user authentication.
     In workshop: Gets user with dietary_restrictions=None to trigger bug
     """
     if not authorization:
@@ -36,7 +34,7 @@ async def search_endpoint(
     THIS IS WHERE THE BUG HAPPENS in production!
     
     When request comes from user without dietary preferences,
-    search.py line 145 crashes.
+    search.py line 447 crashes.
     
     Example request that crashes:
     {

@@ -10,11 +10,11 @@ from api.routes import router
 # Create FastAPI app
 app = FastAPI(
     title="FlavorHub Recipe Manager",
-    description="Legacy recipe search API with intentional bugs for workshop",
+    description="Legacy recipe search API with bugs for workshop",
     version="2.3.1"
 )
 
-# CORS (wide open for workshop - BAD for production!)
+# CORS (wide open for workshop)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -34,18 +34,17 @@ async def root():
         "service": "FlavorHub Recipe Manager",
         "version": "2.3.1",
         "status": "running",
-        "warning": "This has intentional bugs for workshop learning"
+    
     }
 
 
 if __name__ == "__main__":
     import uvicorn
-    print("🔥 Starting FlavorHub Recipe Manager...")
-    print("⚠️  WARNING: This codebase has intentional bugs!")
-    print("📍 API: http://localhost:8000")
-    print("📄 Docs: http://localhost:8000/docs")
+    print("Starting FlavorHub Recipe Manager...")
+    print("API: http://localhost:8000")
+    print("Docs: http://localhost:8000/docs")
     print()
-    print("🐛 Known Issue #247: Search crashes for users without dietary preferences")
-    print("💡 Follow workshop exercises to fix using GitHub agents")
+    print("Known Issue: Search crashes for users without dietary preferences")
+    print("Follow workshop exercises to fix using GitHub agents")
     
     uvicorn.run(app, host="0.0.0.0", port=8000)
