@@ -238,65 +238,7 @@ Spec Kit generates `tasks.md`:
 
 ---
 
-## 📝 Exercise 3.5: Use Copilot CLI for Setup (10 min)
-
-### Task
-Use CLI to handle multi-step foundation work.
-
-### Prerequisites
-
-**Install Copilot CLI:**
-```bash
-npm install -g @githubnext/github-copilot-cli
-```
-
-### Steps
-
-**3.5.1** Use CLI for setup tasks:
-
-```bash
-"Setup for search modularization refactor:
-1. Add pydantic to requirements.txt
-2. Create 4 new module files: validation_module.py, filtering_module.py, aggregation_module.py, formatting_module.py
-3. Create corresponding test files in tests/
-4. Add pytest and pytest-cov to dev dependencies
-5. Create .coveragerc configuration for 80% coverage target per module"
-```
-
-**3.5.2** Review CLI's suggested commands, then execute:
-
-```bash
-# CLI generates these commands (review and run):
-pip install pydantic
-touch validation_module.py filtering_module.py aggregation_module.py formatting_module.py
-mkdir -p tests
-touch tests/test_validation.py tests/test_filtering.py tests/test_aggregation.py tests/test_formatting.py
-cat >> requirements.txt <<EOF
-pydantic>=2.0.0
-EOF
-
-cat >> requirements-dev.txt <<EOF
-pytest>=7.0.0
-pytest-cov>=4.0.0
-EOF
-
-cat > .coveragerc <<EOF
-[run]
-source = .
-omit = tests/*,venv/*
-
-[report]
-precision = 2
-fail_under = 80
-EOF
-```
-
-### What Just Happened
-CLI handled boring setup work - installed dependencies, created 4 module files + test structure, configured coverage following your spec.
-
----
-
-## 📝 Exercise 3.6: Implement Modules with Spec Kit (10 min)
+## 📝 Exercise 3.5: Implement Modules with Spec Kit (10 min)
 
 ### Task
 Generate the 4 modules from specification using Spec Kit.
@@ -305,7 +247,7 @@ Generate the 4 modules from specification using Spec Kit.
 
 ### Steps
 
-**3.6.1** Implement validation_module.py:
+**3.5.1** Implement validation_module.py:
 
 ```
 /speckit.implement "Create validation_module.py from specification. 
@@ -315,7 +257,7 @@ Add validate_search_request() entry point with comprehensive input validation."
 
 **Expected:** Spec Kit creates validation_module.py with SearchQuery BaseModel, validators for None→[], validate_search_request() function, type hints and error handling.
 
-**3.6.2** Implement filtering_module.py:
+**3.5.2** Implement filtering_module.py:
 
 ```
 /speckit.implement "Create filtering_module.py from specification.
@@ -325,7 +267,7 @@ Remove deprecated versions. Use optimized filter ordering (most selective first)
 
 **Expected:** Spec Kit creates filtering_module.py with filter_recipes() orchestrator and helper functions, null-safe and production-ready.
 
-**3.6.3** Implement aggregation_module.py:
+**3.5.3** Implement aggregation_module.py:
 
 ```
 /speckit.implement "Create aggregation_module.py from specification.
@@ -336,7 +278,7 @@ Fix caching with LRU (CACHE_LEAK_BUG)."
 
 **Expected:** Spec Kit creates aggregation_module.py with named constants, rank_recipes() with hybrid_v3, and LRU caching.
 
-**3.6.4** Implement formatting_module.py:
+**3.5.4** Implement formatting_module.py:
 
 ```
 /speckit.implement "Create formatting_module.py from specification.
@@ -353,7 +295,7 @@ Spec Kit **read your specification and constitution**, then generated 4 clean, m
 
 ---
 
-## 📝 Exercise 3.7: Wire Modules Together with @workspace (7 min)
+## 📝 Exercise 3.6: Wire Modules Together with @workspace (7 min)
 
 ### Task
 Create clean orchestrator in __init__.py that wires all 4 modules together.
@@ -362,7 +304,7 @@ Create clean orchestrator in __init__.py that wires all 4 modules together.
 
 ### Steps
 
-**3.7.1** In Copilot Chat:
+**3.6.1** In Copilot Chat:
 
 ```
 @workspace Create __init__.py orchestrator that wires all 4 modules together.
