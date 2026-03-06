@@ -68,35 +68,11 @@ Identify critical blockers preventing deployment.
 
 > **Note:** Your analysis output may vary based on your implementation. Below is an example.
 
-```markdown
-# Constitution Compliance Analysis
-
-## ✅ PASS: Module Structure
-- All 4 modules created with single responsibility
-- Each module <300 lines as required
-Status: COMPLIANT
-
-## ⚠️ WARNING: Test Coverage
-- Current coverage below 80% threshold
-- Missing edge case tests
-Status: NEEDS ATTENTION
-
-## ✅ PASS: Bug Fixes
-- NULL_DIETARY_BUG: Fixed with validation
-- CACHE_LEAK_BUG: Fixed with LRU cache
-Status: COMPLIANT
-
-## 🔴 BLOCKER: Missing Regression Tests
-- No regression test for NULL_DIETARY_BUG
-Status: BLOCKS DEPLOYMENT
-
-## ✅ PASS: Backward Compatibility
-- API unchanged, no breaking changes
-Status: SAFE TO DEPLOY
-
-## Summary
-🔴 BLOCKERS: 1
-⚠️ WARNINGS: 1
+```
+Analysis complete. There are 2 CRITICAL blockers (missing regression test for NULL_DIETARY_BUG, 
+test coverage below 80% threshold) plus several HIGH/MEDIUM gaps (missing edge case tests, 
+incomplete validation coverage); these must be resolved before deployment. Would you like me to 
+suggest concrete remediation edits for the top N issues?
 ```
 
 ### What Just Happened
