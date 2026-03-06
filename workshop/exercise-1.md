@@ -95,12 +95,12 @@ Build an agent skill that can analyze production errors intelligently.
 3. Select **Skills** from the menu
 
    ![Configure Menu - Select Skills](assets/skills.png)
-   *The Configure menu with Skills option highlighted*
+   
 
 4. Click **➕ New Skill** button
 
    ![New Skill Button](assets/newskill.png)
-   *Select "New skill..." to create a custom skill*
+   
 
 5. In the file dialog, select location:
 
