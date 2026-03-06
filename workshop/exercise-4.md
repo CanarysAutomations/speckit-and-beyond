@@ -60,57 +60,37 @@ Check if implementation meets all constitution principles.
 
 ### Expected Analysis
 
+> **Note:** Your analysis output may vary based on your implementation. Below is an example.
+
 ```markdown
 # Constitution Compliance Analysis
 
-## ✅ PASS: Reliability (Input Validation)
-Measured: SearchQuery Pydantic model validates all inputs
-Evidence:
-  - Null-to-list validators implemented (NULL_DIETARY_BUG fix)
-  - String length validation active
-  - Type validation enforced
-  - ValidationError handling graceful
+## ✅ PASS: Module Structure
+- All 4 modules created with single responsibility
+- Each module <300 lines as required
 Status: COMPLIANT
 
-## ⚠️ WARNING: Test Coverage (<80% requirement)
-Current: 72% (target: >80%)
-Missing coverage:
-  - Edge cases in filter_by_dietary_restrictions (4 uncovered branches)
-  - Error boundary in main search() function (2 branches)
-  - Validation error handling paths (3 branches)
-Status: NEEDS ATTENTION (8% short of target)
+## ⚠️ WARNING: Test Coverage
+- Current coverage below 80% threshold
+- Missing edge case tests
+Status: NEEDS ATTENTION
 
-## ✅ PASS: Type Hints (All Public Functions)
-All modified functions have type annotations
-SearchQuery model fully typed
+## ✅ PASS: Bug Fixes
+- NULL_DIETARY_BUG: Fixed with validation
+- CACHE_LEAK_BUG: Fixed with LRU cache
 Status: COMPLIANT
 
-## ✅ PASS: Minimal Change (Architecture Preservation)
-Code analyzed:
-  - search.py: Still 289 lines (no massive restructure ✓)
-  - SearchQuery model: 25 lines added
-  - parse_search_request: Modified, not rewritten ✓
-  - Filter functions: Minimal defensive changes ✓
-Architecture unchanged: VERIFIED
-Status: COMPLIANT
-
-## ⚠️ CRITICAL: NULL_DIETARY_BUG Resolution
-Null handling added: YES (SearchQuery validator line 18)
-Regression test exists: NO ← BLOCKER
-Manual reproduction test: NEEDED
-Status: INCOMPLETE
+## 🔴 BLOCKER: Missing Regression Tests
+- No regression test for NULL_DIETARY_BUG
+Status: BLOCKS DEPLOYMENT
 
 ## ✅ PASS: Backward Compatibility
-API endpoints unchanged: VERIFIED
-Response format unchanged: VERIFIED
-No breaking changes detected: CONFIRMED
+- API unchanged, no breaking changes
 Status: SAFE TO DEPLOY
 
-## 🔴 BLOCKERS: 1
-- Missing regression test for NULL_DIETARY_BUG
-
-## ⚠️ WARNINGS: 1
-- Test coverage below 85% threshold
+## Summary
+🔴 BLOCKERS: 1
+⚠️ WARNINGS: 1
 ```
 
 ### What Just Happened
