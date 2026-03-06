@@ -48,14 +48,20 @@ Check if implementation meets all constitution principles.
 
 ### Steps
 
-**4.1.1** In Copilot Chat:
+**4.1.1** In Copilot CLI, select the **speckit.analyze** agent and provide the prompt:
 
 ```
-/speckit.analyze
+Analyze constitution compliance for the search refactoring.
+
+Check:
+- NULL_DIETARY_BUG and CACHE_LEAK_BUG fixes validated
+- All 4 modules <300 lines with >80% test coverage
+- Type hints 100%, API backward compatible
+
+Identify critical blockers preventing deployment.
 ```
 
 ![Spec Kit Analyze](assets/speckitanalyse.png)
-
 *Running /speckit.analyze to check constitution compliance*
 
 ### Expected Analysis
