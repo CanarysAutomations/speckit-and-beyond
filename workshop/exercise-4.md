@@ -35,7 +35,8 @@ npm install -g @githubnext/github-copilot-cli
 
 **Select Spec Kit Agent in CLI:**
 
-![Spec Kit Agent Selection](assets/speckitagentselection.png)
+![Spec Kit Agent Selection](assets/copilotagent.png)
+
 *Select the Spec Kit agent in Copilot CLI to access constitution validation tools*
 
 ---
@@ -54,6 +55,7 @@ Check if implementation meets all constitution principles.
 ```
 
 ![Spec Kit Analyze](assets/speckitanalyse.png)
+
 *Running /speckit.analyze to check constitution compliance*
 
 ### Expected Analysis
@@ -116,23 +118,38 @@ Spec Kit **automatically validated** your code against every principle in the co
 
 ---
 
-## 📋 Exercise 4.2: Generate Quality Checklist (6 min)
+## 📋 Exercise 4.2: Generate Checklist & Address Blockers (12 min)
 
 ### Task
-Create pre-deployment checklist from analysis.
+Create pre-deployment checklist from analysis and fix critical blockers.
 
 ### Steps
 
-**4.2.1** Continue:
+**4.2.1** In Copilot CLI, select the **Checklist agent** and provide the prompt:
 
 ```
-/speckit.checklist
+Generate a pre-deployment quality checklist for the search validation enhancement.
+
+Review the constitution compliance analysis and create a prioritized checklist with:
+1. Critical blockers (🔴) that must pass before deployment
+2. Important items (⚠️) that should pass
+3. Nice-to-have improvements (💡)
+
+Then, identify and fix all critical blockers:
+- Add missing regression tests for NULL_DIETARY_BUG
+- Improve test coverage to meet 80% threshold
+- Verify API backward compatibility
+- Add any missing validation tests
+
+Provide code examples for fixing each blocker.
 ```
 
 ![Spec Kit Checklist](assets/speckitchecklist.png)
-*Running /speckit.checklist to generate quality gates*
+*Running checklist agent in Copilot CLI to generate quality gates and fix blockers*
 
-### Expected Checklist
+### Expected Output
+
+**Part 1: Generated Checklist**
 
 > **Note:** Your checklist may vary based on code analysis. Below is an example output.
 
@@ -164,34 +181,9 @@ Important: 1/5 complete (20%)
 Nice to Have: 0/4 complete
 ```
 
-**4.2.2** Review your checklist output. Identify any critical blockers (🔴) that must be fixed before deployment.
+**Part 2: Code to Fix Blockers**
 
-### What Just Happened
-Spec Kit generated a prioritized pre-deployment checklist from constitution requirements. Critical items are blockers - these must pass before production deployment.
-
----
-
-## 📋 Exercise 4.3: Address Blockers (6 min)
-
-### Task
-Fix any critical blockers identified in the checklist.
-
-### Steps
-
-**4.3.1** Review your checklist and address critical blockers. Use @workspace to fix issues:
-
-```
-@workspace Review the checklist from /speckit.checklist and fix all critical blockers.
-
-For each blocker:
-1. Identify what's missing or failing
-2. Add required tests, documentation, or code changes
-3. Ensure all critical items pass before deployment
-
-Prioritize blockers marked as 🔴 Critical (Must Pass).
-```
-
-**Example:** If missing regression test for NULL_DIETARY_BUG, Copilot might generate:
+Example code generated to address critical blockers:
 
 ```python
 """Regression test for NULL_DIETARY_BUG: null dietary restrictions crash"""
@@ -228,13 +220,13 @@ def test_searchquery_model_direct():
     assert query.dietary_restrictions == []  # Validator converted None → []
 ```
 
-**4.3.2** Verify fixes by running relevant tests:
+**4.2.2** Verify fixes by running relevant tests:
 
 ```bash
 pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
-**4.3.3** Re-run analysis to confirm blockers resolved:
+**4.2.3** Re-run analysis to confirm blockers resolved:
 
 ```
 /speckit.analyze
@@ -250,7 +242,7 @@ pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
 ### What Just Happened
-You identified critical blockers through systematic analysis, addressed each one, and verified the fixes. The code is now production-ready with quality gates passed.
+Using Copilot CLI's checklist agent, you generated a prioritized pre-deployment checklist AND received code to fix all critical blockers in one prompt. The code is now production-ready with quality gates passed.
 
 ---
 
