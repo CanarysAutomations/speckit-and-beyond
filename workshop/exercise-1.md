@@ -316,12 +316,14 @@ Lets merge, However should we check for deeper architectural issues? Is search.p
 
 ---
 
-## 🚀 Next: [Exercise 2](exercise-2.md)
+## 🚀 Next: Exercise 2
 
 **Decision Point:**
 - ✅ NULL_DIETARY_BUG documented as **GitHub issue #1**
 - ✅ **PR #2** ready with null check fix
 - **merge PR #2** but **investigate deeper** - Is search.py a monolith? Are there architectural issues hiding under the surface?
+
+**Continue to:** [Exercise 2: Understanding the Real Problem](exercise-2.md)
 
 **Next Step:** Create a **Custom Architect Agent** to analyze search system architecture for deeper issues.
 
