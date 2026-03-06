@@ -22,7 +22,25 @@ Tests pass. Components built. But does it meet the constitution? Can we deploy w
 
 ---
 
-## 📋 Exercise 4.1: Analyze Constitution Compliance (8 min)
+## � Exploring Spec Kit in Copilot CLI
+
+So far, we've explored using Spec Kit in the IDE. Now, let's explore how to use it in **Copilot CLI** for a command-line workflow.
+
+**Install Copilot CLI:**
+```bash
+npm install -g @githubnext/github-copilot-cli
+```
+
+**Reference:** [Getting Started with Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-getting-started)
+
+**Select Spec Kit Agent in CLI:**
+
+![Spec Kit Agent Selection](assets/speckitagentselection.png)
+*Select the Spec Kit agent in Copilot CLI to access constitution validation tools*
+
+---
+
+## �📋 Exercise 4.1: Analyze Constitution Compliance (8 min)
 
 ### Task
 Check if implementation meets all constitution principles.
@@ -34,6 +52,9 @@ Check if implementation meets all constitution principles.
 ```
 /speckit.analyze
 ```
+
+![Spec Kit Analyze](assets/speckitanalyse.png)
+*Running /speckit.analyze to check constitution compliance*
 
 ### Expected Analysis
 
@@ -107,6 +128,9 @@ Create pre-deployment checklist from analysis.
 ```
 /speckit.checklist
 ```
+
+![Spec Kit Checklist](assets/speckitchecklist.png)
+*Running /speckit.checklist to generate quality gates*
 
 ### Expected Checklist
 
