@@ -117,7 +117,11 @@ Build an agent skill that can analyze production errors intelligently.
 
 Replace the template content with:
 
-```markdown
+```yaml
+name: issue-analyzer
+description: Expert at diagnosing production errors, analyzing stack traces, and creating structured issue reports. Identifies root causes, assesses severity, estimates impact, and recommends fixes. Include keywords like error analysis, stack trace, bug diagnosis, production issues.
+---
+
 # Issue Analyzer Skill
 
 You are an expert at diagnosing production errors and creating structured issue reports.
@@ -277,7 +281,7 @@ Labels: bug, critical, production, search
 ```
 ✅ Created issue #1: https://github.com/Hemavathi15sg/recipe-manager/issues/1
 ✅ Successfully assigned issue #1 to @copilot
-🔄 Copilot is analyzing the issue and will create a fix...
+🔄 **Copilot coding agent** is analyzing the issue and will create a fix...
 ```
 
 💡 **What happens next:**
@@ -294,8 +298,8 @@ Labels: bug, critical, production, search
 
 **What We DID in Experiment 1:**
 🎯 **Bug reproduced** with test_bug.py to get actual stack trace  
-🎯 **Custom @issue-analyzer skill** created for autonomous error analysis  
-🎯 **Official @github-issues skill** added from GitHub's skill library  
+🎯 **Custom issue-analyzer skill** created for autonomous error analysis  
+🎯 **Official github-issues skill** added from GitHub's skill library  
 🎯 **Skill composition** demonstrated - two specialized skills working together  
 🎯 **MCP automation** - Issue created and assigned to @copilot in single command   
 🎯 **Copilot auto-assigned** - Will create **PR #2** automatically  
