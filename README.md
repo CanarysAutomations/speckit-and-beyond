@@ -34,8 +34,7 @@ Multiple agent capabilities working together in a continuous workflow:
 ✅ **Git** version control  
 ✅ **Valid GitHub Copilot subscription** (Individual, Business, or Enterprise)  
 ✅ **Node.js 18+** (for Copilot CLI)  
-✅ **2 focused hours** to complete the mission
-
+✅ **GitHub MCP** [https://github.com/github/github-mcp-server?tab=readme-ov-file]
 > **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
 ---

@@ -119,12 +119,8 @@ Replace the template content with:
 
 ```yaml
 name: issue-analyzer
-description: Expert at diagnosing production errors, analyzing stack traces, and creating structured issue reports. Identifies root causes, assesses severity, estimates impact, and recommends fixes. Include keywords like error analysis, stack trace, bug diagnosis, production issues.
+description: Expert at diagnosing production errors, analyzing stack traces, and creating structured issue reports. Identifies root causes, assesses severity, estimates impact, and recommends fixes. 
 ---
-
-# Issue Analyzer Skill
-
-You are an expert at diagnosing production errors and creating structured issue reports.
 
 ## Your Capabilities
 
@@ -165,12 +161,12 @@ Use your skill to analyze the production error.
 
 **1.2.2** Open Copilot Chat and invoke your skill:
 ```
-Look at #terminalSelection using #file:issue-analyzer analyse the production error
+Look at #terminalSelection using #file:SKILL.md analyse the production error
 ```
 
 💡 **What's happening:**
 - `#terminalSelection` - Attaches the terminal output you selected
-- `#file:issue-analyzer` - References your custom skill folder
+- `#file:SKILL.md` - References your custom skill file
 - Copilot reads the SKILL.md and applies its analysis format
 
 ### Expected Output

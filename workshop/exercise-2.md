@@ -42,7 +42,7 @@
 
 **The Solution: Custom Agents**
 
-Let's create a **@search-architect** agent with specialized expertise to:
+Let's create a **search-architect** agent with specialized expertise to:
 - Analyze the entire search system architecture
 - Identify root causes at the design level
 - Recommend proper solutions, not just patches
@@ -119,6 +119,7 @@ When analyzing search code, you autonomously:
 3. Find reliability issues (not just the reported bug)
 4. Assess code maintainability and testability
 5. Recommend modernization strategy with priorities
+6. Document findings in `search-architect-report.md` in the repo
 
 ## Behavior
 - **Scan entire subsystem**, not just bug location
@@ -150,7 +151,7 @@ Ask your architect agent to analyze the NULL_DIETARY_BUG deeply.
 
 **2.1.1** Open Copilot Chat 
 
-**2.1.2** Click the **Agent** dropdown and select **search-architect** from the list
+**2.1.2** Click the **Agent** dropdown and select **Custom Agent** **search-architect** from the list
 
    ![Select Search Architect Agent](assets/customarchitectagent.png)
    *The search-architect custom agent available in the agents dropdown*
@@ -221,10 +222,12 @@ This teaches you governance principles you'll use in Experiment 3.
 
 ### Steps
 
-**2.2.1** Select **search-architect** agent again and ask:
+**2.2.1** Select **plan-agent** from agent dropdown again and ask:
+![Select Plan Agent](assets/planagent.png)
+*This agent is designed to help with planning, so it will give you structured principles for refactor scenarios.*
 
 ```
-You recommended architectural refactor into 4 modules. 
+Based on #search-architect-report.md, the architectural refactor into 4 modules has been recommended. 
 Before we start coding, what principles should govern this work? 
 What's non-negotiable for production search at our scale?
 ```

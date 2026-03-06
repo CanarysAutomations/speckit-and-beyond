@@ -157,20 +157,6 @@ return results
 pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
-**4.2.3** Re-run analysis to confirm blockers resolved:
-
-```
-/speckit.analyze
-```
-
-**Expected Result:** Blockers should now be resolved. Example output:
-
-```
-🟢 BLOCKERS: 0
-✅ All critical items passing
-✅ Test coverage above threshold
-✅ READY FOR DEPLOYMENT
-```
 
 ### What Just Happened
 Using Copilot CLI's checklist agent, you generated a prioritized pre-deployment checklist AND received code to fix all critical blockers in one prompt. The code is now production-ready with quality gates passed.

@@ -40,7 +40,7 @@ Install GitHub Spec Kit extension for specification-driven development.
 
 1. Visit [GitHub Spec Kit repository](https://github.com/github/spec-kit)
 
-2. Install using the following command:
+2. Install using the following command in your terminal:
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
@@ -62,6 +62,10 @@ When prompted "Initialize Spec Kit in existing repository?", type **yes** to con
 
    ![Spec Kit Same Repo Confirmation](assets/specsamerepo.png)
    *Select 'yes' to initialize Spec Kit in the existing repository*
+
+   ![Spec Kit agent selection](assets/speckitagentselection.png)
+   *Select the GitHub Copilot agent from the list*
+
 
 **3.0.3** Verify Spec Kit slash commands are available:
 
@@ -178,9 +182,7 @@ Based on specification, detail the technical approach for:
 - Interface design between modules
 - Migration sequence (minimize disruption)
 - Testing strategy for each module
-- Rollout approach (gradual vs big-bang)
-
-Follow constitution and consider current 1103-line structure."
+- Rollout approach (gradual vs big-bang)"
 ```
 
 ### Expected Output
@@ -241,9 +243,8 @@ Spec Kit generates `tasks.md`:
 ## 📝 Exercise 3.5: Implement Modules with Spec Kit (10 min)
 
 ### Task
-Generate the 4 modules from specification using Spec Kit.
+Generate the 4 modules from specification using Spec Kit, You can simply use **/speckit.implement** which implements everything as per the plan however here we are exploring how you can customize the implementation.
 
-**Why Spec Kit:** Best for generating code that must follow specifications exactly.
 
 ### Steps
 
@@ -295,7 +296,7 @@ Spec Kit **read your specification and constitution**, then generated 4 clean, m
 
 ---
 
-## 📝 Exercise 3.6: Wire Modules Together with @workspace (7 min)
+## 📝 Exercise 3.6: Wire Modules Together with local agent (7 min)
 
 ### Task
 Create clean orchestrator in __init__.py that wires all 4 modules together.
@@ -328,12 +329,11 @@ Keep __init__.py clean (<50 lines), just orchestration logic.
 ### What Just Happened
 **@workspace** created clean orchestrator:
 - Wired all 4 modules with correct function signatures
-- Fixed NULL_DIETARY_BUG at validation layer (None converted to empty list)
-- Fixed CACHE_LEAK_BUG in aggregation (LRU caching prevents memory leak)
+- Fixed NULL_DIETARY_BUG at validation layer 
+- Fixed CACHE_LEAK_BUG in aggregation
 - Pipeline pattern: validate → filter → rank → format
 - Backward compatible API
 
-**@workspace is ideal for:** Wiring components together, integration work with full context.
 
 ---
 
