@@ -151,7 +151,7 @@ if isinstance(results, dict) and results.get("status_code") == 400:
 return results
 ```
 
-**4.2.2** Verify fixes by running relevant tests:
+**4.2.2** The agent may verify fixes by running relevant tests. If not done automatically, run:
 
 ```bash
 pytest tests/ -v --cov=. --cov-report=term-missing
