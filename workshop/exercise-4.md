@@ -20,8 +20,7 @@ winget install astral-sh.uv
 # macOS / Linux
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-
-Verify:
+After installation, you may need to restart your terminal or add `uv` to your PATH. Verify installation:
 
 ```bash
 uv --version
@@ -43,8 +42,8 @@ Using Copilot CLI's checklist agent, you generated a prioritized pre-deployment 
 
 **3.** Initialize Spec Kit in the project:
 
+
 ```bash
-cd recipe-manager
 specify init --here
 ```
 

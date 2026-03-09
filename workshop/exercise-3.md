@@ -17,6 +17,64 @@ A specialized architect agent will examine the whole system and surface systemic
 
 ---
 
+## 📝 Exercise 2.1: Invoke Deep Analysis (8 min)
+
+### Task
+Ask your architect agent to analyze the NULL_DIETARY_BUG deeply.
+
+### Steps
+
+**2.1.1** Open Copilot Chat 
+
+**2.1.2** Click the **Agent** dropdown and select **Custom Agent** **search-architect** from the list
+
+   ![Select Search Architect Agent](assets/customarchitectagent.png)
+   *The search-architect custom agent available in the agents dropdown*
+
+**2.1.3** Enter your prompt:
+```
+Review NULL_DIETARY_BUG and analyze search.py comprehensively. 
+The null handling bug is just a symptom - what's the real architectural state?
+
+Context: search.py has grown to 1103 lines over 18 months. 
+Users complained about slow searches before this bug appeared.
+```
+
+### Expected Analysis
+
+```bash
+cd recipe-manager
+python test_bug.py
+```
+
+Select the lines from `Testing search with user who has dietary_restrictions=None...` through the `TypeError` line from integrated terminal output.
+
+---
+
+## 📝 Exercise 2.2: Learn Refactor Principles  (7 min)
+
+### Task
+
+
+For **learning purposes**, let's ask: "What would refactor principles look like for a future scenario where we DO need to redesign?"
+
+This teaches you governance principles you'll use in Experiment 3.
+
+### Steps
+
+**2.2.1** Select **plan-agent** from agent dropdown again and ask:
+![Select Plan Agent](assets/planagent.png)
+*This agent is designed to help with planning, so it will give you structured principles for refactor scenarios.*
+
+```
+Based on #search-architect-report.md, the architectural refactor into 4 modules has been recommended. 
+Before we start coding, what principles should govern this work? 
+What's non-negotiable for production search at our scale?
+```
+
+### Expected Response
+
+
 ## 📝 Exercise 3.0: Install Spec Kit (5 min)
 
 ### Task
