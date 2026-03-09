@@ -86,6 +86,8 @@ Open Copilot Chat and type `/spec` - you should see:
 
 ---
 
+
+
 ## 📝 Exercise 3.1: Establish Constitution (8 min)
 
 ### Task

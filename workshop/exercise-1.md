@@ -82,7 +82,7 @@ for restriction in user.dietary_restrictions:  # ← CRASHES IF None!
 ## 📝 Exercise 1.1: Create Issue Analyzer Skill (6 min)
 
 ### Task
-Build an agent skill that can analyze production errors intelligently.
+Build an agent skill that can analyze errors intelligently.
 
 ### Steps
 
@@ -119,18 +119,22 @@ Replace the template content with:
 
 ```yaml
 name: issue-analyzer
-description: Expert at diagnosing production errors, analyzing stack traces, and creating structured issue reports. Identifies root causes, assesses severity, estimates impact, and recommends fixes. 
+description: Expert at diagnosing production errors and identifying code quality gaps, Analyzes stack traces AND scans codebase for infrastructure issues
 ---
 
 ## Your Capabilities
 
 When given error logs or stack traces, you autonomously:
 1. **Extract root cause** from stack traces
-2. **Identify affected files** and line numbers
-3. **Assess severity** (critical/high/medium/low)
-4. **Estimate impact** (% of users affected)
-5. **Suggest immediate hotfix** and long-term solution
-6. **Recommend labels** for issue tracking
+2. **Scan codebase** for contributing infrastructure issues
+   - Missing test infrastructure
+   - Unstructured logging
+   - Missing type hints
+3. **Identify affected files** and line numbers
+4. **Assess severity** (critical/high/medium/low)
+5. **Estimate impact** (% of users affected)
+6. **Suggest immediate hotfix** and long-term solution
+7. **Recommend labels** for issue tracking
 
 ## Output Format
 
@@ -249,7 +253,8 @@ GitHub maintains a curated collection of reusable skills. Let's add the official
 ![Awesome Copilot Skill selection](assets/skillselect.png)
    *GitHub's official skills library with community-contributed skills*
 ```
-Create a GitHub issue based on the #file:issue-analyzer analysis from the previous conversation. Use #file:github-issues format and use #mcp_github_assign_copilot_to_issue to fix the issue.
+Create a GitHub issue based on the #file:issue-analyzer analysis from the previous conversation.
+Use #file:github-issues format and use #mcp_github_assign_copilot_to_issue to fix the issue.
 
 Repository: recipe-manager
 Labels: bug, critical, production, search
