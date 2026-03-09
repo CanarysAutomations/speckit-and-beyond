@@ -9,6 +9,6 @@ pydantic==2.5.0
 # CORS
 python-multipart==0.0.6
 
-# For workshop exercises (optional)
-# pytest==7.4.3
-# httpx==0.25.2
+# For workshop exercises (testing)
+pytest==7.4.3
+pytest-asyncio==0.21.1

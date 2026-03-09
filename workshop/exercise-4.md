@@ -35,7 +35,9 @@ uv --version
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
-![GitHub Spec Kit installed](assets/speckit.png)
+
+### What Just Happened
+Using Copilot CLI's checklist agent, you generated a prioritized pre-deployment checklist AND received code to fix all critical blockers in one prompt. The code is now production-ready with quality gates passed.
 
 ---
 

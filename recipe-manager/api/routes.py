@@ -3,14 +3,14 @@ API Routes for FlavorHub Recipe Manager
 
 """
 from fastapi import APIRouter, HTTPException, Header, Query
-from typing import Optional
-from models import SAMPLE_USERS
+from typing import Optional, Dict, Any
+from models import SAMPLE_USERS, User
 from search import search_recipes
 
 router = APIRouter()
 
 
-def get_user_from_token(authorization: Optional[str] = Header(None)):
+def get_user_from_token(authorization: Optional[str] = Header(None)) -> User:
     """
     In workshop: Gets user with dietary_restrictions=None to trigger bug
     """
@@ -27,7 +27,7 @@ def get_user_from_token(authorization: Optional[str] = Header(None)):
 async def search_endpoint(
     request_data: dict,
     current_user: Optional[str] = Query(None)
-):
+) -> Dict[str, Any]:
     """
     Search recipes endpoint.
     
@@ -68,6 +68,6 @@ async def search_endpoint(
 
 
 @router.get("/health")
-async def health_check():
+async def health_check() -> Dict[str, str]:
     """Health check endpoint"""
     return {"status": "ok", "service": "recipe-search"}

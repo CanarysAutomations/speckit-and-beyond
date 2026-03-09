@@ -25,12 +25,13 @@ This workshop walks you through exactly that — using GitHub's agent ecosystem 
 
 ## Prerequisites
 
-- VS Code with GitHub Copilot extension
-- Python 3.11+
-- Git
-- [GitHub MCP](https://github.com/mcp/github/github-mcp-server)
-- Node.js 18+ (for Copilot CLI)
-- Valid GitHub Copilot subscription
+✅ **VS Code** with GitHub Copilot extension  
+✅ **Python 3.11+** installed  
+✅ **Git** version control  
+✅ **Valid GitHub Copilot subscription** (Individual, Business, or Enterprise)  
+✅ **Node.js 18+** (for Copilot CLI)  
+✅ **GitHub MCP** [https://github.com/github/github-mcp-server?tab=readme-ov-file]
+> **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
 ---
 
@@ -59,11 +60,8 @@ Once your repo is created, start here: [Exercise 1 — Reproduce the Bug](worksh
 
 ## Clone & Setup
 
-```bash
-git clone https://github.com/<your-username>/speckit-and-beyond.git
-cd speckit-and-beyond
-```
----
+**Fork the repository:**
+
 
 ## Resources
 
