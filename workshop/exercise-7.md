@@ -89,7 +89,7 @@ Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_modu
 
 ---
 
-## What You Built
+## What You Did
 
 | Module | Target lines | Bug fixed |
 |--------|-------------|-----------|

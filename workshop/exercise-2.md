@@ -59,7 +59,7 @@ Create a GitHub issue based on the #file:issue-analyzer analysis, Use #file:gith
 
 ---
 
-## What you did
+## What you Did
 | Item | Detail |
 |------|--------|     
 | Skill Creation | Used a custom skill from skills library |

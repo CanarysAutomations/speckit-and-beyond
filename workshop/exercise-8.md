@@ -91,7 +91,7 @@ pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 ---
 
-## What You Validated
+## What You Did
 
 | Check | Tool |
 |-------|------|

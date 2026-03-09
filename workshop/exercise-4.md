@@ -66,7 +66,7 @@ When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
 ![Spec Kit slash commands](assets/specfinal.png)
 
 ---
-## What just happened
+## What you did
 |Item|Description|
 |----|-----------|
 | Spec Kit Installation | You installed the Spec Kit CLI using `uv`. |

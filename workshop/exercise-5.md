@@ -100,7 +100,7 @@ Success Criteria:
   - Existing API contracts unchanged
 ```
 
-What you did
+## What you Did
 | Item | Description |
 |------|-------------|
 | Constitution | Defined the core principles guiding the refactor. |

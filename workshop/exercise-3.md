@@ -115,7 +115,7 @@ Users complained about slow searches before this bug appeared.
 ```
 
 ---
-## what just happened
+## What you Did
 |Item|Description|
 |----|-----------|
 | Custom Agent Creation | You created a custom agent with specific expertise in search systems architecture. |
