@@ -8,6 +8,9 @@
 Install the Spec Kit CLI and initialize it in the `recipe-manager` project so the `/speckit.*` slash commands are available in Copilot Chat.
 
 ---
+## Context
+Spec Kit is a powerful tool for defining software specifications, creating implementation plans, and ensuring code quality. In this exercise, you'll set up Spec Kit in the existing `recipe-manager` project to prepare for the upcoming refactoring work.
+
 
 ## Steps
 
@@ -33,10 +36,6 @@ uv --version
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
-
-
-### What Just Happened
-Using Copilot CLI's checklist agent, you generated a prioritized pre-deployment checklist AND received code to fix all critical blockers in one prompt. The code is now production-ready with quality gates passed.
 
 ---
 
@@ -67,9 +66,11 @@ When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
 ![Spec Kit slash commands](assets/specfinal.png)
 
 ---
+## What just happened
+|Item|Description|
+|----|-----------|
+| Spec Kit Installation | You installed the Spec Kit CLI using `uv`. |
+| Project Initialization | You initialized Spec Kit in the `recipe-manager` project. |
+| Slash Commands | The `/speckit.*` commands are now available in Copilot Chat. |
 
-## Result
-
-- Spec Kit CLI installed
-- `.specify/` folder created in `recipe-manager/`
-- Slash commands ready in Copilot Chat
+In the next exercises, you'll use these commands to define the refactor specification, create a plan, and implement the changes.  [Exercise 5: Spec Kit — Constitution & Specification](exercise-5.md)

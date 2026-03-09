@@ -1,6 +1,6 @@
-# Exercise 8: Validation & Quality Gates
+# Exercise 8: Validation & Quality Gates using Copilot CLI
 
-> **Time:** ~15 minutes
+> **Time:** ~10 minutes
 > **Standalone:** Can be done with any implementation. Works best after `exercise-7.md`.
 
 ## Goal
@@ -99,3 +99,5 @@ pytest tests/ -v --cov=. --cov-report=term-missing
 | Pre-deployment quality gate | `/speckit.checklist` |
 | All critical bugs have regression tests | Agent-generated tests |
 | Coverage threshold met | `pytest --cov` |
+
+Task Complete! You've validated that the refactor meets the defined principles and is ready for production deployment.

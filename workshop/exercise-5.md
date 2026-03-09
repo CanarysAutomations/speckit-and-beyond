@@ -1,6 +1,6 @@
 # Exercise 5: Spec Kit — Constitution & Specification
 
-> **Time:** ~12 minutes
+> **Time:** ~8 minutes
 > **Prerequisite:** Spec Kit installed and initialized (`exercise-4.md`)
 
 ## Goal
@@ -29,7 +29,7 @@ Define the governing principles for the refactor (constitution), then generate a
 ```
 /speckit.constitution
 
-Context: Refactoring FlavorHub search.py (1006 lines) into 4 clean modules.
+Context: Refactoring FlavorHub search.py into 4 clean modules.
 Principles to capture:
 1. Reliability — null-safe input validation
 2. Architecture — 4 modules, each under 300 lines
@@ -99,3 +99,11 @@ Success Criteria:
   - Test coverage above 80%
   - Existing API contracts unchanged
 ```
+
+What you did
+| Item | Description |
+|------|-------------|
+| Constitution | Defined the core principles guiding the refactor. |
+| Specification | Created a detailed spec outlining the modules to be built and success criteria. |
+
+Next, you'll create a technical plan and break it into actionable tasks. [Exercise 6: Spec Kit — Plan & Tasks](exercise-6.md)

@@ -1,6 +1,6 @@
 # Exercise 7: Spec Kit — Implement
 
-> **Time:** ~15 minutes
+> **Time:** ~10 minutes
 > **Prerequisite:** Spec Kit initialized, `specification.md` and `plan.md` created (`exercise-4.md` through `exercise-6.md`)
 
 ## Goal
@@ -98,4 +98,4 @@ Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_modu
 | `aggregation_module.py` | ~250 | CACHE_LEAK_BUG |
 | `formatting_module.py` | ~150 | — |
 
-The 1006-line monolith is now 4 focused, independently testable modules.
+Next, you'll validate the refactor against the constitution using `/speckit.analyze` and generate a pre-deployment checklist with `/speckit.checklist`using Copilot CLI. [Exercise 8: Validation & Quality Gates using Copilot CLI](exercise-8.md)

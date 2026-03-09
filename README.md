@@ -41,14 +41,15 @@ All exercises are **standalone** — you can start any one without completing th
 
 | Exercise | Topic | Time |
 |----------|-------|------|
-| [Exercise 1](workshop/exercise-1.md) | Reproduce the Bug | ~8 min |
-| [Exercise 2](workshop/exercise-2.md) | Agent Skills — Issue Analyzer | ~10 min |
-| [Exercise 3](workshop/exercise-3.md) | Custom Agent — Search Architect | ~12 min |
+| [Exercise 1](workshop/exercise-1.md) | Reproduce the Bug | ~5 min |
+| [Exercise 2](workshop/exercise-2.md) | Agent Skills — GitHub MCP | ~7 min |
+| [Exercise 3](workshop/exercise-3.md) | Custom Agent — Search Architect | ~8 min |
 | [Exercise 4](workshop/exercise-4.md) | Spec Kit Setup | ~5 min |
-| [Exercise 5](workshop/exercise-5.md) | Spec Kit — Constitution & Specification | ~12 min |
-| [Exercise 6](workshop/exercise-6.md) | Spec Kit — Plan & Tasks | ~10 min |
-| [Exercise 7](workshop/exercise-7.md) | Spec Kit — Implement | ~15 min |
-| [Exercise 8](workshop/exercise-8.md) | Validation & Quality Gates | ~15 min |
+| [Exercise 5](workshop/exercise-5.md) | Spec Kit — Constitution & Specification | ~8 min |
+| [Exercise 6](workshop/exercise-6.md) | Spec Kit — Plan & Tasks | ~7 min |
+| [Exercise 7](workshop/exercise-7.md) | Spec Kit — Implement | ~10 min |
+| [Exercise 8](workshop/exercise-8.md) | Validation & Quality Gates using Copilot CLI | ~10 min |
+| [Exercise 9](workshop/exercise-9.md) | Structured Logging & Observability | ~15 min |
 
 ---
 

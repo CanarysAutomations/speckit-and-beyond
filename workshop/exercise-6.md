@@ -1,6 +1,6 @@
 # Exercise 6: Spec Kit — Plan & Tasks
 
-> **Time:** ~10 minutes
+> **Time:** ~7 minutes
 > **Prerequisite:** Spec Kit installed, `constitution.md` and `specification.md` created (`exercise-4.md`, `exercise-5.md`)
 
 ## Goal
@@ -31,7 +31,7 @@ Detail:
 - Testing strategy per module
 - Rollout approach: gradual (one module per phase)
 
-Reference the current 1006-line search.py structure and follow the constitution.
+Reference the current search.py structure and follow the constitution.
 ```
 
 > Spec Kit creates `.specify/plan.md`.
@@ -90,3 +90,13 @@ Phase 1 — Validation Module (Priority: CRITICAL)
 
 Total: 22 tasks across 5 phases
 ```
+
+What you did
+| Item | Description |
+|------|-------------|
+| Plan Creation | You created a technical plan outlining the migration sequence, interfaces, and testing strategy
+| Task Generation | You generated a detailed backlog of implementation tasks with acceptance criteria. |
+
+Next, you'll implement the first phase by generating code with `/speckit.implement` and wiring it into the existing codebase.
+
+[Exercise 7: Spec Kit — Implementation](exercise-7.md)
