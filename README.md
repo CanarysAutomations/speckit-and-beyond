@@ -49,7 +49,7 @@ All exercises are **standalone** — you can start any one without completing th
 | [Exercise 6](workshop/exercise-6.md) | Spec Kit — Plan & Tasks | ~7 min |
 | [Exercise 7](workshop/exercise-7.md) | Spec Kit — Implement | ~10 min |
 | [Exercise 8](workshop/exercise-8.md) | Validation & Quality Gates using Copilot CLI | ~10 min |
-| [Exercise 9](workshop/exercise-9.md) | Structured Logging & Observability | ~15 min |
+
 
 ---
 
