@@ -7,7 +7,7 @@ uvicorn[standard]==0.24.0
 pydantic==2.5.0
 
 # CORS
-python-multipart==0.0.6
+python-multipart==0.0.22
 
 # For workshop exercises (testing)
 pytest==7.4.3
