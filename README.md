@@ -1,33 +1,29 @@
 # Agent-Driven Spec Development: The FlavorHub Crisis
 
-> **Production Emergency**: Fix critical bug + modernize system in 2 hours using GitHub agents
+> **Production Emergency:** Fix a critical bug and modernize the system using GitHub agents.
 
-## 🔥 The Crisis
+## The Crisis
 
-**Monday, 3:00 PM:** FlavorHub's Recipe Manager crashes. Search feature failing for 30% of users. 500+ error reports flooding in. CTO demands immediate fix.
+**Monday, 3:00 PM.** FlavorHub's search feature is crashing for 30% of users.
+500+ error reports. CTO demands a fix AND a lasting solution within 2 hours.
 
-**Your Mission:** Resolve the crisis AND modernize the system using GitHub's agent ecosystem in 2 hours.
-
-This is a **real-world crisis simulation** showing how GitHub agents transform development from reactive firefighting to proactive spec-driven engineering.
-
----
-
-## What You'll Master
-
-Multiple agent capabilities working together in a continuous workflow:
-
-**Agent Skills** → Autonomous problem analysis and documentation  
-**Custom Agents** → Specialized expertise (architecture, security, domain knowledge)  
-**Spec Kit** → Governance and specification-driven implementation  
-**Copilot CLI** → Multi-step automation and orchestration  
-
-**Traditional Approach:** 3-4 weeks to diagnose, design, implement, test  
-**Agent-Driven Approach:** 2 hours from crisis to production-ready solution
-
+This workshop walks you through exactly that — using GitHub's agent ecosystem to go from chaos to production-ready.
 
 ---
 
-## Mission Prerequisites
+## What You'll Learn
+
+| Tool | What You Do |
+|------|-------------|
+| **Agent Skills** | Diagnose production errors automatically |
+| **Custom Agents** | Build specialist agents with domain expertise |
+| **Spec Kit** | Drive governance, planning, and code generation from a specification |
+| **Copilot CLI** | Run compliance checks and quality gates |
+| **GitHub MCP** | Integrate agents directly into your repo for continuous improvement |
+
+---
+
+## Prerequisites
 
 ✅ **VS Code** with GitHub Copilot extension  
 ✅ **Python 3.11+** installed  
@@ -39,56 +35,36 @@ Multiple agent capabilities working together in a continuous workflow:
 
 ---
 
-## The Story: FlavorHub's Recipe Manager is a critical component that allows users to search and manage their recipes. A recent update introduced a bug causing crashes for 30% of users. The error logs are overwhelming, and the root cause is unclear. The CTO has given you 2 hours to not only fix the bug but also refactor the system to prevent future issues.
+## The Exercises
 
-### **Experiment 1: Creating Order from Chaos** 
-**The Problem:** Production errors flooding in, no structured documentation  
-**Agents Used:** Agent Skills + GitHub MCP  
-**You Learn:** Create agent skill that analyzes error logs → automatically creates GitHub NULL_DIETARY_BUG with root cause analysis  
-**Outcome:** Crisis documented and triaged in 5 minutes
+All exercises are **standalone** — you can start any one without completing the others first.
 
-### **Experiment 2: Understanding the Real Problem** 
-**The Problem:** Is this just a null check or symptoms of deeper architectural debt?  
-**Agents Used:** Custom Agent (.agent.md)  
-**You Learn:** Build custom Search Architect agent → scans entire codebase → discovers 1103-line monolith with God Object anti-pattern, 74 magic numbers, broken caching, and dead code  
-**Outcome:** Root cause identified: architectural refactor required, not band-aid patch
-
-### **Experiment 3: Solution Design & Implementation** 
-**The Problem:** Need architectural refactor plan + rapid implementation of 4 clean modules  
-**Agents Used:** Spec Kit (constitution → specify → plan → tasks → implement) + Copilot CLI + @workspace  
-**You Learn:** Establish governance constitution → generate detailed 4-module specification → create technical plan → break into tasks → use CLI for project setup → generate 4 modules with /speckit.implement → wire everything together with @workspace  
-**Outcome:** Complete blueprint AND implementation - 1103-line monolith refactored into 4 clean modules <300 lines each, both issues fixed (null handling + caching leak)
-
-### **Experiment 4: Validation & Quality Gates** 
-**The Problem:** Ensure solution actually meets standards before deployment  
-**Agents Used:** /speckit.analyze + /speckit.checklist  
-**You Learn:** Validate constitution compliance → identify gaps → generate quality checklist → systematically verify readiness  
-**Outcome:** Production-ready with confidence
+| Exercise | Topic | Time |
+|----------|-------|------|
+| [Exercise 1](workshop/exercise-1.md) | Reproduce the Bug | ~8 min |
+| [Exercise 2](workshop/exercise-2.md) | Agent Skills — Issue Analyzer | ~10 min |
+| [Exercise 3](workshop/exercise-3.md) | Custom Agent — Search Architect | ~12 min |
+| [Exercise 4](workshop/exercise-4.md) | Spec Kit Setup | ~5 min |
+| [Exercise 5](workshop/exercise-5.md) | Spec Kit — Constitution & Specification | ~12 min |
+| [Exercise 6](workshop/exercise-6.md) | Spec Kit — Plan & Tasks | ~10 min |
+| [Exercise 7](workshop/exercise-7.md) | Spec Kit — Implement | ~15 min |
+| [Exercise 8](workshop/exercise-8.md) | Validation & Quality Gates | ~15 min |
 
 ---
 
-## Additional Resources
+## Get Started
 
-- **Official Documentation:** [https://github.github.io/spec-kit/](https://github.github.io/spec-kit/)
-- **GitHub Repository:** [https://github.com/github/spec-kit](https://github.com/github/spec-kit)
-- **Spec-Driven Development Guide:** [spec-driven.md](https://github.com/github/spec-kit/blob/main/spec-driven.md)
-- **Video Overview:** [Watch on YouTube](https://www.youtube.com/watch?v=a9eR1xsfvHg)
+[![Use this Template](https://img.shields.io/badge/Use%20this%20Template-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=CanarysAutomations&template_name=speckit-and-beyond&owner=%40me&name=speckit-and-beyond&description=Agent-Driven+Spec+Development:+The+FlavorHub+Crisis&visibility=public)
 
+Once your repo is created, start here: [Exercise 1 — Reproduce the Bug](workshop/exercise-1.md)
 
----
-
-## 🚨 The Clock is Ticking
-
-**3:00 PM:** Crisis begins  
-**5:00 PM:** Solution deployed
-
-**You have 2 hours to save FlavorHub.**
+## Clone & Setup
 
 **Fork the repository:**
 
 
-🚀 **Begin Mission: [Exercise 1: Creating Order from Chaos](workshop/exercise-1.md)**
+## Resources
 
-500+ users are waiting. The CTO is watching. Show them what GitHub agents can do.
-
-
+- [Spec Kit Documentation](https://github.github.io/spec-kit/)
+- [GitHub Repository](https://github.com/github/spec-kit)
+- [Video Overview](https://www.youtube.com/watch?v=a9eR1xsfvHg)

@@ -1,46 +1,23 @@
-# Exercise 2: Understanding the Real Problem
+# Exercise 2: Agent Skills — Issue Analyzer
 
-> **Time:** 3:20 PM - 3:45 PM (25 minutes)  
-> **Status:** Copilot's PR ready. But should we merge it?
+> **Time:** ~10 minutes
+> **Standalone:** No prior exercises needed.
 
-## 🔍 The Situation
+## Goal
 
-**From Experiment 1:** 
-- ✅ NULL_DIETARY_BUG documented (issue #1)
-- ✅ Assigned to @copilot → **PR #2 created** (null check fix)
-- ✅ Fix is **technically correct** - stops crashes
-
-**Investigation Further:**
-- ✅ Check architecture for deeper problems first
-- ✅ Refactor once vs patch repeatedly
-- ⚠️ Takes longer, more risk
-
-**Question:** Is search.py a clean 200-line file or a 1000+ line monolith?
-
-**Mission:** Create a **Custom Architect Agent** to analyze search system architecture and discover any deeper issues.
+Create a custom agent skill that turns a raw stack trace into a structured engineering report.
 
 ---
 
-## 🎯 Learning Objectives
+## Context
 
-- ✅ Create custom agents with specialized expertise
--  Use `.agent.md` files to give agents domain knowledge
-- ✅ Perform autonomous codebase-wide analysis
-- ✅ Identify systemic issues beyond surface symptoms
+`search.py` in the recipe-manager project crashes for ~30% of users:
 
----
-
-## � Why Custom Agents?
-
-**The Problem with Generic @copilot:**
-
-- ✅ Generic @copilot sees the bug → creates null check fix → done
-- ❌ Doesn't question if the codebase has deeper issues
-- ❌ Treats every bug as isolated
-
-**Result:** You get a **quick patch** but miss systemic problems. The monolith grows, technical debt accumulates, and the next bug requires another patch.
-
-**The Solution: Custom Agents**
+```
+TypeError: 'NoneType' object is not iterable
+  File "search.py", line 447, in filter_by_dietary
+    for restriction in user.dietary_restrictions:
+```
 
 Let's create a **search-architect** agent with specialized expertise to:
 - Analyze the entire search system architecture
@@ -49,50 +26,29 @@ Let's create a **search-architect** agent with specialized expertise to:
 
 ---
 
-## 📝 Exercise 2.0: Build Search Architect Agent (10 min)
+## Steps
 
-### Task
-Create a custom agent that's an expert in search systems.
+**1.** Open Copilot Chat and click **Configure** (gear icon, top-right of the chat panel).
 
-### Steps
+Select **Skills**, then click **New Skill**.
 
-**2.0.1** Create the custom agent using Copilot Chat UI:
+![Configure Menu - Select Skills](assets/skills.png)
 
-1. Open **GitHub Copilot Chat** (Ctrl+Shift+I or Cmd+Shift+I)
+In the file dialog:
+- Navigate to `.github\skills` as the save location
+- Enter skill name: `issue-analyzer`
+- Click **Save**
 
-2. Click the **⚙️ Configure** button (top-right of chat panel)
-
-3. Select **Custom Agents** from the menu
-
-   ![Configure Menu - Select Custom Agents](assets/customagent.png)
-   *The Configure menu with Custom Agents option highlighted*
-
-4. Click **➕ New Custom Agent** button
-
-   ![New Custom Agent Button](assets/newcustomagent.png)
-   *Select "New custom agent..." to create a specialized agent*
-
-5. In the file dialog, select location:
-
-   ![Select Location Dialog](assets/githubcustomagent.png)
-   *Choose .github\agents as the location for your custom agent*
-   - Enter agent name: `search-architect`
-   - Click Save
-
-**Result:** VS Code creates `.github/agents/search-architect.agent.md` automatically
+> VS Code creates `.github/skills/issue-analyzer/SKILL.md`.
 
 ---
 
-**2.0.2** Copy the agent definition:
+**2.** Replace the entire content of `SKILL.md` with:
 
-Replace the generated template with the following content:
-
-```yaml
+```markdown
 ---
-name: search-architect
-description: Senior software architect specializing in search systems, scalability, and code architecture. Analyzes search implementations for performance, reliability, and maintainability issues.
-argument-hint: A codebase, file, or GitHub issue to analyze for architectural problems and modernization opportunities.
-# tools: Optionally enable tools if this agent needs to perform actions - leave commented out for analysis-only agents
+name: issue-analyzer
+description: Expert at diagnosing production errors, analyzing stack traces, and creating structured issue reports. Use keywords like: error analysis, stack trace, bug diagnosis, production issues.
 ---
 
 # Search Architect Agent
@@ -128,18 +84,6 @@ When analyzing search code, you autonomously:
 - **Think long-term**: What breaks at 100M users?
 ```
 
-💡 **Important:** The top section (between `---`) is YAML frontmatter that VS Code uses to register the agent. The rest defines the agent's behavior.
-
-💡 **Optional - Configure Tools:** If your agent needs to perform actions (create files, run commands, etc.), you can enable specific tools in the frontmatter by uncommenting the `tools:` line and specifying which tools to enable. For analysis-only agents like search-architect, tools are not required.
-
-   ![Configure Tools](assets/configuretools.png)
-   *Tools can be enabled in agent configuration as needed*
-
-**2.0.3** Save the file and reload VS Code window
-
-### What You Created
-A specialist agent with **deep domain expertise** in search systems.
-
 ---
 
 ## 📝 Exercise 2.1: Invoke Deep Analysis (8 min)
@@ -167,47 +111,12 @@ Users complained about slow searches before this bug appeared.
 
 ### Expected Analysis
 
-```
-ARCHITECTURAL ANALYSIS - NULL_DIETARY_BUG
-
-Current State: 1103 lines - GOD OBJECT ANTI-PATTERN
-
-What's in this file:
-- Database connection, query parsing, input validation
-- Filtering logic (5 active + 3 deprecated versions)
-- Dietary restriction handling (THE BUG: Line 447)
-- Ranking algorithms, A/B testing, response formatting
-- Caching (broken, memory leak), metrics, debug logs
-
-CRITICAL ISSUES:
-1. Line 447: Null bug crashes 23% of users
-2. God Object: 1103 lines, untestable (0% coverage)
-3. Dead code: 300+ lines of deprecated filters/algorithms
-4. 74 magic numbers hard-coded
-5. Broken caching causing memory leaks
-
-RECOMMENDATION:
-Architectural refactor into 4 modules:
-- validation_module.py (input validation, null handling)
-- filtering_module.py (clean filter functions)
-- aggregation_module.py (ranking, caching fixed)
-- formatting_module.py (response formatting)
-
-Benefits: Each module <300 lines, testable, maintainable
-Effort: 3-4 days traditional, 2 hours with Spec Kit + Agents
-
-This is an architectural crisis. Refactor is non-negotiable.
+```bash
+cd recipe-manager
+python test_bug.py
 ```
 
-### What Just Happened
-
-The agent analyzed the actual code and gave honest assessment:
-- ⚠️ **ARCHITECTURAL REFACTOR** required for 1103-line God Object
-- ⚠️ Break into 4 modules (validation, filtering, aggregation, formatting)
-- ⚠️ 3-4 days traditional, 2 hours with Spec Kit governance
-- ⚠️ Multiple systemic issues beyond just the null bug
-
-**Key Insight:** The agent provided evidence-based analysis showing this is genuinely a refactor scenario.
+Select the lines from `Testing search with user who has dietary_restrictions=None...` through the `TypeError` line from integrated terminal output.
 
 ---
 
@@ -235,71 +144,27 @@ What's non-negotiable for production search at our scale?
 ### Expected Response
 
 ```
-GOVERNANCE PRINCIPLES FOR THIS REFACTOR
-
-For breaking 1103-line monolith into 4 clean modules:
-
-1. RELIABILITY: Graceful degradation over crashes
-   - Validation at entry point (Pydantic models)
-   - Fail-safe defaults (null → empty list)
-   - Input sanitization before processing
-   - Null checks everywhere external data arrives
-
-2. ARCHITECTURE: Separation of concerns
-   - validation_module.py: Pydantic models, input validation
-   - filtering_module.py: All filter logic, no ranking
-   - aggregation_module.py: Ranking algorithms, caching
-   - formatting_module.py: Response formatting, pagination
-   - EACH module: Single responsibility, <300 lines, independently testable
-
-3. TESTABILITY: >80% code coverage
-   - Every component has unit tests
-   - Integration tests for end-to-end flows
-   - Test edge cases (null inputs, empty lists, malformed data)
-
-4. PERFORMANCE: Monitor and optimize when needed
-   - Start with simple implementation
-   - Add caching if measurements show need
-   - Database indexes for common queries
-   - Profile before optimizing
-
-For your CURRENT refactor:
-- #1 (reliability) - Fix null bug at validation entry point
-- #2 (architecture) - Break into 4 modules, remove dead code
-- #3 (testability) - Each module independently testable, >80% coverage
-- #4 (performance) - Fix caching leak, optimize filter ordering
+Look at #terminalSelection using #issue-analyzer analyse the production error
 ```
 
-**2.3.2** Note these principles - you'll use them in Experiment 3 to guide improvements.
-
-### What Just Happened
-Agent established **governance principles** for the refactor. These will guide implementation in Experiment 3-4 using Spec Kit constitution.
-
----
-
-## ✅ Checkpoint: What You Accomplished
-
-🎯 **Root cause identified**: 1103-line God Object with systemic issues  
-🎯 **Custom agent** analyzed comprehensively - recommended ARCHITECTURAL REFACTOR  
-🎯 **Learned principles**: Separation of concerns, reliability, testability, performance  
-🎯 **Clear plan**: Break into 4 modules (validation, filtering, aggregation, formatting)
-
-**Key Insight:** Evidence-based architecture review reveals when refactor is genuinely needed. This is a real architectural crisis requiring modular redesign.
-
-**Current Time:** 3:45 PM  
-**Status:** We know the problem (null bug + validation gap) and learned architectural principles.
+| Syntax | What it does |
+|--------|--------------|
+| `#terminalSelection` | Attaches the crash output you selected |
+| `#issue-analyzer` | Loads your custom skill |
 
 ---
 
-## 🚀 Next: Experiment 3
+## Expected Output
 
-In the next experiment, we'll use these principles to guide our ARCHITECTURAL REFACTOR with **Spec Kit** providing governance and structured specifications.
-
-We have principles, but no specification. How do we translate *"break into 4 modules following clean architecture"* into concrete implementation tasks?
-
-**Continue to:** [Exercise 3: Solution Design & Implementation](exercise-3.md)
-
-Time to use: **Spec Kit** for governance-driven design.
-
-
-
+```
+Title: [Search] Null handling error in dietary restrictions filter
+Severity: CRITICAL
+Root Cause: Line 447 assumes dietary_restrictions is always a list,
+            but it can be None for users with no preferences set.
+Affected Files:
+  - search.py:447  (primary failure)
+  - models.py      (User model allows None)
+Impact: ~30% of searches fail
+Immediate Fix: Add null guard before line 447
+Long-term Fix: Add a dedicated validation layer
+```

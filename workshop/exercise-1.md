@@ -1,33 +1,17 @@
-# Exercise 1: Creating Order from Chaos
+# Exercise 1: Reproduce the Bug
 
-> **Time:** 3:00 PM - 3:20 PM (20 minutes)  
-> **Crisis State:** 500+ errors, users angry, no structure
+> **Time:** ~8 minutes
+> **Standalone:** No prior exercises needed.
 
-## 🔥 The Situation
+## Goal
 
-FlavorHub's search feature crashed. Production logs show:
-```
-TypeError: 'NoneType' object is not iterable
-  File "search.py", line 116, in filter_by_dietary
-    for restriction in user.dietary_restrictions:
-```
-
-30% of searches failing. Error reports flooding Slack. No GitHub issue yet. No analysis. Just chaos.
-
-**Your mission:** Create structure from chaos using Agent Skills + GitHub MCP.
+Run the failing test, read the crash output, and locate the exact line in `search.py` that causes it.
 
 ---
 
-## 🎯 Learning Objectives
+## Steps
 
-By end of this experiment, you will:
-- ✅ Create and invoke agent skills for autonomous problem analysis
-- ✅ Use GitHub MCP to automate GitHub operations
-- ✅ Transform error logs into structured, actionable documentation
-
-**Agent Capabilities:** Agent Skills (analysis) + GitHub MCP (automation)
-
----
+**1.** Open a terminal and navigate to the recipe-manager folder:
 
 ## 📝 Exercise 1.0: Reproduce the Bug (5 min)
 
@@ -41,32 +25,18 @@ Before analyzing the error, let's reproduce it to get the actual stack trace and
 cd recipe-manager
 ```
 
-**1.0.2** Run the bug reproduction script:
+**2.** Run the bug reproduction script:
+
 ```bash
 python test_bug.py
 ```
 
-**1.0.3** Observe the output:
+**3.** Read the crash output carefully. Notice which test case crashes and what the error message says.
 
-```
-🧪 Testing with Alice (has dietary restrictions)...
-✅ Search succeeded!
+**4.** Open `recipe-manager/search.py` and jump to **line 447**:
 
-🧪 Testing search with user who has dietary_restrictions=None...
-❌ CRASH! (This is the NULL_DIETARY_BUG)
-Error: 'NoneType' object is not iterable
-
-Stack trace points to search.py line 116:
-  for restriction in user.dietary_restrictions:
-  TypeError: 'NoneType' object is not iterable
-
-🧪 Testing with Bob (SAMPLE_USERS[1])...
-❌ CRASH! Same issue as production
-```
-
-**1.0.4** Open `recipe-manager/search.py` and locate line 447 to see the problematic code:
 ```python
-for restriction in user.dietary_restrictions:  # ← CRASHES IF None!
+for restriction in user.dietary_restrictions:  # CRASHES IF None!
 ```
 
 ### What You Verified
@@ -136,18 +106,13 @@ When given error logs or stack traces, you autonomously:
 6. **Suggest immediate hotfix** and long-term solution
 7. **Recommend labels** for issue tracking
 
-## Output Format
-
-Always structure your analysis as:
-- **Title:** [Component] Brief description
-- **Severity:** Critical/High/Medium/Low
-- **Root Cause:** Technical explanation
-- **Affected Files:** List with line numbers
-- **Impact:** User-facing impact description
-- **Immediate Fix:** Quick resolution
-- **Long-term Fix:** Proper solution approach
 ```
+Testing with Alice (has dietary restrictions)...
+Search succeeded!
 
+Testing search with user who has dietary_restrictions=None...
+CRASH! (This is the NULL_DIETARY_BUG)
+Error: 'NoneType' object is not iterable
 
 ### What You Created
 An agent that thinks like a senior engineer - not just reading errors, but **analyzing root causes and impacts**.
@@ -269,57 +234,19 @@ Labels: bug, critical, production, search
 ![GitHub Issue Created](assets/issuecreated.png)
 *Issue #1 created with proper formatting and automatically assigned to @copilot*
 
-**Expected Output:**
+Testing with Bob (SAMPLE_USERS[1])...
+CRASH! Same issue as production
 ```
-✅ Created issue #1: https://github.com/Hemavathi15sg/recipe-manager/issues/1
-✅ Successfully assigned issue #1 to @copilot
-🔄 **Copilot coding agent** is analyzing the issue and will create a fix...
-```
-
-💡 **What happens next:**
-- Copilot analyzes the issue and creates **PR #2** with a quick fix (null check)
-- The fix is **technically correct** - solves the immediate crash
-- But should we merge it, or investigate deeper first?
-
-![Copilot PR Created](assets/copilotpr.png)
-*PR #2 automatically created by @copilot with the null check fix*
 
 ---
 
-## ✅ Checkpoint: What You Accomplished
+## What You Found
 
-**What We DID in Experiment 1:**
-🎯 **Bug reproduced** with test_bug.py to get actual stack trace  
-🎯 **Custom issue-analyzer skill** created for autonomous error analysis  
-🎯 **Official github-issues skill** added from GitHub's skill library  
-🎯 **Skill composition** demonstrated - two specialized skills working together  
-🎯 **MCP automation** - Issue created and assigned to @copilot in single command   
-🎯 **Copilot auto-assigned** - Will create **PR #2** automatically  
- 
+| Item | Detail |
+|------|--------|
+| Bug | `dietary_restrictions` can be `None` for users with no preferences set |
+| Location | `search.py:447` |
+| Error | `TypeError: 'NoneType' object is not iterable` |
+| Impact | ~30% of searches fail |
 
-**What We Have Now:**
-
-✅ **GitHub issue #1** documenting the NULL_DIETARY_BUG  
-✅ **PR #2 from Copilot** with null check (technically correct fix)  
-❓ **Unanswered**: Should we merge the PR or investigate deeper?
-
-
-**Strategic Question:**
-Lets merge, However should we check for deeper architectural issues? Is search.py clean or a monolith where patches hide problems?
-
-**Current Time:** 3:20 PM  
-**Status:** Crisis documented. PR ready. Need to check architecture first.
-
----
-
-## 🚀 Next: Exercise 2
-
-**Decision Point:**
-- ✅ NULL_DIETARY_BUG documented as **GitHub issue #1**
-- ✅ **PR #2** ready with null check fix
-- **merge PR #2** but **investigate deeper** - Is search.py a monolith? Are there architectural issues hiding under the surface?
-
-**Continue to:** [Exercise 2: Understanding the Real Problem](exercise-2.md)
-
-**Next Step:** Create a **Custom Architect Agent** to analyze search system architecture for deeper issues.
-
+You now have the stack trace and context needed for the next exercises.
