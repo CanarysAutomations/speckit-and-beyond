@@ -35,6 +35,7 @@ This workshop walks you through exactly that — using GitHub's agent ecosystem 
 - [Node.js 18+](https://nodejs.org/en/download) (for Copilot CLI)  
 - [GitHub MCP](https://github.com/github/github-mcp-server?tab=readme-ov-file)
 - [Python 3.11+](https://www.python.org/downloads/) (for running the recipe-manager app)
+- [UV](https://docs.astral.sh/uv/getting-started/installation/) (for installing Spec Kit)
 
 > **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
