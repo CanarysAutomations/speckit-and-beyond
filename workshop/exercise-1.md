@@ -57,8 +57,6 @@ Build an agent skill that can analyze errors intelligently.
    - Enter skill name: `issue-analyzer`
    - Click Save
 
-
-
 Edit the generated `SKILL.md` file:
 
 Replace the template content with:
