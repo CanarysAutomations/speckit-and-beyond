@@ -61,14 +61,25 @@ When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
 
 **4.** Open Copilot Chat and type `/spec` to verify the commands appear:
 
-| Command | Purpose |
-|---------|---------|
-| `/speckit.constitution` | Define governance principles |
-| `/speckit.specify` | Generate a detailed specification |
-| `/speckit.plan` | Create the technical plan |
-| `/speckit.tasks` | Break plan into tasks |
-| `/speckit.implement` | Generate code from spec |
-| `/speckit.analyze` | Validate compliance |
+**Essential commands for the Spec-Driven Development workflow:**
+
+| Command | Description |
+|---------|-------------|
+| `/speckit.constitution` | Create or update project governing principles and development guidelines |
+| `/speckit.specify` | Define what you want to build (requirements and user stories) |
+| `/speckit.plan` | Create technical implementation plans with your chosen tech stack |
+| `/speckit.tasks` | Generate actionable task lists for implementation |
+| `/speckit.implement` | Execute all tasks to build the feature according to the plan |
+
+**Optional Commands**
+
+Additional commands for enhanced quality and validation:
+
+| Command | Description |
+|---------|-------------|
+| `/speckit.clarify` | Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`) |
+| `/speckit.analyze` | Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`) |
+| `/speckit.checklist` | Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English") |
 
 ![Spec Kit slash commands](assets/specfinal.png)
 
@@ -80,4 +91,4 @@ When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
 | Project Initialization | You initialized Spec Kit in the `recipe-manager` project. |
 | Slash Commands | The `/speckit.*` commands are now available in Copilot Chat. |
 
-In the next exercises, you'll use these commands to define the refactor specification, create a plan, and implement the changes.  [Exercise 5: Spec Kit — Constitution & Specification](exercise-5.md)
+

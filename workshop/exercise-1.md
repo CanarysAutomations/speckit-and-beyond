@@ -13,8 +13,8 @@
 | Part 1 — Reproduce the Bug | Step 1 | 🟢 Mandatory | ~2 min |
 | Part 2 — Issue Analyzer Skill | Steps 2–3 | 🟡 Optional | ~3 min |
 
-> **Mandatory participants:** Complete Part 1, then move on to [Exercise 4](exercise-4.md).
-> **If time allows:** Continue with Part 2 before Exercise 4, or return to it after.
+> **Mandatory participants:** Complete Part 1, then move on to [Exercise 2](exercise-2.md).
+> **If time allows:** Continue with Part 2 before Exercise 2, or return to it after.
 
 ---
 

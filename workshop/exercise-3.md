@@ -44,7 +44,7 @@ Principles to capture:
 4. Performance — fix caching memory leak, optimize filter ordering
 5. Maintainability — remove 74 magic numbers and dead code
 
-Domain context: models.py, search.py, README.md
+Domain context: models.py, search.py, README.md,/tests
 ```
 
 > Spec Kit creates `.specify/constitution.md`.
