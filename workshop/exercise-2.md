@@ -14,7 +14,7 @@ Create a GitHub issue from the analysis using  agent skills and GitHub MCP.
 Issue details from Excercise 1 are in hand. Now, let's use GitHub MCP to create a well-formatted issue directly from our analysis, and assign it to the copilot for resolution.
 
 ---
-### Steps
+## Steps
 
 **1.** Add the GitHub Issues skill from the community library:
 
@@ -41,7 +41,7 @@ Issue details from Excercise 1 are in hand. Now, let's use GitHub MCP to create 
    - Copy the entire content
    - Paste into your `.github/skills/github-issues/references/templates.md` file (VS Code → File Explorer → .github → skills → github-issues → references → New File → templates.md)
    - Save the file
-
+---
 
 **2.** In Copilot Chat, create the issue and assign to Copilot:
 

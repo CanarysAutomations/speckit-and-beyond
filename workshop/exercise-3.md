@@ -18,7 +18,7 @@ Let's create a **search-architect** agent with specialized expertise to:
 - Recommend proper solutions, not just patches
 
 ---
-### Steps
+## Steps
 
 **1.** Build Search Architect Agent 
 
@@ -97,7 +97,7 @@ When analyzing search code, you autonomously:
 
 Save the file and reload VS Code window
 
-
+---
 **3.** Invoke Deep Analysis 
 
 Click the **Agent** dropdown and select **Custom Agent** **search-architect** from the list

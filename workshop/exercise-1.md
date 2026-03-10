@@ -10,8 +10,9 @@ Run the failing test, read the crash output, and locate the exact line in `searc
 ---
 ## Context
 The `search.py` module in the `recipe-manager` project is crashing for a significant portion of users. The crash is due to a `TypeError` caused by a `NoneType` object being treated as iterable. 
-## Steps
 
+---
+## Steps
 
 **1.** Reproduce the Bug
 

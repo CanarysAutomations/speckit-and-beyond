@@ -11,7 +11,7 @@ Install the Spec Kit CLI and initialize it in the `recipe-manager` project so th
 ## Context
 Spec Kit is a powerful tool for defining software specifications, creating implementation plans, and ensuring code quality. In this exercise, you'll set up Spec Kit in the existing `recipe-manager` project to prepare for the upcoming refactoring work.
 
-
+---
 ## Steps
 
 **1.** Install `uv` (required to install Spec Kit):
