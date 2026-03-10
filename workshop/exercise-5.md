@@ -1,109 +1,119 @@
-# Exercise 5: Spec Kit — Constitution & Specification
+# Exercise 5: Spec Kit — Implement
 
-> **Time:** ~8 minutes
-> **Prerequisite:** Spec Kit installed and initialized (`exercise-4.md`)
+> **Time:** ~10 minutes
+> **Prerequisite:** Spec Kit initialized, `specification.md` and `plan.md` created (`exercise-4.md`)
+> **Track:** 🟢 Mandatory — Part 1 | 🟡 Optional — Part 2
+
+---
+
+## Learning Path
+
+| Part | Steps | Track | Time |
+|------|-------|-------|------|
+| Part 1 — Implement Validation Module | Steps 1–3 | 🟢 Mandatory | ~7 min |
+| Part 2 — Remaining Modules | Step 4 | 🟡 Optional | ~5 min |
+
+> **Mandatory participants:** Complete Steps 1–3. Part 2 extends the same pattern to the other 3 modules — do it if time allows.
+
+---
 
 ## Goal
 
-Define the governing principles for the refactor (constitution), then generate a detailed specification of what will be built.
+Use `/speckit.implement` to generate the validation module that fixes the null crash, wire it into the existing codebase, and verify the fix.
 
 ---
 
 ## Context
 
-`search.py` is a 1006-line God Object. The plan is to split it into 4 focused modules:
-
-| Module | Responsibility |
-|--------|---------------|
-| `validation_module.py` | Input validation and null handling — **fixes the crash** |
-| `filtering_module.py` | Clean filter logic, no deprecated code |
-| `aggregation_module.py` | Ranking and caching — **fixes the memory leak** |
-| `formatting_module.py` | Response formatting only |
+Highest priority task: fix the `NULL_DIETARY_BUG` (crash at `search.py:447`) by extracting input validation into a dedicated `validation_module.py`.
 
 ---
 
-## Steps
+## Part 1 — Implement Validation Module (🟢 Mandatory)
 
-**1.** Open Copilot Chat and run:
+**1.** In Copilot Chat, run:
 
 ```
-/speckit.constitution
+/speckit.implement
 
-Context: Refactoring FlavorHub search.py into 4 clean modules.
-Principles to capture:
-1. Reliability — null-safe input validation
-2. Architecture — 4 modules, each under 300 lines
-3. Testability — >80% coverage, each module independently testable
-4. Performance — fix caching memory leak, optimize filter ordering
-5. Maintainability — remove 74 magic numbers and dead code
+Implement validation_module.py following the specification and plan.
+Requirements:
+- Fix the NULL_DIETARY_BUG (null-safe dietary_restrictions handling from line 447)
+- Add input validation for all search parameters
+- Full type hints
+- Unit tests with >80% coverage
+- Importable by search.py without breaking the existing API
 
-Domain context: models.py, search.py, README.md
+Reference: tasks.md Phase 1
 ```
 
-> Spec Kit creates `.specify/constitution.md`.
+> Copilot generates `validation_module.py` and a corresponding test file.
 
 ---
 
-**2.** Review `constitution.md`. It should define 4–5 principles every implementation decision must follow.
+**2.** Wire the new module into `search.py` using @workspace:
+
+```
+@workspace
+I have created validation_module.py.
+Update search.py to import and use it instead of the inline logic at line 447.
+Make sure api/routes.py continues to work without any changes.
+```
 
 ---
 
-**3.** In Copilot Chat, run:
+**3.** Run the tests to confirm the fix:
 
-```
-/speckit.specify
-
-Break search.py into 4 modules following the constitution:
-- validation_module.py: null-safe input handling, fixes the crash at line 447
-- filtering_module.py: active filters only, remove deprecated code
-- aggregation_module.py: ranking and caching, fix memory leak
-- formatting_module.py: response formatting, remove legacy XML support
-
-Each module must be independently testable with >80% coverage.
-Maintain full API backward compatibility.
+```bash
+cd recipe-manager
+python test_bug.py
 ```
 
-> Spec Kit creates `.specify/specification.md`.
+Expected:
+
+```
+Testing with Alice (has dietary restrictions)...
+Search succeeded!
+
+Testing search with user who has dietary_restrictions=None...
+Search succeeded!   ← NULL_DIETARY_BUG is now fixed
+
+Testing with Bob (SAMPLE_USERS[1])...
+Search succeeded!
+```
 
 ---
 
-**4.** Review `specification.md`. It defines **what** will be built — modules, responsibilities, and success criteria.
+## Part 2 — Remaining Modules (🟡 Optional)
 
----
+> Repeat the same implement-and-wire pattern for the 3 remaining modules if time allows.
 
-## Expected Output
+**4.** Repeat for the remaining modules using the same prompt pattern:
 
-`constitution.md`:
 ```
-Mission: Transform 1006-line monolith into 4 clean modules
+/speckit.implement
 
-Principles:
-  1. Modular Architecture  — 4 modules, each under 300 lines
-  2. Reliability & Safety  — input validation, null-safe operations
-  3. Clean Code Quality    — no dead code, fixed caching
-  4. Quality Standards     — >80% test coverage, 100% type hints
-  5. Deployment Safety     — backward-compatible API
-```
+Implement filtering_module.py following the specification and plan.
+Requirements:
+- Extract all active filter functions from search.py
+- Remove the 3 deprecated filter versions
+- Unit tests for each filter function
+- Same function signatures for backward compatibility
 
-`specification.md`:
-```
-4 Modules:
-  1. validation_module.py  (~200 lines) — fixes NULL_DIETARY_BUG
-  2. filtering_module.py   (~300 lines) — removes deprecated code
-  3. aggregation_module.py (~250 lines) — fixes CACHE_LEAK_BUG
-  4. formatting_module.py  (~150 lines) — removes legacy XML support
-
-Success Criteria:
-  - Each module under 300 lines
-  - Both bugs fixed with regression tests
-  - Test coverage above 80%
-  - Existing API contracts unchanged
+Reference: tasks.md Phase 2
 ```
 
-## What you Did
-| Item | Description |
-|------|-------------|
-| Constitution | Defined the core principles guiding the refactor. |
-| Specification | Created a detailed spec outlining the modules to be built and success criteria. |
+Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_module.py` (Phase 4).
 
-Next, you'll create a technical plan and break it into actionable tasks. [Exercise 6: Spec Kit — Plan & Tasks](exercise-6.md)
+
+
+## What You Did
+
+| Module | Target lines | Bug fixed | Track |
+|--------|-------------|-----------|-------|
+| `validation_module.py` | ~200 | NULL_DIETARY_BUG | 🟢 Mandatory |
+| `filtering_module.py` | ~300 | — | 🟡 Optional |
+| `aggregation_module.py` | ~250 | CACHE_LEAK_BUG | 🟡 Optional |
+| `formatting_module.py` | ~150 | — | 🟡 Optional |
+
+Next, you'll validate the refactor against the constitution using `/speckit.analyze` and generate a pre-deployment checklist with `/speckit.checklist`using Copilot CLI. [Exercise 8: Validation & Quality Gates using Copilot CLI](exercise-8.md)

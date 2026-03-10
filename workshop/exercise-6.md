@@ -1,102 +1,170 @@
-# Exercise 6: Spec Kit — Plan & Tasks
+# Exercise 6: Validation & Quality Gates using Copilot CLI
 
-> **Time:** ~7 minutes
-> **Prerequisite:** Spec Kit installed, `constitution.md` and `specification.md` created (`exercise-4.md`, `exercise-5.md`)
+> **Time:** ~15 minutes
+> **Standalone:** Can be done with any implementation. Works best after `exercise-7.md`.
+> **Track:** 🟡 Optional — Standalone
+
+---
+
+> **Note for participants:** This exercise is fully self-contained. It works best after completing Exercise 7 (Part 1 at minimum), but can be run against any existing implementation. Skip it if time is short — it extends the workflow with compliance checks, deployment checklists, and AI-powered code review.
+
+---
+
+## Learning Path
+
+| Part | Steps | Track | Time |
+|------|-------|-------|------|
+| Part 1 — Constitution Compliance | Steps 1–2 | 🟡 Optional | ~5 min |
+| Part 2 — Pre-deployment Checklist | Steps 3–4 | 🟡 Optional | ~5 min |
+| Part 3 — Code Review Assistance | Steps 5–6 | 🟡 Optional | ~5 min |
+
+---
 
 ## Goal
 
-Create a technical plan for how the refactor will be executed, then break it into concrete trackable tasks.
+Use Spec Kit's validation tools to check whether the implementation meets constitution principles — before shipping to production. Then use Copilot CLI's built-in code review capability to catch bugs and security issues across your branch changes.
 
 ---
 
 ## Context
 
-The specification defines **what** to build. This exercise creates:
-- `plan.md` — **how** to build it (migration sequence, interfaces, testing strategy)
-- `tasks.md` — the actionable backlog with acceptance criteria
+Tests pass, but does the code actually satisfy every principle in the constitution?
+Spec Kit can run a systematic compliance check and generate a pre-deployment checklist automatically. Copilot CLI can also run a dual-model code review — using Opus 4.5 for deep reasoning and Codex for code generation review — giving you a second opinion before you merge.
 
 ---
 
-## Steps
+## Setup: Copilot CLI
 
-**1.** In Copilot Chat, run:
+Install the Copilot CLI if not already installed:
 
+```bash
+npm install -g @github/copilot
 ```
-/speckit.plan
-
-Create a technical implementation plan for the 4-module refactor.
-Detail:
-- Module extraction sequence (minimize disruption to the running system)
-- Interface design between modules
-- Testing strategy per module
-- Rollout approach: gradual (one module per phase)
-
-Reference the current search.py structure and follow the constitution.
+or
+```
+# For Windows users, use winget:
+winget install GitHub.Copilot
 ```
 
-> Spec Kit creates `.specify/plan.md`.
+Select the Spec Kit agent CLI using /agent:
+
+```
+/agent
+```
+![Spec kit agent selection](assets/copilotagent.png)
+
+In the CLI, select the Spec Kit agent:
+
+![Spec Kit Agent Selection](assets/speckitanalyse.png)
 
 ---
 
-**2.** Review `plan.md`. It should outline a phased migration sequence.
+## Part 1 — Constitution Compliance (🟡 Optional)
+
+**1.** Run `/speckit.analyze` in Copilot CLI (or Copilot Chat):
+
+```
+Analyze constitution compliance for the search refactoring.
+
+Check:
+- NULL_DIETARY_BUG and CACHE_LEAK_BUG fixed with regression tests
+- All 4 modules under 300 lines with >80% test coverage
+- Type hints 100% complete
+- API backward compatible
+
+Identify any critical blockers before deployment.
+```
+
+![Running speckit.analyze](assets/speckitanalyse.png)
 
 ---
 
-**3.** In Copilot Chat, run:
-
-```
-/speckit.tasks
-
-Generate actionable implementation tasks from the plan.
-For each phase include:
-- Clear task description
-- Acceptance criteria
-- Dependencies
-
-Prioritize by: fix NULL_DIETARY_BUG first (highest user impact).
-```
-
-> Spec Kit creates `.specify/tasks.md`.
+**2.** Review the output. Note any CRITICAL or HIGH blockers.
 
 ---
 
-**4.** Review `tasks.md`. This is your implementation backlog.
+## Part 2 — Pre-deployment Checklist (🟡 Optional)
+
+**3.** Run `/speckit.checklist`:
+
+```
+Generate a pre-deployment checklist for the search refactoring.
+
+Based on the compliance analysis, create:
+1. Critical blockers that must pass before deployment
+2. Important items that should pass
+3. Nice-to-have improvements
+
+Fix all critical blockers and provide code for each fix.
+```
+
+![Running speckit.checklist](assets/speckitchecklist.png)
 
 ---
 
-## Expected Output
+**4.** Apply any fixes the agent suggests, then run the tests if necessary:
 
-`plan.md`:
-```
-5-Phase Migration Plan:
-  Phase 1 — Extract validation_module  (fixes NULL_DIETARY_BUG)
-  Phase 2 — Extract filtering_module   (clean up deprecated code)
-  Phase 3 — Extract aggregation_module (fixes CACHE_LEAK_BUG)
-  Phase 4 — Extract formatting_module  (remove XML support)
-  Phase 5 — Integration and cleanup
+```bash
+cd recipe-manager
+pytest tests/ -v --cov=. --cov-report=term-missing
 ```
 
-`tasks.md`:
+---
+
+## Part 3 — Code Review Assistance (🟡 Optional)
+
+> Use Copilot CLI's `/review` command to run a dual-model review the changes. This catches bugs, security issues, and style violations that automated tests may miss.
+>
+> Further reading: [GitHub Copilot CLI Best Practices — Code Review Assistance](https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices#code-review-assistance)
+
+**5.** In the Copilot CLI (not Chat), run the code review command:
+
 ```
-Phase 1 — Validation Module (Priority: CRITICAL)
-  Task 1.1: Create validation_module.py skeleton
-            Acceptance: File exists, imports cleanly
-  Task 1.2: Migrate null-check logic from search.py line 447
-            Acceptance: NULL_DIETARY_BUG regression test passes
-  Task 1.3: Add type hints and unit tests
-            Acceptance: >80% coverage
-
-  ... (continues for phases 2–5)
-
-Total: 22 tasks across 5 phases
+/review Use Opus 4.5 and Codex 5.2 to review the changes in my current branch against `main`. Focus on potential bugs and security issues.
 ```
 
-## What you Did
-| Item | Description |
-|------|-------------|
-| Plan Creation | You created a technical plan outlining the migration sequence, interfaces, and testing strategy
-| Task Generation | You generated a detailed backlog of implementation tasks with acceptance criteria. |
+**What's happening:**
+| Model | Role |
+|-------|------|
+| **Opus 4.5** | Deep reasoning — catches subtle logic errors, edge cases, and architecture issues |
+| **Codex 5.2** | Code generation review — flags style, naming, and implementation quality |
 
-Next, you'll implement the first phase by generating code with `/speckit.implement` and wiring it into the existing codebase.
+The review will produce findings organised by severity:
 
-[Exercise 7: Spec Kit — Implementation](exercise-7.md)
+```
+CRITICAL  — Potential null dereference in validation_module.py:42
+HIGH      — Missing type hint on public function `build_filter_query`
+MEDIUM    — Deprecated `filter_v1` still imported in search.py
+LOW       — Magic number 30 in aggregation_module.py (use named constant)
+```
+
+---
+
+**6.** Address any CRITICAL or HIGH findings. For each one you can ask Copilot inline:
+
+```
+Fix the critical finding in validation_module.py:42
+```
+
+Then re-run the tests to confirm nothing broke:
+
+```bash
+cd recipe-manager
+pytest tests/ -v
+```
+
+> **Tip:** You can switch models mid-session with `/model` if you want a faster review on a large diff. The docs recommend Codex for high-volume generation review and Opus when deep reasoning is needed.
+
+---
+
+## What You Did
+
+| Check | Tool | Track |
+|-------|------|-------|
+| Constitution compliance | `/speckit.analyze` | 🟡 Optional |
+| Pre-deployment quality gate | `/speckit.checklist` | 🟡 Optional |
+| All critical bugs have regression tests | Agent-generated tests | 🟡 Optional |
+| Coverage threshold met | `pytest --cov` | 🟡 Optional |
+| Dual-model code review (bugs & security) | `/review` (Opus 4.5 + Codex 5.2) | 🟡 Optional |
+
+Task Complete! You've validated that the refactor meets the defined principles, reviewed the changes with two AI models, and confirmed the code is ready for production deployment.

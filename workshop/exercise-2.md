@@ -1,69 +1,83 @@
-# Exercise 2: Agent Skills — GitHub MCP
+# Exercise 2: Spec Kit Setup
 
-> **Time:** ~7 minutes
+> **Time:** ~5 minutes
 > **Standalone:** No prior exercises needed.
-
-## Goal
-
-Create a GitHub issue from the analysis using  agent skills and GitHub MCP.
+> **Track:** 🟢 Mandatory — Required for Exercises 3, 4, and 5
 
 ---
 
-## Context
+> **Note for participants:** This is a required setup exercise. Exercises 5, 6, and 7 all depend on Spec Kit being installed. Complete this before moving to any of those exercises.
 
-Issue details from Excercise 1 are in hand. Now, let's use GitHub MCP to create a well-formatted issue directly from our analysis, and assign it to the copilot for resolution.
+---
+
+## Goal
+
+Install the Spec Kit CLI and initialize it in the `recipe-manager` project so the `/speckit.*` slash commands are available in Copilot Chat.
+
+---
+## Context
+Spec Kit is a powerful tool for defining software specifications, creating implementation plans, and ensuring code quality. In this exercise, you'll set up Spec Kit in the existing `recipe-manager` project to prepare for the upcoming refactoring work.
 
 ---
 ## Steps
 
-**1.** Add the GitHub Issues skill from the community library:
+**1.** Install `uv` (required to install Spec Kit):
 
-1. Visit [GitHub's Awesome Copilot Skills Library](https://github.com/github/awesome-copilot/tree/main/skills/github-issues)
+```bash
+# Windows — run in PowerShell
+winget install astral-sh.uv
 
-   ![Awesome Copilot Skills](assets/awesomeskills.png)
-   *GitHub's official skills library with community-contributed skills*
-
-2. Create the `github-issues` skill folder structure in your repo inside VS Code or terminal with the following command:
-   ```bash
-   mkdir -p .github/skills/github-issues/references
-   ```
-
-3. Copy the official SKILL.md from GitHub:
-   - Navigate to the `github-issues` skill in the [Awesome Copilot Skills repository](https://github.com/github/awesome-copilot/blob/main/skills/github-issues/SKILL.md)
-   - Click **Raw** button to view the raw markdown
-   - Copy the entire content
-   - Paste into your `.github/skills/github-issues/SKILL.md` file (VS Code → File Explorer → .github → skills → github-issues → New File → SKILL.md)
-   - Save the file
-
-4. Copy the reference template:
-   - Navigate to [issue-template.md](https://github.com/github/awesome-copilot/blob/main/skills/github-issues/references/templates.md) in the same repository
-   - Click **Raw** button
-   - Copy the entire content
-   - Paste into your `.github/skills/github-issues/references/templates.md` file (VS Code → File Explorer → .github → skills → github-issues → references → New File → templates.md)
-   - Save the file
----
-
-**2.** In Copilot Chat, create the issue and assign to Copilot:
-
-**Note** When you run the below command, use **#** it refers to list of folders/files so select the appropriate one from the dropdown. 
-
-![Awesome Copilot Skill selection](assets/skillselect.png)
-   *GitHub's official skills library with community-contributed skills*
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-Create a GitHub issue based on the #file:issue-analyzer analysis, Use #file:github-issues format and use #mcp_github_assign_copilot_to_issue to fix the issue.
+After installation, you may need to restart your terminal or add `uv` to your PATH. Verify installation:
+
+```bash
+uv --version
 ```
-
-![GitHub Issue Created](assets/issuecreated.png)
-*Issue created with proper formatting and automatically assigned to @copilot*
-
 
 ---
 
-## What you Did
-| Item | Detail |
-|------|--------|     
-| Skill Creation | Used a custom skill from skills library |
-| GitHub MCP | Used GitHub MCP to create and assign an issue based on the analysis |  
+**2.** Install Spec Kit:
+
+```bash
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+```
+
+---
+
+**3.** Initialize Spec Kit in the project:
 
 
-Next do deep analysis using custom agent [Exercise 3: Custom Agent — Search Architect](exercise-3.md)
+```bash
+specify init --here
+```
+
+When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
+
+![Spec Kit initialization prompt](assets/specsamerepo.png)
+
+---
+
+**4.** Open Copilot Chat and type `/spec` to verify the commands appear:
+
+| Command | Purpose |
+|---------|---------|
+| `/speckit.constitution` | Define governance principles |
+| `/speckit.specify` | Generate a detailed specification |
+| `/speckit.plan` | Create the technical plan |
+| `/speckit.tasks` | Break plan into tasks |
+| `/speckit.implement` | Generate code from spec |
+| `/speckit.analyze` | Validate compliance |
+
+![Spec Kit slash commands](assets/specfinal.png)
+
+---
+## What you did
+|Item|Description|
+|----|-----------|
+| Spec Kit Installation | You installed the Spec Kit CLI using `uv`. |
+| Project Initialization | You initialized Spec Kit in the `recipe-manager` project. |
+| Slash Commands | The `/speckit.*` commands are now available in Copilot Chat. |
+
+In the next exercises, you'll use these commands to define the refactor specification, create a plan, and implement the changes.  [Exercise 5: Spec Kit — Constitution & Specification](exercise-5.md)

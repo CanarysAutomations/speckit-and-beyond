@@ -1,103 +1,77 @@
-# Exercise 8: Validation & Quality Gates using Copilot CLI
+# Exercise 8: Agent Skills — GitHub MCP
 
-> **Time:** ~10 minutes
-> **Standalone:** Can be done with any implementation. Works best after `exercise-7.md`.
+> **Time:** ~7 minutes
+> **Standalone:** No prior exercises needed.
+> **Track:** 🟡 Optional — Standalone
+
+---
+
+> **Note for participants:** This exercise is fully self-contained and has no dependencies on other exercises. Complete it any time — before, after, or between the mandatory exercises. Skip it if time is short and return later.
+
+---
 
 ## Goal
-
-Use Spec Kit's validation tools to check whether the implementation meets constitution principles — before shipping to production.
-
+Use GitHub MCP to create a well-formatted issue directly from an analysis, and assign it to the copilot for resolution.
 ---
 
 ## Context
 
-Tests pass, but does the code actually satisfy every principle in the constitution?
-Spec Kit can run a systematic compliance check and generate a pre-deployment checklist automatically.
+Issue details from Excercise 1 are in hand. Now, let's use GitHub MCP to create a well-formatted issue directly from our analysis, and assign it to the copilot for resolution.
 
 ---
-
-## Setup: Copilot CLI
-
-Install the Copilot CLI if not already installed:
-
-```bash
-npm install -g @github/copilot
-```
-or
-```
-# For Windows users, use winget:
-winget install GitHub.Copilot
-```
-
-Select the Spec Kit agent CLI using /agent:
-
-```
-/agent
-```
-![Spec kit agent selection](assets/copilotagent.png)
-
-In the CLI, select the Spec Kit agent:
-
-![Spec Kit Agent Selection](assets/speckitanalyse.png)
-
----
-
 ## Steps
 
-**1.** Run `/speckit.analyze` in Copilot CLI (or Copilot Chat):
+**1.** Add the GitHub Issues skill from the community library:
 
+1. Visit [GitHub's Awesome Copilot Skills Library](https://github.com/github/awesome-copilot/tree/main/skills/github-issues)
+
+   ![Awesome Copilot Skills](assets/awesomeskills.png)
+
+<br />
+*GitHub's official skills library with community-contributed skills*
+
+2. Create the `github-issues` skill folder structure in your repo inside VS Code or terminal with the following command:
+   ```bash
+   mkdir -p .github/skills/github-issues/references
+   ```
+
+3. Copy the official SKILL.md from GitHub:
+   - Navigate to the `github-issues` skill in the [Awesome Copilot Skills repository](https://github.com/github/awesome-copilot/blob/main/skills/github-issues/SKILL.md)
+   - Click **Raw** button to view the raw markdown
+   - Copy the entire content
+   - Paste into your `.github/skills/github-issues/SKILL.md` file (VS Code → File Explorer → .github → skills → github-issues → New File → SKILL.md)
+   - Save the file
+
+4. Copy the reference template:
+   - Navigate to [issue-template.md](https://github.com/github/awesome-copilot/blob/main/skills/github-issues/references/templates.md) in the same repository
+   - Click **Raw** button
+   - Copy the entire content
+   - Paste into your `.github/skills/github-issues/references/templates.md` file (VS Code → File Explorer → .github → skills → github-issues → references → New File → templates.md)
+   - Save the file
+---
+
+**2.** In Copilot Chat, create the issue and assign to Copilot:
+
+**Note** When you run the below command, use **#** it refers to list of folders/files so select the appropriate one from the dropdown. 
+
+   ![Awesome Copilot Skill selection](assets/skillselect.png)
+
+*GitHub's official skills library with community-contributed skills*
 ```
-Analyze constitution compliance for the search refactoring.
-
-Check:
-- NULL_DIETARY_BUG and CACHE_LEAK_BUG fixed with regression tests
-- All 4 modules under 300 lines with >80% test coverage
-- Type hints 100% complete
-- API backward compatible
-
-Identify any critical blockers before deployment.
+Create a GitHub issue based on the #file:issue-analyzer analysis, Use #file:github-issues format and use #mcp_github_assign_copilot_to_issue to fix the issue.
 ```
 
-![Running speckit.analyze](assets/speckitanalyse.png)
+![GitHub Issue Created](assets/issuecreated.png)
+*Issue created with proper formatting and automatically assigned to @copilot*
+
 
 ---
 
-**2.** Review the output. Note any CRITICAL or HIGH blockers.
+## What you Did
+| Item | Detail |
+|------|--------|     
+| Skill Creation | Used a custom skill from skills library |
+| GitHub MCP | Used GitHub MCP to create and assign an issue based on the analysis |  
 
----
 
-**3.** Run `/speckit.checklist`:
-
-```
-Generate a pre-deployment checklist for the search refactoring.
-
-Based on the compliance analysis, create:
-1. Critical blockers that must pass before deployment
-2. Important items that should pass
-3. Nice-to-have improvements
-
-Fix all critical blockers and provide code for each fix.
-```
-
-![Running speckit.checklist](assets/speckitchecklist.png)
-
----
-
-**4.** Apply any fixes the agent suggests, then run the tests if necessary:
-
-```bash
-cd recipe-manager
-pytest tests/ -v --cov=. --cov-report=term-missing
-```
----
-
-## What You Did
-
-| Check | Tool |
-|-------|------|
-| Constitution compliance | `/speckit.analyze` |
-| Pre-deployment quality gate | `/speckit.checklist` |
-| All critical bugs have regression tests | Agent-generated tests |
-| Coverage threshold met | `pytest --cov` |
-
-Task Complete! You've validated that the refactor meets the defined principles and is ready for production deployment.
+Next do deep analysis using custom agent [Exercise 3: Custom Agent — Search Architect](exercise-3.md)

@@ -1,101 +1,107 @@
-# Exercise 7: Spec Kit — Implement
+# Exercise 7: Custom Agent — Search Architect
 
-> **Time:** ~10 minutes
-> **Prerequisite:** Spec Kit initialized, `specification.md` and `plan.md` created (`exercise-4.md` through `exercise-6.md`)
+> **Time:** ~8 minutes
+> **Standalone:** No prior exercises needed.
+> **Track:** 🟡 Optional — Standalone
+
+---
+
+> **Note for participants:** This exercise is fully self-contained and has no dependencies on other exercises. Complete it any time — before, after, or between the mandatory exercises. Skip it if time is short and return later.
+
+---
 
 ## Goal
 
-Use `/speckit.implement` to generate the validation module that fixes the null crash, wire it into the existing codebase, and verify the fix.
+Create a custom agent skill that turns a raw stack trace into a structured engineering report.
 
 ---
 
 ## Context
 
-Highest priority task: fix the `NULL_DIETARY_BUG` (crash at `search.py:447`) by extracting input validation into a dedicated `validation_module.py`.
+`search.py` in the recipe-manager project crashes for ~30% of users:
+Let's create a **search-architect** agent with specialized expertise to:
+- Analyze the entire search system architecture
+- Identify root causes at the design level
+- Recommend proper solutions, not just patches
 
 ---
-
 ## Steps
 
-**1.** In Copilot Chat, run:
+**1.** Build Search Architect Agent 
 
-```
-/speckit.implement
+Create the custom agent using Copilot Chat UI:
 
-Implement validation_module.py following the specification and plan.
-Requirements:
-- Fix the NULL_DIETARY_BUG (null-safe dietary_restrictions handling from line 447)
-- Add input validation for all search parameters
-- Full type hints
-- Unit tests with >80% coverage
-- Importable by search.py without breaking the existing API
+1. Open **GitHub Copilot Chat** (Ctrl+Shift+I or Cmd+Shift+I)
 
-Reference: tasks.md Phase 1
-```
+2. Click the **⚙️ Configure** button (top-right of chat panel)
 
-> Copilot generates `validation_module.py` and a corresponding test file.
+3. Select **Custom Agents** from the menu
 
----
+   ![Configure Menu - Select Custom Agents](assets/customagent.png)
+   *The Configure menu with Custom Agents option highlighted*
 
-**2.** Wire the new module into `search.py` using @workspace:
+4. Click **➕ New Custom Agent** button
 
-```
-@workspace
-I have created validation_module.py.
-Update search.py to import and use it instead of the inline logic at line 447.
-Make sure api/routes.py continues to work without any changes.
-```
+   ![New Custom Agent Button](assets/newcustomagent.png)
+   *Select "New custom agent..." to create a specialized agent*
+
+5. In the file dialog, select location:
+
+   ![Select Location Dialog](assets/githubcustomagent.png)
+   *Choose .github\agents as the location for your custom agent*
+   - Enter agent name: `search-architect`
+   - Click Save
 
 ---
 
-**3.** Run the tests to confirm the fix:
+**2.** Copy the agent definition:
 
-```bash
-cd recipe-manager
-python test_bug.py
-```
+Replace the generated template with the following content:
 
-Expected:
-
-```
-Testing with Alice (has dietary restrictions)...
-Search succeeded!
-
-Testing search with user who has dietary_restrictions=None...
-Search succeeded!   ← NULL_DIETARY_BUG is now fixed
-
-Testing with Bob (SAMPLE_USERS[1])...
-Search succeeded!
-```
-
+```yaml
+---
+name: search-architect
+description: Senior software architect specializing in search systems, scalability, and code architecture. Analyzes search implementations for performance, reliability, and maintainability issues.
+argument-hint: A codebase, file, or GitHub issue to analyze for architectural problems and modernization opportunities.
+#tools: Optionally enable tools if this agent needs to perform actions - leave commented out for analysis-only agents
 ---
 
-**4.** Repeat for the remaining modules using the same prompt pattern:
+# Search Architect Agent
 
+## Identity
+You are a senior software architect specializing in search systems, scalability, and maintainability.
+
+## Expertise
+- Search algorithm design and optimization
+- Code architecture patterns and anti-patterns
+- Performance analysis and bottleneck identification
+- Reliability and fault tolerance patterns
+
+## Context: FlavorHub Recipe Manager
+- 2M recipes in database
+- 10M monthly active users
+- Current search: filter-based, file-based implementation
+- Tech stack: Python 3.11, FastAPI, PostgreSQL
+
+## Your Mission
+When analyzing search code, you autonomously:
+1. Evaluate architecture (monolith vs modular)
+2. Identify performance bottlenecks
+3. Find reliability issues (not just the reported bug)
+4. Assess code maintainability and testability
+5. Recommend modernization strategy with priorities
+6. Document findings in `search-architect-report.md` in the repo
+
+## Behavior
+- **Scan entire subsystem**, not just bug location
+- **Provide concrete evidence** from actual code
+- **Prioritize recommendations** by business impact
+- **Think long-term**: What breaks at 100M users?
 ```
-/speckit.implement
 
-Implement filtering_module.py following the specification and plan.
-Requirements:
-- Extract all active filter functions from search.py
-- Remove the 3 deprecated filter versions
-- Unit tests for each filter function
-- Same function signatures for backward compatibility
+   ![Configure Tools](assets/configuretools.png)
+   *Tools can be enabled in agent configuration as needed*
 
-Reference: tasks.md Phase 2
-```
+Save the file and reload VS Code window
 
-Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_module.py` (Phase 4).
-
-
-
-## What You Did
-
-| Module | Target lines | Bug fixed |
-|--------|-------------|-----------|
-| `validation_module.py` | ~200 | NULL_DIETARY_BUG |
-| `filtering_module.py` | ~300 | — |
-| `aggregation_module.py` | ~250 | CACHE_LEAK_BUG |
-| `formatting_module.py` | ~150 | — |
-
-Next, you'll validate the refactor against the constitution using `/speckit.analyze` and generate a pre-deployment checklist with `/speckit.checklist`using Copilot CLI. [Exercise 8: Validation & Quality Gates using Copilot CLI](exercise-8.md)
+---
