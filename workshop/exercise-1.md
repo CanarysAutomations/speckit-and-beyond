@@ -59,8 +59,6 @@ Build an agent skill that can analyze errors intelligently.
 
 
 
----
-
 Edit the generated `SKILL.md` file:
 
 Replace the template content with:
@@ -90,7 +88,7 @@ When given error logs or stack traces, you autonomously:
 
 **3.** Invoke the Skill 
 
-Open Copilot Chat and invoke your skill:
+Open Copilot Chat and paste your prompt:
 ```
 Look at #terminalSelection using #issue-analyzer analyse the errors
 ```

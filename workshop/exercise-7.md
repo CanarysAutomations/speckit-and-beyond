@@ -87,7 +87,7 @@ Reference: tasks.md Phase 2
 
 Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_module.py` (Phase 4).
 
----
+
 
 ## What You Did
 
