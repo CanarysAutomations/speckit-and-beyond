@@ -155,6 +155,20 @@ pytest tests/ -v
 
 > **Tip:** You can switch models mid-session with `/model` if you want a faster review on a large diff. The docs recommend Codex for high-volume generation review and Opus when deep reasoning is needed.
 
+## Part 4 — Delegate using Copilot CLI
+*It demonstrates how to delegate specific tasks to Copilot CLI agents, such as generating a structured logging system for the FastAPI API.*
+> **Note:** Coding agent has to be enabled in your Copilot settings for your repository.
+```
+/delegate Design a structured logging system for the FastAPI recipe-search API.
+Include:
+- JSON-formatted logs for machine parsing
+- Request correlation IDs (trace same user across logs)
+- Latency tracking (search duration, database query time)
+- Error categorization and context
+- Log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
+```
+We have constitution principles around maintainability and observability. A structured logging system that provides rich context and is easy to query would help us meet those principles.
+
 ---
 
 ## What You Did
@@ -166,5 +180,6 @@ pytest tests/ -v
 | All critical bugs have regression tests | Agent-generated tests | 🟡 Optional |
 | Coverage threshold met | `pytest --cov` | 🟡 Optional |
 | Dual-model code review (bugs & security) | `/review` (Opus 4.5 + Codex 5.2) | 🟡 Optional |
+| Task delegation | `/delegate` | 🟡 Optional |
 
 Task Complete! You've validated that the refactor meets the defined principles, reviewed the changes with two AI models, and confirmed the code is ready for production deployment.
