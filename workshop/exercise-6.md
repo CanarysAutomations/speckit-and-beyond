@@ -182,4 +182,4 @@ We have constitution principles around maintainability and observability. A stru
 | Dual-model code review (bugs & security) | `/review` (Opus 4.5 + Codex 5.2) | 🟡 Optional |
 | Task delegation | `/delegate` | 🟡 Optional |
 
-Task Complete! You've validated that the refactor meets the defined principles, reviewed the changes with two AI models, and confirmed the code is ready for production deployment.
+Task Complete! You've validated that the refactor meets the defined principles, reviewed the changes with two AI models, Delegated task to the Coding agent and confirmed the code is ready for production deployment.

@@ -49,7 +49,7 @@ Read the crash output carefully. Notice which test case crashes and what the err
 
 ## Part 2 — Create Issue Analyzer Skill (🟡 Optional)
 
-> This part is self-contained and can be done any time. Skip to [Exercise 4](exercise-4.md) if time is short.
+> This part is self-contained and can be done any time. Skip to [Exercise 2](exercise-2.md) if time is short.
 
 **2.**  Create Issue Analyzer Skill 
 

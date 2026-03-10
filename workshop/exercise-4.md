@@ -37,8 +37,6 @@ Detail:
 - Interface design between modules
 - Testing strategy per module
 - Rollout approach: gradual (one module per phase)
-
-Reference the current search.py structure and follow the constitution.
 ```
 
 > Spec Kit creates `.specify/plan.md`.
