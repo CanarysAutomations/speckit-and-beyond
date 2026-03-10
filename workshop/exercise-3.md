@@ -1,129 +1,116 @@
-# Exercise 3: Custom Agent — Search Architect
+# Exercise 3: Spec Kit — Constitution & Specification
 
 > **Time:** ~8 minutes
-> **Standalone:** No prior exercises needed.
+> **Prerequisite:** Spec Kit installed and initialized (`exercise-2.md`)
+> **Track:** 🟢 Mandatory — Required for Exercises 4 and 5
+
+---
+
+> **Note for participants:** This exercise builds on Exercise 2 and is required before you can do Exercises 4 and 5. The outputs (`constitution.md` and `specification.md`) are referenced in the planning and implementation steps.
+
+---
 
 ## Goal
 
-Create a custom agent skill that turns a raw stack trace into a structured engineering report.
+Define the governing principles for the refactor (constitution), then generate a detailed specification of what will be built.
 
 ---
 
 ## Context
 
-`search.py` in the recipe-manager project crashes for ~30% of users:
-Let's create a **search-architect** agent with specialized expertise to:
-- Analyze the entire search system architecture
-- Identify root causes at the design level
-- Recommend proper solutions, not just patches
+`search.py` is a 1006-line God Object. The plan is to split it into 4 focused modules:
+
+| Module | Responsibility |
+|--------|---------------|
+| `validation_module.py` | Input validation and null handling — **fixes the crash** |
+| `filtering_module.py` | Clean filter logic, no deprecated code |
+| `aggregation_module.py` | Ranking and caching — **fixes the memory leak** |
+| `formatting_module.py` | Response formatting only |
 
 ---
+
 ## Steps
 
-**1.** Build Search Architect Agent 
+**1.** Open Copilot Chat and run:
 
-Create the custom agent using Copilot Chat UI:
+```
+/speckit.constitution
 
-1. Open **GitHub Copilot Chat** (Ctrl+Shift+I or Cmd+Shift+I)
+Context: Refactoring FlavorHub search.py into 4 clean modules.
+Principles to capture:
+1. Reliability — null-safe input validation
+2. Architecture — 4 modules, each under 300 lines
+3. Testability — >80% coverage, each module independently testable
+4. Performance — fix caching memory leak, optimize filter ordering
+5. Maintainability — remove 74 magic numbers and dead code
 
-2. Click the **⚙️ Configure** button (top-right of chat panel)
-
-3. Select **Custom Agents** from the menu
-
-   ![Configure Menu - Select Custom Agents](assets/customagent.png)
-   *The Configure menu with Custom Agents option highlighted*
-
-4. Click **➕ New Custom Agent** button
-
-   ![New Custom Agent Button](assets/newcustomagent.png)
-   *Select "New custom agent..." to create a specialized agent*
-
-5. In the file dialog, select location:
-
-   ![Select Location Dialog](assets/githubcustomagent.png)
-   *Choose .github\agents as the location for your custom agent*
-   - Enter agent name: `search-architect`
-   - Click Save
-
----
-
-**2.** Copy the agent definition:
-
-Replace the generated template with the following content:
-
-```yaml
----
-name: search-architect
-description: Senior software architect specializing in search systems, scalability, and code architecture. Analyzes search implementations for performance, reliability, and maintainability issues.
-argument-hint: A codebase, file, or GitHub issue to analyze for architectural problems and modernization opportunities.
-#tools: Optionally enable tools if this agent needs to perform actions - leave commented out for analysis-only agents
----
-
-# Search Architect Agent
-
-## Identity
-You are a senior software architect specializing in search systems, scalability, and maintainability.
-
-## Expertise
-- Search algorithm design and optimization
-- Code architecture patterns and anti-patterns
-- Performance analysis and bottleneck identification
-- Reliability and fault tolerance patterns
-
-## Context: FlavorHub Recipe Manager
-- 2M recipes in database
-- 10M monthly active users
-- Current search: filter-based, file-based implementation
-- Tech stack: Python 3.11, FastAPI, PostgreSQL
-
-## Your Mission
-When analyzing search code, you autonomously:
-1. Evaluate architecture (monolith vs modular)
-2. Identify performance bottlenecks
-3. Find reliability issues (not just the reported bug)
-4. Assess code maintainability and testability
-5. Recommend modernization strategy with priorities
-6. Document findings in `search-architect-report.md` in the repo
-
-## Behavior
-- **Scan entire subsystem**, not just bug location
-- **Provide concrete evidence** from actual code
-- **Prioritize recommendations** by business impact
-- **Think long-term**: What breaks at 100M users?
+Domain context: models.py, search.py, README.md
 ```
 
-   ![Configure Tools](assets/configuretools.png)
-   *Tools can be enabled in agent configuration as needed*
-
-Save the file and reload VS Code window
+> Spec Kit creates `.specify/constitution.md`.
 
 ---
-**3.** Invoke Deep Analysis 
 
-Click the **Agent** dropdown and select **Custom Agent** **search-architect** from the list
-
-   ![Select Search Architect Agent](assets/customarchitectagent.png)
-   *The search-architect custom agent available in the agents dropdown*
-
-**3.** Enter your prompt:
-```
-Review Null dietary issue and analyze search.py comprehensively. 
-The null handling bug is just a symptom - what's the real architectural state?
-
-Context: search.py has grown to 1103 lines over 18 months. 
-Users complained about slow searches before this bug appeared.
-```
+**2.** Review `constitution.md`. It should define 4–5 principles every implementation decision must follow.
 
 ---
+
+**3.** In Copilot Chat, run:
+
+```
+/speckit.specify
+
+Break search.py into 4 modules following the constitution:
+- validation_module.py: null-safe input handling, fixes the crash at line 447
+- filtering_module.py: active filters only, remove deprecated code
+- aggregation_module.py: ranking and caching, fix memory leak
+- formatting_module.py: response formatting, remove legacy XML support
+
+Each module must be independently testable with >80% coverage.
+Maintain full API backward compatibility.
+```
+
+> Spec Kit creates `.specify/specification.md`.
+
+---
+
+**4.** Review `specification.md`. It defines **what** will be built — modules, responsibilities, and success criteria.
+
+---
+
+## Expected Output
+
+`constitution.md`:
+```
+Mission: Transform 1006-line monolith into 4 clean modules
+
+Principles:
+  1. Modular Architecture  — 4 modules, each under 300 lines
+  2. Reliability & Safety  — input validation, null-safe operations
+  3. Clean Code Quality    — no dead code, fixed caching
+  4. Quality Standards     — >80% test coverage, 100% type hints
+  5. Deployment Safety     — backward-compatible API
+```
+
+`specification.md`:
+```
+4 Modules:
+  1. validation_module.py  (~200 lines) — fixes NULL_DIETARY_BUG
+  2. filtering_module.py   (~300 lines) — removes deprecated code
+  3. aggregation_module.py (~250 lines) — fixes CACHE_LEAK_BUG
+  4. formatting_module.py  (~150 lines) — removes legacy XML support
+
+Success Criteria:
+  - Each module under 300 lines
+  - Both bugs fixed with regression tests
+  - Test coverage above 80%
+  - Existing API contracts unchanged
+```
+
 ## What you Did
-|Item|Description|
-|----|-----------|
-| Custom Agent Creation | You created a custom agent with specific expertise in search systems architecture. |
-| Deep Analysis | You invoked the agent to perform a comprehensive analysis of the search codebase, going beyond just the immediate bug. |
+| Item | Description |
+|------|-------------|
+| Constitution | Defined the core principles guiding the refactor. |
+| Specification | Created a detailed spec outlining the modules to be built and success criteria. |
 
-Next Use Speckit for governance and specification based on the architect's findings. [Exercise 4: Spec Kit Setup](exercise-4.md)
-
-
-
-
-
+Next, you'll create a technical plan and break it into actionable tasks. [Exercise 6: Spec Kit — Plan & Tasks](exercise-6.md)

@@ -34,27 +34,42 @@ This workshop walks you through exactly that — using GitHub's agent ecosystem 
 - [GitHub CLI](https://cli.github.com/) for MCP interactions 
 - [Node.js 18+](https://nodejs.org/en/download) (for Copilot CLI)  
 - [GitHub MCP](https://github.com/github/github-mcp-server?tab=readme-ov-file)
+
 > **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
 ---
 
-## The Exercises
+## Workshop Structure
 
-All exercises are **standalone** — you can start any one without completing the others first.
+The workshop is designed with **flexible learning paths**:
 
-| Exercise | Topic | Time |
-|----------|-------|------|
-| [Exercise 1](workshop/exercise-1.md) | Reproduce the Bug | ~5 min |
-| [Exercise 2](workshop/exercise-2.md) | Agent Skills — GitHub MCP | ~7 min |
-| [Exercise 3](workshop/exercise-3.md) | Custom Agent — Search Architect | ~8 min |
-| [Exercise 4](workshop/exercise-4.md) | Spec Kit Setup | ~5 min |
-| [Exercise 5](workshop/exercise-5.md) | Spec Kit — Constitution & Specification | ~8 min |
-| [Exercise 6](workshop/exercise-6.md) | Spec Kit — Plan & Tasks | ~7 min |
-| [Exercise 7](workshop/exercise-7.md) | Spec Kit — Implement | ~10 min |
-| [Exercise 8](workshop/exercise-8.md) | Validation & Quality Gates using Copilot CLI | ~10 min |
+### 🟢 Mandatory Core Path (~29 minutes)
+Complete this path to experience the full Spec Kit workflow — from bug reproduction to a working fix:
 
-> The workshop has been tested with the following AI models on GitHub Copilot: `Claude Sonnet 4.6`,`GPT-5.3-codex`. Results may vary with different models. If you encounter issues, try switching to one of these models in your Copilot settings.
+| Step | Exercise | Topic | Time |
+|------|----------|-------|------|
+| 1 | [Exercise 1 — Part 1](workshop/exercise-1.md#part-1--reproduce-the-bug--mandatory) | Reproduce the Bug | ~2 min |
+| 2 | [Exercise 2](workshop/exercise-2.md) | Spec Kit Setup | ~5 min |
+| 3 | [Exercise 3](workshop/exercise-3.md) | Constitution & Specification | ~8 min |
+| 4 | [Exercise 4](workshop/exercise-4.md) | Plan & Tasks | ~7 min |
+| 5 | [Exercise 5 — Part 1](workshop/exercise-5.md#part-1--implement-validation-module--mandatory) | Implement Validation Module | ~7 min |
+| — | **Total** | **Everyone should complete this** | **~29 min** |
 
+### 🟡 Optional Exploration (~38 minutes)
+Explore these exercises in any order. They are fully self-contained with no dependencies on each other:
+
+| Exercise | Topic | Time | Focus |
+|----------|-------|------|-------|
+| [Exercise 1 — Part 2](workshop/exercise-1.md#part-2--create-issue-analyzer-skill--optional) | Issue Analyzer Skill | ~3 min | Error diagnosis |
+| [Exercise 5 — Part 2](workshop/exercise-5.md#part-2--remaining-modules--optional) | Implement Remaining Modules | ~5 min | Complete refactor |
+| [Exercise 6](workshop/exercise-6.md) | Validation & Quality Gates + Code Review | ~15 min | Pre-deployment checks |
+| [Exercise 7](workshop/exercise-7.md) | Custom Agent — Search Architect | ~8 min | Domain expertise |
+| [Exercise 8](workshop/exercise-8.md) | Agent Skills — GitHub MCP | ~7 min | Issue automation |
+
+> **Pro Tip:** Complete the mandatory core path first (~29 min), then pick optional exercises based on what interests you most. If time is short, you can revisit them after the workshop.
+
+---
+> The workshop has been tested with the following AI models on GitHub Copilot: `Claude Sonnet 4.6`, `GPT-5.3-codex`. Results may vary with different models. If you encounter issues, try switching to one of these models in your Copilot settings.
 
 ---
 
@@ -64,13 +79,9 @@ All exercises are **standalone** — you can start any one without completing th
 
 Once your repo is created, start here: [Exercise 1 — Reproduce the Bug](workshop/exercise-1.md)
 
-## Clone & Setup
-
-**Fork the repository:**
-
-
 ## Resources
 
 - [Spec Kit Documentation](https://github.github.io/spec-kit/)
 - [GitHub Repository](https://github.com/github/spec-kit)
 - [Video Overview](https://www.youtube.com/watch?v=a9eR1xsfvHg)
+- [GitHub Copilot CLI Best Practices](https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices)

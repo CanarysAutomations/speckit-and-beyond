@@ -1,76 +1,109 @@
-# Exercise 4: Spec Kit Setup
+# Exercise 4: Spec Kit — Plan & Tasks
 
-> **Time:** ~5 minutes
-> **Standalone:** No prior exercises needed.
+> **Time:** ~7 minutes
+> **Prerequisite:** Spec Kit installed, `constitution.md` and `specification.md` created (`exercise-3.md`, `exercise-4.md`)
+> **Track:** 🟢 Mandatory — Required for Exercise 5
+
+---
+
+> **Note for participants:** This exercise depends on the outputs of Exercises 3 and 4. The `plan.md` and `tasks.md` files generated here are referenced during implementation in Exercise 5.
+
+---
 
 ## Goal
 
-Install the Spec Kit CLI and initialize it in the `recipe-manager` project so the `/speckit.*` slash commands are available in Copilot Chat.
+Create a technical plan for how the refactor will be executed, then break it into concrete trackable tasks.
 
 ---
+
 ## Context
-Spec Kit is a powerful tool for defining software specifications, creating implementation plans, and ensuring code quality. In this exercise, you'll set up Spec Kit in the existing `recipe-manager` project to prepare for the upcoming refactoring work.
+
+The specification defines **what** to build. This exercise creates:
+- `plan.md` — **how** to build it (migration sequence, interfaces, testing strategy)
+- `tasks.md` — the actionable backlog with acceptance criteria
 
 ---
+
 ## Steps
 
-**1.** Install `uv` (required to install Spec Kit):
+**1.** In Copilot Chat, run:
 
-```bash
-# Windows — run in PowerShell
-winget install astral-sh.uv
-
-# macOS / Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-After installation, you may need to restart your terminal or add `uv` to your PATH. Verify installation:
+/speckit.plan
 
-```bash
-uv --version
+Create a technical implementation plan for the 4-module refactor.
+Detail:
+- Module extraction sequence (minimize disruption to the running system)
+- Interface design between modules
+- Testing strategy per module
+- Rollout approach: gradual (one module per phase)
+
+Reference the current search.py structure and follow the constitution.
 ```
+
+> Spec Kit creates `.specify/plan.md`.
 
 ---
 
-**2.** Install Spec Kit:
+**2.** Review `plan.md`. It should outline a phased migration sequence.
 
-```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+---
+
+**3.** In Copilot Chat, run:
+
+```
+/speckit.tasks
+
+Generate actionable implementation tasks from the plan.
+For each phase include:
+- Clear task description
+- Acceptance criteria
+- Dependencies
+
+Prioritize by: fix NULL_DIETARY_BUG first (highest user impact).
 ```
 
+> Spec Kit creates `.specify/tasks.md`.
+
 ---
 
-**3.** Initialize Spec Kit in the project:
+**4.** Review `tasks.md`. This is your implementation backlog.
 
+---
 
-```bash
-specify init --here
+## Expected Output
+
+`plan.md`:
+```
+5-Phase Migration Plan:
+  Phase 1 — Extract validation_module  (fixes NULL_DIETARY_BUG)
+  Phase 2 — Extract filtering_module   (clean up deprecated code)
+  Phase 3 — Extract aggregation_module (fixes CACHE_LEAK_BUG)
+  Phase 4 — Extract formatting_module  (remove XML support)
+  Phase 5 — Integration and cleanup
 ```
 
-When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
+`tasks.md`:
+```
+Phase 1 — Validation Module (Priority: CRITICAL)
+  Task 1.1: Create validation_module.py skeleton
+            Acceptance: File exists, imports cleanly
+  Task 1.2: Migrate null-check logic from search.py line 447
+            Acceptance: NULL_DIETARY_BUG regression test passes
+  Task 1.3: Add type hints and unit tests
+            Acceptance: >80% coverage
 
-![Spec Kit initialization prompt](assets/specsamerepo.png)
+  ... (continues for phases 2–5)
 
----
+Total: 22 tasks across 5 phases
+```
 
-**4.** Open Copilot Chat and type `/spec` to verify the commands appear:
+## What you Did
+| Item | Description |
+|------|-------------|
+| Plan Creation | You created a technical plan outlining the migration sequence, interfaces, and testing strategy
+| Task Generation | You generated a detailed backlog of implementation tasks with acceptance criteria. |
 
-| Command | Purpose |
-|---------|---------|
-| `/speckit.constitution` | Define governance principles |
-| `/speckit.specify` | Generate a detailed specification |
-| `/speckit.plan` | Create the technical plan |
-| `/speckit.tasks` | Break plan into tasks |
-| `/speckit.implement` | Generate code from spec |
-| `/speckit.analyze` | Validate compliance |
+Next, you'll implement the first phase by generating code with `/speckit.implement` and wiring it into the existing codebase.
 
-![Spec Kit slash commands](assets/specfinal.png)
-
----
-## What you did
-|Item|Description|
-|----|-----------|
-| Spec Kit Installation | You installed the Spec Kit CLI using `uv`. |
-| Project Initialization | You initialized Spec Kit in the `recipe-manager` project. |
-| Slash Commands | The `/speckit.*` commands are now available in Copilot Chat. |
-
-In the next exercises, you'll use these commands to define the refactor specification, create a plan, and implement the changes.  [Exercise 5: Spec Kit — Constitution & Specification](exercise-5.md)
+[Exercise 7: Spec Kit — Implementation](exercise-7.md)

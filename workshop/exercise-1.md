@@ -2,6 +2,21 @@
 
 > **Time:** ~5 minutes
 > **Standalone:** No prior exercises needed.
+> **Track:** 🟢 Mandatory — Part 1 | 🟡 Optional — Part 2
+
+---
+
+## Learning Path
+
+| Part | Steps | Track | Time |
+|------|-------|-------|------|
+| Part 1 — Reproduce the Bug | Step 1 | 🟢 Mandatory | ~2 min |
+| Part 2 — Issue Analyzer Skill | Steps 2–3 | 🟡 Optional | ~3 min |
+
+> **Mandatory participants:** Complete Part 1, then move on to [Exercise 4](exercise-4.md).
+> **If time allows:** Continue with Part 2 before Exercise 4, or return to it after.
+
+---
 
 ## Goal
 
@@ -12,10 +27,10 @@ Run the failing test, read the crash output, and locate the exact line in `searc
 The `search.py` module in the `recipe-manager` project is crashing for a significant portion of users. The crash is due to a `TypeError` caused by a `NoneType` object being treated as iterable. 
 
 ---
-## Steps
+
+## Part 1 — Reproduce the Bug (🟢 Mandatory)
 
 **1.** Reproduce the Bug
-
 
 Navigate to the recipe-manager folder:
 ```bash
@@ -31,6 +46,10 @@ python test_bug.py
 Read the crash output carefully. Notice which test case crashes and what the error message says.
 
 ---
+
+## Part 2 — Create Issue Analyzer Skill (🟡 Optional)
+
+> This part is self-contained and can be done any time. Skip to [Exercise 4](exercise-4.md) if time is short.
 
 **2.**  Create Issue Analyzer Skill 
 
@@ -98,14 +117,3 @@ Look at #terminalSelection using #issue-analyzer analyse the errors
 
 
 ---
-
-## What You Did
-
-| Item | Detail |
-|------|--------|
-| Errors | `TypeError: 'NoneType' object is not iterable`, `Unstructured logging`, `type hints` |
-| Location | `Multiple files` |
-| Impact | ~30% of searches fail |
-| Created | Custom agent skill to analyze errors and code quality gaps |
-
-You now have the stack trace and context needed for the next exercises. [Exercise 2: Agent Skills and Github MCP](exercise-2.md)
