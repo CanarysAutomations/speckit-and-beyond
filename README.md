@@ -25,12 +25,15 @@ This workshop walks you through exactly that — using GitHub's agent ecosystem 
 
 ## Prerequisites
 
-✅ **VS Code** with GitHub Copilot extension  
-✅ **Python 3.11+** installed  
-✅ **Git** version control  
-✅ **Valid GitHub Copilot subscription** (Individual, Business, or Enterprise)  
-✅ **Node.js 18+** (for Copilot CLI)  
-✅ **GitHub MCP** [https://github.com/github/github-mcp-server?tab=readme-ov-file]
+- **Python 3.11+** installed  
+- **Valid GitHub Copilot subscription** (Individual, Business, or Enterprise)
+- [VS Code](https://code.visualstudio.com/download) with GitHub Copilot Chat extension
+- [Git CLI](https://git-scm.com/install/) for version control  
+- [Speckit](https://github.com/github/spec-kit?tab=readme-ov-file#-get-started) installed and configured
+- [Copilot CLI](https://github.com/features/copilot/cli)
+- [GitHub CLI](https://cli.github.com/) for MCP interactions 
+- [Node.js 18+](https://nodejs.org/en/download) (for Copilot CLI)  
+- [GitHub MCP](https://github.com/github/github-mcp-server?tab=readme-ov-file)
 > **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
 ---
@@ -49,6 +52,8 @@ All exercises are **standalone** — you can start any one without completing th
 | [Exercise 6](workshop/exercise-6.md) | Spec Kit — Plan & Tasks | ~7 min |
 | [Exercise 7](workshop/exercise-7.md) | Spec Kit — Implement | ~10 min |
 | [Exercise 8](workshop/exercise-8.md) | Validation & Quality Gates using Copilot CLI | ~10 min |
+
+> The workshop has been tested with the following AI models on GitHub Copilot: `Claude Sonnet 4.6`,`GPT-5.3-codex`. Results may vary with different models. If you encounter issues, try switching to one of these models in your Copilot settings.
 
 
 ---
