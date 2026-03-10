@@ -110,10 +110,11 @@ Open Copilot Chat and paste your prompt:
 Look at #terminalSelection using #issue-analyzer analyse the errors
 ```
 
-**What's happening:**
 - `#terminalSelection` - Attaches the terminal output you selected
 - `#issue-analyzer` - References your custom skill file
 - Copilot reads the SKILL.md and applies its analysis format
+
+Review the output. Note the identified root cause, affected files, severity, and suggested fixes.
 
 
 ---
