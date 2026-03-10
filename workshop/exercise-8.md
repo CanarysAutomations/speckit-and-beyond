@@ -12,6 +12,7 @@
 
 ## Goal
 Use GitHub MCP to create a well-formatted issue directly from an analysis, and assign it to the copilot for resolution.
+
 ---
 
 ## Context

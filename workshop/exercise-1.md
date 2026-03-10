@@ -117,3 +117,9 @@ Look at #terminalSelection using #issue-analyzer analyse the errors
 
 
 ---
+## What you Did
+| Item | Detail |
+|------|--------|
+| Bug Reproduction | Ran the test script to reproduce the error and read the stack trace |
+| Skill Creation | Created a custom Copilot skill to analyze errors and code quality issues |
+

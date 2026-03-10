@@ -109,10 +109,9 @@ Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_modu
 
 ## What You Did
 
-| Module | Target lines | Bug fixed | Track |
-|--------|-------------|-----------|-------|
-| `validation_module.py` | ~200 | NULL_DIETARY_BUG | 🟢 Mandatory |
-| `filtering_module.py` | ~300 | — | 🟡 Optional |
-| `aggregation_module.py` | ~250 | CACHE_LEAK_BUG | 🟡 Optional |
-| `formatting_module.py` | ~150 | — | 🟡 Optional |
+| Item | Detail |
+|------|--------|
+| Validation Module | Implemented and integrated validation_module.py to fix the null crash |
+| Remaining Modules | (Optional) Implemented filtering, aggregation, and formatting modules following the same pattern |
+
 

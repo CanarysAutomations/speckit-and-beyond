@@ -63,7 +63,7 @@ Replace the generated template with the following content:
 name: search-architect
 description: Senior software architect specializing in search systems, scalability, and code architecture. Analyzes search implementations for performance, reliability, and maintainability issues.
 argument-hint: A codebase, file, or GitHub issue to analyze for architectural problems and modernization opportunities.
-#tools: Optionally enable tools if this agent needs to perform actions - leave commented out for analysis-only agents
+tools: ['vscode', 'execute', 'read', 'agent', 'edit', 'search', 'web', 'todo'] # specify the tools this agent can use. If not set, all enabled tools are allowed.
 ---
 
 # Search Architect Agent
@@ -103,5 +103,13 @@ When analyzing search code, you autonomously:
    *Tools can be enabled in agent configuration as needed*
 
 Save the file and reload VS Code window
+
+---
+What you Did
+| Item | Detail |
+|------|--------|
+| Agent Creation | Created a custom agent with expertise in search architecture |
+| Defined Capabilities | Specified the agent's identity, expertise, mission, and behavior in the SKILL.md file |
+
 
 
