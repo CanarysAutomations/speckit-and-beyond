@@ -5,7 +5,7 @@
 ## The Crisis
 
 **Monday, 3:00 PM.** FlavorHub's search feature is crashing for 30% of users.
-500+ error reports. CTO demands a fix AND a lasting solution within 2 hours.
+500+ error reports. CTO demands a fix AND a lasting solution.
 
 This workshop walks you through exactly that — using GitHub's agent ecosystem to go from chaos to production-ready.
 
@@ -34,6 +34,7 @@ This workshop walks you through exactly that — using GitHub's agent ecosystem 
 - [GitHub CLI](https://cli.github.com/) for MCP interactions 
 - [Node.js 18+](https://nodejs.org/en/download) (for Copilot CLI)  
 - [GitHub MCP](https://github.com/github/github-mcp-server?tab=readme-ov-file)
+- [Python 3.11+](https://www.python.org/downloads/) (for running the recipe-manager app)
 
 > **Starter Code Provided:** FlavorHub Recipe Manager brownfield application with intentional issues for learning
 
