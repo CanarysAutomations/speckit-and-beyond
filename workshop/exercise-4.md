@@ -104,6 +104,4 @@ Total: 22 tasks across 5 phases
 | Plan Creation | You created a technical plan outlining the migration sequence, interfaces, and testing strategy
 | Task Generation | You generated a detailed backlog of implementation tasks with acceptance criteria. |
 
-Next, you'll implement the first phase by generating code with `/speckit.implement` and wiring it into the existing codebase.
 
-[Exercise 7: Spec Kit — Implementation](exercise-7.md)

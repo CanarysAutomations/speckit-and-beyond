@@ -74,4 +74,4 @@ Create a GitHub issue based on the #file:issue-analyzer analysis, Use #file:gith
 | GitHub MCP | Used GitHub MCP to create and assign an issue based on the analysis |  
 
 
-Next do deep analysis using custom agent [Exercise 3: Custom Agent — Search Architect](exercise-3.md)
+

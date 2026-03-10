@@ -25,7 +25,7 @@ Use `/speckit.implement` to generate the validation module that fixes the null c
 
 ## Context
 
-Highest priority task: fix the `NULL_DIETARY_BUG` (crash at `search.py:447`) by extracting input validation into a dedicated `validation_module.py`.
+Highest priority task: fix the `NULL_DIETARY_BUG`  by extracting input validation into a dedicated `validation_module.py`.
 
 ---
 
@@ -38,7 +38,7 @@ Highest priority task: fix the `NULL_DIETARY_BUG` (crash at `search.py:447`) by 
 
 Implement validation_module.py following the specification and plan.
 Requirements:
-- Fix the NULL_DIETARY_BUG (null-safe dietary_restrictions handling from line 447)
+- Fix the NULL_DIETARY_BUG
 - Add input validation for all search parameters
 - Full type hints
 - Unit tests with >80% coverage
@@ -116,4 +116,3 @@ Use the same approach for `aggregation_module.py` (Phase 3) and `formatting_modu
 | `aggregation_module.py` | ~250 | CACHE_LEAK_BUG | 🟡 Optional |
 | `formatting_module.py` | ~150 | — | 🟡 Optional |
 
-Next, you'll validate the refactor against the constitution using `/speckit.analyze` and generate a pre-deployment checklist with `/speckit.checklist`using Copilot CLI. [Exercise 8: Validation & Quality Gates using Copilot CLI](exercise-8.md)

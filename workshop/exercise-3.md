@@ -43,8 +43,9 @@ Principles to capture:
 3. Testability — >80% coverage, each module independently testable
 4. Performance — fix caching memory leak, optimize filter ordering
 5. Maintainability — remove 74 magic numbers and dead code
-
-Domain context: models.py, search.py, README.md,/tests
+6. Quality Standards — tests + type hints
+7. Observability & Operations — logging + guardrails
+8. Deployment Safety — backward compatibility
 ```
 
 > Spec Kit creates `.specify/constitution.md`.
@@ -65,9 +66,8 @@ Break search.py into 4 modules following the constitution:
 - filtering_module.py: active filters only, remove deprecated code
 - aggregation_module.py: ranking and caching, fix memory leak
 - formatting_module.py: response formatting, remove legacy XML support
-
-Each module must be independently testable with >80% coverage.
-Maintain full API backward compatibility.
+- Each module must be independently testable with >80% coverage.
+- Maintain full API backward compatibility.
 ```
 
 > Spec Kit creates `.specify/specification.md`.
@@ -113,4 +113,4 @@ Success Criteria:
 | Constitution | Defined the core principles guiding the refactor. |
 | Specification | Created a detailed spec outlining the modules to be built and success criteria. |
 
-Next, you'll create a technical plan and break it into actionable tasks. [Exercise 6: Spec Kit — Plan & Tasks](exercise-6.md)
+
