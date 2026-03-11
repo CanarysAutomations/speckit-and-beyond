@@ -67,6 +67,7 @@ Explore these exercises in any order. They are fully self-contained with no depe
 | [Exercise 6](workshop/exercise-6.md) | Validation & Quality Gates + Code Review | ~15 min | Pre-deployment checks |
 | [Exercise 7](workshop/exercise-7.md) | Custom Agent — Search Architect | ~8 min | Domain expertise |
 | [Exercise 8](workshop/exercise-8.md) | Agent Skills — GitHub MCP | ~7 min | Issue automation |
+| [Exercise 9](workshop/exercise-9.md) | Copilot CLI — Custom Agent Creation & Delegation | ~8 min | Alternative custom agent creation |
 
 > **Pro Tip:** Complete the mandatory core path first (~29 min), then pick optional exercises based on what interests you most. If time is short, you can revisit them after the workshop.
 
