@@ -115,7 +115,7 @@ Click the **Agent** dropdown and select **Custom Agent** **search-architect** fr
 
 **3.** Enter your prompt:
 ```
-Review Null dietary issue and analyze search.py comprehensively. 
+Review #file:issue-analyzer analysis and analyze search.py comprehensively. 
 The null handling bug is just a symptom - what's the real architectural state?
 
 Context: search.py has grown to 1103 lines over 18 months. 
