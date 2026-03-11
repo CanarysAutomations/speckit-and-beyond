@@ -105,6 +105,25 @@ When analyzing search code, you autonomously:
 Save the file and reload VS Code window
 
 ---
+
+**3.** Invoke Deep Analysis 
+
+Click the **Agent** dropdown and select **Custom Agent** **search-architect** from the list
+
+   ![Select Search Architect Agent](assets/customarchitectagent.png)
+   *The search-architect custom agent available in the agents dropdown*
+
+**3.** Enter your prompt:
+```
+Review Null dietary issue and analyze search.py comprehensively. 
+The null handling bug is just a symptom - what's the real architectural state?
+
+Context: search.py has grown to 1103 lines over 18 months. 
+Users complained about slow searches before this bug appeared.
+```
+
+---
+
 What you Did
 | Item | Detail |
 |------|--------|
