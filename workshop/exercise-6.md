@@ -17,6 +17,7 @@
 | Part 1 — Constitution Compliance | Steps 1–2 | 🟡 Optional | ~5 min |
 | Part 2 — Pre-deployment Checklist | Steps 3–4 | 🟡 Optional | ~5 min |
 | Part 3 — Code Review Assistance | Steps 5–6 | 🟡 Optional | ~5 min |
+| Part 4 — Task Delegation | Step 7 | 🟡 Optional | ~2 min |
 
 ---
 
@@ -45,7 +46,10 @@ or
 # For Windows users, use winget:
 winget install GitHub.Copilot
 ```
-
+In Terminal, run:
+```
+copilot
+```
 Select the Spec Kit agent CLI using /agent:
 
 ```

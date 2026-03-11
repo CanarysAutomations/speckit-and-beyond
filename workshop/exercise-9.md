@@ -39,6 +39,11 @@ npm install -g @github/copilot
 ## Steps
 
 **1.** Open Copilot CLI in the terminal:
+In Terminal, run:
+```
+copilot
+```
+Then type:
 ```
 /ide
 ```
