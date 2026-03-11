@@ -8,11 +8,13 @@ This is FlavorHub's legacy Recipe Manager - a 2-year-old application with techni
 
 - ✅ Working recipe search (mostly)
 - ❌ Production bug: Crashes for users without dietary restrictions
-- ❌ 847-line monolith in `search.py`
+- ❌ 1006-line monolith in `search.py`
 - ❌ No input validation
-- ❌ Zero test coverage
+- ⚠️ Partial test coverage (tests exist but incomplete)
+- ❌ Unstructured logging (print statements, not using logging_config.py)
+- ❌ Missing type hints in critical functions
 - ❌ Performance issues (280ms average searches)
-- ❌ No documentation
+- ❌ No API documentation
 
 **Your mission:** Fix the crisis and modernize this system using GitHub agents.
 
@@ -23,7 +25,7 @@ This is FlavorHub's legacy Recipe Manager - a 2-year-old application with techni
 **Error:**
 ```
 TypeError: 'NoneType' object is not iterable
-  File "search.py", line 145, in filter_by_dietary
+  File "search.py", line 447, in filter_by_dietary
 ```
 
 **Impact:** 30% of searches failing (users without dietary preferences)
@@ -34,17 +36,11 @@ TypeError: 'NoneType' object is not iterable
 
 ### Prerequisites
 - Python 3.11+
-- PostgreSQL (or SQLite for workshop)
 
 ### Install Dependencies
 ```bash
 cd recipe-manager
 pip install -r requirements.txt
-```
-
-### Initialize Database
-```bash
-python init_db.py
 ```
 
 ### Run Application
@@ -61,25 +57,35 @@ API runs on: `http://localhost:8000`
 ```
 recipe-manager/
 ├── main.py              # FastAPI application entry
-├── search.py            # 847-line monolith (THE PROBLEM)
+├── search.py            # 1006-line monolith (THE PROBLEM)
 ├── models.py            # User and Recipe models
-├── database.py          # Database connection
-├── api/
-│   └── routes.py        # API endpoints
+├── logging_config.py    # Structured logging configuration
+├── test_bug.py          # Bug reproduction script
+├── pytest.ini           # Pytest configuration
 ├── requirements.txt     # Dependencies
-└── init_db.py          # Database setup script
+├── api/
+│   ├── __init__.py
+│   └── routes.py        # API endpoints
+└── tests/
+    ├── __init__.py
+    ├── conftest.py      # Test configuration
+    ├── test_api.py      # API endpoint tests
+    ├── test_models.py   # Model tests
+    └── test_search.py   # Search functionality tests
 ```
 
 ---
 
 ## Known Issues
 
-1. **🔴 CRITICAL:** Null pointer exception in dietary restrictions filter
+1. **🔴 CRITICAL:** Null pointer exception in dietary restrictions filter (Line 447)
 2. **🟠 HIGH:** Search performance degrading (280ms average)
-3. **🟠 HIGH:** No test coverage
-4. **🟡 MEDIUM:** 847-line god object in search.py
+3. **🟠 HIGH:** Incomplete test coverage
+4. **🟡 MEDIUM:** 1006-line god object in search.py
 5. **🟡 MEDIUM:** No input validation
-6. **🟢 LOW:** Missing API documentation
+6. **� MEDIUM:** Unstructured logging (print statements instead of proper logging)
+7. **🟡 MEDIUM:** Missing type hints in multiple functions
+8. **�🟢 LOW:** Missing API documentation
 
 **Fix these using the workshop exercises!**
 
