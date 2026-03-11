@@ -79,7 +79,7 @@ Explore these exercises in any order. They are fully self-contained with no depe
 
 [![Use this Template](https://img.shields.io/badge/Use%20this%20Template-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=CanarysAutomations&template_name=speckit-and-beyond&owner=%40me&name=speckit-and-beyond&description=Agent-Driven+Spec+Development:+The+FlavorHub+Crisis&visibility=public)
 
-Once your repo is created, start here: [Exercise 1 — Reproduce the Bug](workshop/exercise-1.md)
+Once your repo is created and cloned, start here: [Exercise 1 — Reproduce the Bug](workshop/exercise-1.md)
 
 ## Resources
 

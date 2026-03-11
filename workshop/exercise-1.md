@@ -32,7 +32,7 @@ The `search.py` module in the `recipe-manager` project is crashing for a signifi
 
 **1.** Reproduce the Bug
 
-Navigate to the recipe-manager folder:
+Open a terminal (ctrl+shift+`) and navigate to the recipe-manager folder:
 ```bash
 cd recipe-manager
 ```
@@ -44,6 +44,7 @@ python test_bug.py
 ```
 
 Read the crash output carefully. Notice which test case crashes and what the error message says.
+Also note that the code files have missing type hints and unstructured logging.
 
 ---
 

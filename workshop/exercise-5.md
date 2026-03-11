@@ -66,7 +66,7 @@ Make sure api/routes.py continues to work without any changes.
 
 ```bash
 cd recipe-manager
-python test_bug.py
+python -m pytest tests/contract/test_validation_contract.py::test_contract_dietary_restrictions_never_none -v
 ```
 
 Expected:
