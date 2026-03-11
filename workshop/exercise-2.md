@@ -21,7 +21,7 @@ Spec Kit is a powerful tool for defining software specifications, creating imple
 ---
 ## Steps
 
-**1.** Install `uv` (required to install Spec Kit):
+**1.** Install `uv` (required to install Spec Kit) in new terminal:
 
 ```bash
 # Windows — run in PowerShell
@@ -53,7 +53,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 specify init --here
 ```
 
-When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**.
+When prompted *"Initialize Spec Kit in existing repository?"*, type **yes**,to continue,choose AI Assitant as Github Copilot and Script type as powershell.
 
 ![Spec Kit initialization prompt](assets/specsamerepo.png)
 
