@@ -43,6 +43,7 @@ Requirements:
 - Full type hints
 - Unit tests with >80% coverage
 - Importable by search.py without breaking the existing API
+- Update test_bug.py to use the new validation module for the null dietary test case
 
 Reference: tasks.md Phase 1
 ```
@@ -66,7 +67,7 @@ Make sure api/routes.py continues to work without any changes.
 
 ```bash
 cd recipe-manager
-python -m pytest tests/contract/test_validation_contract.py::test_contract_dietary_restrictions_never_none -v
+python test_bug.py
 ```
 
 Expected:
